@@ -36,13 +36,9 @@ tags:
 ## ACHIEVEMENT RATE
 
 영어 공부
-
-```
-[___#_##] 3/7 (40%)
-```
+<progress value="3" max="7"></progress>
+3/7 (<b>40%</b>)
 
 운동
-
-```
-[___##_#] 3/7 (40%)
-```
+<progress value="3" max="7"></progress>
+3/7 (<b>40%</b>)
