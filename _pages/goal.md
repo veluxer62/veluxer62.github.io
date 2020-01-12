@@ -43,7 +43,7 @@ title: "목표"
 
 <details><summary>주간 회고 작성하기</summary>
 <pre>
- 1월 <progress value="1" max="4"></progress> 1/4 (<b>25%</b>)
+ 1월 <progress value="2" max="4"></progress> 2/4 (<b>50%</b>)
  2월 <progress value="0" max="4"></progress> 0/4 (<b>0%</b>)
  3월 <progress value="0" max="5"></progress> 0/5 (<b>0%</b>)
  4월 <progress value="0" max="4"></progress> 0/4 (<b>0%</b>)
