@@ -9,6 +9,7 @@ tags:
   - 김윤수
   - 김선준
   - 포레스트북스
+toc: true
 ---
 
 [![성격 급한 부자들](/assets/images/books/richs-who-have-quick-temper.jpg)](http://www.yes24.com/Product/Goods/58477393){: target="\_blank" }

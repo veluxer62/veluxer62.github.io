@@ -6,6 +6,7 @@ categories:
 tags:
   - rule
   - markdown
+toc: true
 ---
 
 게시글을 작성할때 규칙을 정해두고 작성하면 일관성있는 글을 작성할 수 있을것 같아 아래에 그 규칙들을 정하고 지키고자 한다.

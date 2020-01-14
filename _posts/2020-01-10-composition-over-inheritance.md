@@ -7,7 +7,7 @@ tags:
   - inheritance
   - composition
   - composition over inheritance
-comments: true
+toc: true
 ---
 
 > 상속보다는 구성을 활용한다.
