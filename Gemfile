@@ -4,4 +4,5 @@ gem "jekyll"
 gem "minimal-mistakes-jekyll"
 gem 'faraday', '~> 0'
 group :jekyll_plugins do
+    gem "jekyll-archives"
 end
