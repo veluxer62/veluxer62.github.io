@@ -3,7 +3,7 @@ main:
   - title: "Home"
     url: /
   - title: "Posts"
-    url: /
+    url: /categories/
   - title: "Pages"
     url: /pages/
   - title: "About"
