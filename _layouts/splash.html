@@ -17,6 +17,9 @@ layout: default
 
     <section class="page__content" itemprop="text">
       {{ content }}
+      {% if page.vocavularies != null%}
+        {% include vocavulary.html%}
+      {% endif %}
     </section>
   </article>
 </div>
