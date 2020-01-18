@@ -62,7 +62,7 @@ title: "목표"
 
 <details><summary>영어공부 30분 이상 하기</summary>
 <pre>
- 1월 <progress value="15" max="31"></progress> 15/31 (<b>48%</b>)
+ 1월 <progress value="16" max="31"></progress> 16/31 (<b>52%</b>)
  2월 <progress value="0" max="29"></progress> 0/29 (<b>0%</b>)
  3월 <progress value="0" max="31"></progress> 0/31 (<b>0%</b>)
  4월 <progress value="0" max="30"></progress> 0/30 (<b>0%</b>)
@@ -79,7 +79,7 @@ title: "목표"
 
 <details><summary>운동 하기</summary>
 <pre>
- 1월 <progress value="10" max="31"></progress> 10/31 (<b>32%</b>)
+ 1월 <progress value="11" max="31"></progress> 11/31 (<b>35%</b>)
  2월 <progress value="0" max="29"></progress> 0/29 (<b>0%</b>)
  3월 <progress value="0" max="31"></progress> 0/31 (<b>0%</b>)
  4월 <progress value="0" max="30"></progress> 0/30 (<b>0%</b>)
