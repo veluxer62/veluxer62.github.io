@@ -62,7 +62,7 @@ title: "목표"
 
 <details><summary>영어공부 30분 이상 하기</summary>
 <pre>
- 1월 <progress value="18" max="31"></progress> 18/31 (<b>58%</b>)
+ 1월 <progress value="19" max="31"></progress> 19/31 (<b>61%</b>)
  2월 <progress value="0" max="29"></progress> 0/29 (<b>0%</b>)
  3월 <progress value="0" max="31"></progress> 0/31 (<b>0%</b>)
  4월 <progress value="0" max="30"></progress> 0/30 (<b>0%</b>)
