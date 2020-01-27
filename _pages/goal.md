@@ -26,7 +26,7 @@ title: "목표"
 
 <details><summary>블로그 1개 이상 작성하기</summary>
 <pre>
- 1월 <progress value="2" max="4"></progress> 2/4 (<b>50%</b>)
+ 1월 <progress value="3" max="4"></progress> 3/4 (<b>75%</b>)
  2월 <progress value="0" max="4"></progress> 0/4 (<b>0%</b>)
  3월 <progress value="0" max="5"></progress> 0/5 (<b>0%</b>)
  4월 <progress value="0" max="4"></progress> 0/4 (<b>0%</b>)
@@ -43,7 +43,7 @@ title: "목표"
 
 <details><summary>주간 회고 작성하기</summary>
 <pre>
- 1월 <progress value="3" max="4"></progress> 3/4 (<b>75%</b>)
+ 1월 <progress value="4" max="4"></progress> 4/4 (<b>100%</b>)
  2월 <progress value="0" max="4"></progress> 0/4 (<b>0%</b>)
  3월 <progress value="0" max="5"></progress> 0/5 (<b>0%</b>)
  4월 <progress value="0" max="4"></progress> 0/4 (<b>0%</b>)
@@ -62,7 +62,7 @@ title: "목표"
 
 <details><summary>영어공부 30분 이상 하기</summary>
 <pre>
- 1월 <progress value="21" max="31"></progress> 21/31 (<b>68%</b>)
+ 1월 <progress value="22" max="31"></progress> 22/31 (<b>71%</b>)
  2월 <progress value="0" max="29"></progress> 0/29 (<b>0%</b>)
  3월 <progress value="0" max="31"></progress> 0/31 (<b>0%</b>)
  4월 <progress value="0" max="30"></progress> 0/30 (<b>0%</b>)
