@@ -4,7 +4,303 @@ title: "목표"
 ---
 
 <html>
-  <head></head>
+  <head>
+    <link
+      href="https://unpkg.com/@fullcalendar/core@4.3.1/main.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://unpkg.com/@fullcalendar/daygrid@4.3.0/main.min.css"
+      rel="stylesheet"
+    />
+
+    <script src="https://unpkg.com/@fullcalendar/core@4.3.1/main.min.js"></script>
+    <script src="https://unpkg.com/@fullcalendar/daygrid@4.3.0/main.min.js"></script>
+
+    <style>
+      #calendar {
+        margin-top: 50px;
+      }
+      table {
+        display: table !important;
+      }
+    </style>
+    <script>
+      const english = [
+        {
+          title: "영어공부",
+          start: "2020-01-03",
+          backgroundColor: "red",
+          borderColor: "red"
+        },
+        {
+          title: "영어공부",
+          start: "2020-01-04",
+          backgroundColor: "red",
+          borderColor: "red"
+        },
+        {
+          title: "영어공부",
+          start: "2020-01-05",
+          backgroundColor: "red",
+          borderColor: "red"
+        },
+        {
+          title: "영어공부",
+          start: "2020-01-06",
+          backgroundColor: "red",
+          borderColor: "red"
+        },
+        {
+          title: "영어공부",
+          start: "2020-01-07",
+          backgroundColor: "red",
+          borderColor: "red"
+        },
+        {
+          title: "영어공부",
+          start: "2020-01-08",
+          backgroundColor: "red",
+          borderColor: "red"
+        },
+        {
+          title: "영어공부",
+          start: "2020-01-09",
+          backgroundColor: "red",
+          borderColor: "red"
+        },
+        {
+          title: "영어공부",
+          start: "2020-01-10",
+          backgroundColor: "red",
+          borderColor: "red"
+        },
+        {
+          title: "영어공부",
+          start: "2020-01-11",
+          backgroundColor: "red",
+          borderColor: "red"
+        },
+        {
+          title: "영어공부",
+          start: "2020-01-12",
+          backgroundColor: "red",
+          borderColor: "red"
+        },
+        {
+          title: "영어공부",
+          start: "2020-01-13",
+          backgroundColor: "red",
+          borderColor: "red"
+        },
+        {
+          title: "영어공부",
+          start: "2020-01-14",
+          backgroundColor: "red",
+          borderColor: "red"
+        },
+        {
+          title: "영어공부",
+          start: "2020-01-15",
+          backgroundColor: "red",
+          borderColor: "red"
+        },
+        {
+          title: "영어공부",
+          start: "2020-01-16",
+          backgroundColor: "red",
+          borderColor: "red"
+        },
+        {
+          title: "영어공부",
+          start: "2020-01-17",
+          backgroundColor: "red",
+          borderColor: "red"
+        },
+        {
+          title: "영어공부",
+          start: "2020-01-18",
+          backgroundColor: "red",
+          borderColor: "red"
+        },
+        {
+          title: "영어공부",
+          start: "2020-01-19",
+          backgroundColor: "red",
+          borderColor: "red"
+        },
+        {
+          title: "영어공부",
+          start: "2020-01-20",
+          backgroundColor: "red",
+          borderColor: "red"
+        },
+        {
+          title: "영어공부",
+          start: "2020-01-21",
+          backgroundColor: "red",
+          borderColor: "red"
+        },
+        {
+          title: "영어공부",
+          start: "2020-01-22",
+          backgroundColor: "red",
+          borderColor: "red"
+        },
+        {
+          title: "영어공부",
+          start: "2020-01-23",
+          backgroundColor: "red",
+          borderColor: "red"
+        },
+        {
+          title: "영어공부",
+          start: "2020-01-27",
+          backgroundColor: "red",
+          borderColor: "red"
+        }
+      ];
+
+      const exercise = [
+        {
+          title: "운동",
+          start: "2020-01-03"
+        },
+        {
+          title: "운동",
+          start: "2020-01-04"
+        },
+        {
+          title: "운동",
+          start: "2020-01-05"
+        },
+        {
+          title: "운동",
+          start: "2020-01-06"
+        },
+        {
+          title: "운동",
+          start: "2020-01-08"
+        },
+        {
+          title: "운동",
+          start: "2020-01-09"
+        },
+        {
+          title: "운동",
+          start: "2020-01-11"
+        },
+        {
+          title: "운동",
+          start: "2020-01-13"
+        },
+        {
+          title: "운동",
+          start: "2020-01-15"
+        },
+        {
+          title: "운동",
+          start: "2020-01-16"
+        },
+        {
+          title: "운동",
+          start: "2020-01-18"
+        },
+        {
+          title: "운동",
+          start: "2020-01-20"
+        },
+        {
+          title: "운동",
+          start: "2020-01-22"
+        }
+      ];
+
+      const retrospective = [
+        {
+          title: "주간회고",
+          start: "2020-01-05",
+          url: "/retrospective/first-week-of-january-retrospective/",
+          backgroundColor: "orange",
+          borderColor: "orange"
+        },
+        {
+          title: "주간회고",
+          start: "2020-01-12",
+          url: "/retrospective/second-week-of-january-retrospective/",
+          backgroundColor: "orange",
+          borderColor: "orange"
+        },
+        {
+          title: "주간회고",
+          start: "2020-01-19",
+          url: "/retrospective/third-week-of-january-retrospective/",
+          backgroundColor: "orange",
+          borderColor: "orange"
+        },
+        {
+          title: "주간회고",
+          start: "2020-01-26",
+          url: "/retrospective/fourth-week-of-january-weekly-retrospective/",
+          backgroundColor: "orange",
+          borderColor: "orange"
+        }
+      ];
+
+      const post = [
+        {
+          title: "블로그",
+          start: "2020-01-10",
+          url: "/explanation/composition-over-inheritance/",
+          backgroundColor: "yellow",
+          borderColor: "yellow"
+        },
+        {
+          title: "블로그",
+          start: "2020-01-19",
+          url: "/reference/passwd/",
+          backgroundColor: "yellow",
+          borderColor: "yellow"
+        },
+        {
+          title: "블로그",
+          start: "2020-01-26",
+          url: "/discussions/importance-of-communication-for-developer/",
+          backgroundColor: "yellow",
+          borderColor: "yellow"
+        }
+      ];
+
+      const bookReview = [
+        {
+          title: "책리뷰",
+          start: "2020-01-11",
+          url: "/review/book-review/",
+          backgroundColor: "skyblue",
+          borderColor: "skyblue"
+        }
+      ];
+
+      const data = english
+        .concat(exercise)
+        .concat(retrospective)
+        .concat(post)
+        .concat(bookReview);
+
+      document.addEventListener("DOMContentLoaded", function() {
+        const calendarEl = document.getElementById("calendar");
+
+        const calendar = new FullCalendar.Calendar(calendarEl, {
+          plugins: ["dayGrid"],
+          defaultView: "dayGridMonth",
+          events: data
+        });
+
+        calendar.render();
+      });
+    </script>
+  </head>
+
   <body>
     <h2>2020년 목표</h2>
 
@@ -220,5 +516,7 @@ title: "목표"
       <div>11월 <progress value="0" max="30"></progress> 0/30 (<b>0%</b>)</div>
       <div>12월 <progress value="0" max="31"></progress> 0/31 (<b>0%</b>)</div>
     </details>
+
+    <div id="calendar"></div>
   </body>
 </html>
