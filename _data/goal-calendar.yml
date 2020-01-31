@@ -29,6 +29,7 @@ english:
     - start: "2020-01-28"
     - start: "2020-01-29"
     - start: "2020-01-30"
+    - start: "2020-01-31"
 
 exercise:
   title: "운동"
@@ -51,6 +52,7 @@ exercise:
     - start: "2020-01-22"
     - start: "2020-01-28"
     - start: "2020-01-29"
+    - start: "2020-01-31"
 
 retrospective:
   title: "주간회고"
