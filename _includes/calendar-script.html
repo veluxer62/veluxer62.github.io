@@ -1,0 +1,100 @@
+<link
+  href="https://unpkg.com/@fullcalendar/core@4.3.1/main.min.css"
+  rel="stylesheet"
+/>
+<link
+  href="https://unpkg.com/@fullcalendar/daygrid@4.3.0/main.min.css"
+  rel="stylesheet"
+/>
+
+<script src="https://unpkg.com/@fullcalendar/core@4.3.1/main.min.js"></script>
+<script src="https://unpkg.com/@fullcalendar/daygrid@4.3.0/main.min.js"></script>
+
+<style>
+  #calendar {
+    margin-top: 50px;
+  }
+  table {
+    display: table !important;
+  }
+</style>
+
+<script>
+  const english = [
+    {% for item in site.data.goal-calendar.english.items %}
+      {
+        title: "{{site.data.goal-calendar.english.title}}",
+        start: "{{item.start}}",
+        backgroundColor: "{{site.data.goal-calendar.english.backgroundColor}}",
+        borderColor: "{{site.data.goal-calendar.english.borderColor}}",
+        textColor: "{{site.data.goal-calendar.english.textColor}}"
+      },
+    {% endfor %}
+  ];
+
+  const exercise = [
+    {% for item in site.data.goal-calendar.exercise.items %}
+      {
+        title: "{{site.data.goal-calendar.exercise.title}}",
+        start: "{{item.start}}",
+        backgroundColor: "{{site.data.goal-calendar.exercise.backgroundColor}}",
+        borderColor: "{{site.data.goal-calendar.exercise.borderColor}}",
+        textColor: "{{site.data.goal-calendar.exercise.textColor}}"
+      },
+    {% endfor %}
+  ];
+
+  const retrospective = [
+    {% for item in site.data.goal-calendar.retrospective.items %}
+      {
+        title: "{{site.data.goal-calendar.retrospective.title}}",
+        start: "{{item.start}}",
+        backgroundColor: "{{site.data.goal-calendar.retrospective.backgroundColor}}",
+        borderColor: "{{site.data.goal-calendar.retrospective.borderColor}}",
+        textColor: "{{site.data.goal-calendar.retrospective.textColor}}"
+      },
+    {% endfor %}
+  ];
+
+  const post = [
+    {% for item in site.data.goal-calendar.post.items %}
+      {
+        title: "{{site.data.goal-calendar.post.title}}",
+        start: "{{item.start}}",
+        backgroundColor: "{{site.data.goal-calendar.post.backgroundColor}}",
+        borderColor: "{{site.data.goal-calendar.post.borderColor}}",
+        textColor: "{{site.data.goal-calendar.post.textColor}}"
+      },
+    {% endfor %}
+  ];
+
+  const bookReview = [
+    {% for item in site.data.goal-calendar.bookReview.items %}
+      {
+        title: "{{site.data.goal-calendar.bookReview.title}}",
+        start: "{{item.start}}",
+        backgroundColor: "{{site.data.goal-calendar.bookReview.backgroundColor}}",
+        borderColor: "{{site.data.goal-calendar.bookReview.borderColor}}",
+        textColor: "{{site.data.goal-calendar.bookReview.textColor}}"
+      },
+    {% endfor %}
+  ];
+
+  const data = english
+    .concat(exercise)
+    .concat(retrospective)
+    .concat(post)
+    .concat(bookReview);
+
+  document.addEventListener("DOMContentLoaded", function() {
+    const calendarEl = document.getElementById("calendar");
+
+    const calendar = new FullCalendar.Calendar(calendarEl, {
+      plugins: ["dayGrid"],
+      defaultView: "dayGridMonth",
+      events: data
+    });
+
+    calendar.render();
+  });
+</script>
