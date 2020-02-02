@@ -46,7 +46,7 @@ toc: true
 
 - [x] 책읽기
 
-1. [성격 급한 부자들](/review/book-review/){: target="\_blank" }
+1. [성격 급한 부자들](/book-review/richs-who-have-quick-temper/){: target="\_blank" }
 
 ### 주간목표
 
