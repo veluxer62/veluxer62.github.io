@@ -58,6 +58,8 @@ english:
       url: "/vocabulary/2020/01/31/"
     - start: "2020-02-01"
       url: "/vocabulary/2020/02/01/"
+    - start: "2020-02-02"
+      url: "/vocabulary/2020/02/02/"
 
 exercise:
   title: "운동"
@@ -81,8 +83,9 @@ exercise:
     - start: "2020-01-28"
     - start: "2020-01-29"
     - start: "2020-01-31"
+    - start: "2020-02-02"
 
-retrospective:
+weeklyRetrospective:
   title: "주간회고"
   backgroundColor: "#d4edda"
   borderColor: "#c3e6cb"
@@ -96,6 +99,26 @@ retrospective:
       url: "/retrospective/third-week-of-january-retrospective/"
     - start: "2020-01-26"
       url: "/retrospective/fourth-week-of-january-weekly-retrospective/"
+    - start: "2020-02-02"
+      url: "/retrospective/first-week-of-february-weekly-retrospective/"
+
+monthlyRetrospective:
+  title: "월간회고"
+  backgroundColor: "#d4edda"
+  borderColor: "#c3e6cb"
+  textColor: "#155724"
+  items:
+    - start: "2020-02-02"
+      url: "/retrospective/january-retrospective/"
+
+yearRetrospective:
+  backgroundColor: "#d4edda"
+  borderColor: "#c3e6cb"
+  textColor: "#155724"
+  items:
+    - start: "2020-01-13"
+      title: "2019년 회고"
+      url: "/retrospective/2019-retrospective/"
 
 post:
   title: "블로그"
