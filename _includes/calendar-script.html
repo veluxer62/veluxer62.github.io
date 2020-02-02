@@ -48,15 +48,41 @@
     {% endfor %}
   ];
 
-  const retrospective = [
-    {% for item in site.data.goal-calendar.retrospective.items %}
+  const weeklyRetrospective = [
+    {% for item in site.data.goal-calendar.weeklyRetrospective.items %}
       {
-        title: "{{site.data.goal-calendar.retrospective.title}}",
+        title: "{{site.data.goal-calendar.weeklyRetrospective.title}}",
         start: "{{item.start}}",
         url: "{{item.url}}",
-        backgroundColor: "{{site.data.goal-calendar.retrospective.backgroundColor}}",
-        borderColor: "{{site.data.goal-calendar.retrospective.borderColor}}",
-        textColor: "{{site.data.goal-calendar.retrospective.textColor}}"
+        backgroundColor: "{{site.data.goal-calendar.weeklyRetrospective.backgroundColor}}",
+        borderColor: "{{site.data.goal-calendar.weeklyRetrospective.borderColor}}",
+        textColor: "{{site.data.goal-calendar.weeklyRetrospective.textColor}}"
+      },
+    {% endfor %}
+  ];
+
+  const monthlyRetrospective = [
+    {% for item in site.data.goal-calendar.monthlyRetrospective.items %}
+      {
+        title: "{{site.data.goal-calendar.monthlyRetrospective.title}}",
+        start: "{{item.start}}",
+        url: "{{item.url}}",
+        backgroundColor: "{{site.data.goal-calendar.monthlyRetrospective.backgroundColor}}",
+        borderColor: "{{site.data.goal-calendar.monthlyRetrospective.borderColor}}",
+        textColor: "{{site.data.goal-calendar.monthlyRetrospective.textColor}}"
+      },
+    {% endfor %}
+  ];
+
+  const yearRetrospective = [
+    {% for item in site.data.goal-calendar.yearRetrospective.items %}
+      {
+        title: "{{item.title}}",
+        start: "{{item.start}}",
+        url: "{{item.url}}",
+        backgroundColor: "{{site.data.goal-calendar.yearRetrospective.backgroundColor}}",
+        borderColor: "{{site.data.goal-calendar.yearRetrospective.borderColor}}",
+        textColor: "{{site.data.goal-calendar.yearRetrospective.textColor}}"
       },
     {% endfor %}
   ];
@@ -89,7 +115,9 @@
 
   const data = english
     .concat(exercise)
-    .concat(retrospective)
+    .concat(weeklyRetrospective)
+    .concat(monthlyRetrospective)
+    .concat(yearRetrospective)
     .concat(post)
     .concat(bookReview);
 
