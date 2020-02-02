@@ -2,7 +2,7 @@
 layout: single
 title: "성격 급한 부자들"
 categories:
-  - REVIEW
+  - BOOK-REVIEW
 tags:
   - 성격급한 부자들
   - 다구치 도모타카
