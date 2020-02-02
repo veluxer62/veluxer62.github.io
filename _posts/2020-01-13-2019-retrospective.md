@@ -23,7 +23,7 @@ toc: true
 
 ## Spring WebFlux
 
-[![Spring WebFlux](/assets/images/webflux.jpg)](https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_800/http://mdabrowski.net/wp-content/uploads/2019/03/webflux.jpg){: target="\_blank" }
+[![Spring WebFlux](/assets/images/retrospective/webflux.jpg)](https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_800/http://mdabrowski.net/wp-content/uploads/2019/03/webflux.jpg){: target="\_blank" }
 
 Spring에서 Reactive 프로그래밍을 위해 [Spring WebFlux](https://docs.spring.io/spring/docs/current/spring-framework-reference/web-reactive.html#webflux){: target="\_blank" }가 개발되었다. Spring 5.x 버전부터 사용이 가능하다.
 
@@ -33,7 +33,7 @@ Spring에서 Reactive 프로그래밍을 위해 [Spring WebFlux](https://docs.sp
 
 ## 카카오 i 오픈빌더
 
-[![카카오 i 오픈빌더](/assets/images/kakao-i-open-builder.png)](https://t1.kakaocdn.net/openbuilder/og/opengraph.png){: target="\_blank" }
+[![카카오 i 오픈빌더](/assets/images/retrospective/kakao-i-open-builder.png)](https://t1.kakaocdn.net/openbuilder/og/opengraph.png){: target="\_blank" }
 
 [카카오 i 오픈빌더](https://i.kakao.com/docs/getting-started-overview#%EC%98%A4%ED%94%88%EB%B9%8C%EB%8D%94-%EC%86%8C%EA%B0%9C){: target="\_blank" }는 카카오에서 제공하는 채널의 봇 설계 플랫폼이다.
 
@@ -43,7 +43,7 @@ Spring에서 Reactive 프로그래밍을 위해 [Spring WebFlux](https://docs.sp
 
 ## Vue.js
 
-[![Vue.js](/assets/images/vuejs.png)](https://images.velog.io/post-images/kay/a0ddc410-d858-11e8-a33d-b5e9b030c4e4/vuejs-tutorial2d2a853c-aa2f-44b0-80df-933b495f77f8.png){: target="\_blank" }
+[![Vue.js](/assets/images/retrospective/vuejs.png)](https://images.velog.io/post-images/kay/a0ddc410-d858-11e8-a33d-b5e9b030c4e4/vuejs-tutorial2d2a853c-aa2f-44b0-80df-933b495f77f8.png){: target="\_blank" }
 
 [Vue.js](https://kr.vuejs.org/v2/guide/index.html){: target="\_blank" }는 UI를 만들기 위한 프로그래시브 프레임워크이다.
 
@@ -53,7 +53,7 @@ Spring에서 Reactive 프로그래밍을 위해 [Spring WebFlux](https://docs.sp
 
 ## React.js + Typescript
 
-[![react-typescript](/assets/images/react-typescript.png)](https://salgum1114.github.io/static/images/covers/react_typescript.png){: target="\_blank" }
+[![react-typescript](/assets/images/retrospective/react-typescript.png)](https://salgum1114.github.io/static/images/covers/react_typescript.png){: target="\_blank" }
 
 [React.js](https://ko.reactjs.org/){: target="\_blank" }는 UI를 만들기 위한 Javascript 라이브러리이다. [Typescript](https://www.typescriptlang.org/){: target="\_blank" }는 자바스크립트를 확장한 언어로 Javascript의 모든 구문과 의미를 지원하면서 정적 유형 및 추가적인 구문과 기능을 제공해주는 프로그래밍 언어이다.
 
@@ -65,7 +65,7 @@ Vue로 개발하던 사내 관리자 서비스에 UI에도 TDD를 통한 개발�
 
 ## Azure DevOps
 
-[![azure-devops](/assets/images/azure-devops.png)](https://miro.medium.com/proxy/1*fs244dG4ZD3OwinIf17Kew.jpeg){: target="\_blank" }
+[![azure-devops](/assets/images/retrospective/azure-devops.png)](https://miro.medium.com/proxy/1*fs244dG4ZD3OwinIf17Kew.jpeg){: target="\_blank" }
 
 [Azure DevOps](https://azure.microsoft.com/ko-kr/services/devops/){: target="\_blank" }는 개발을 위해 Azure에서 제공해주는 협업관리 서비스이다.
 
@@ -75,7 +75,7 @@ Vue로 개발하던 사내 관리자 서비스에 UI에도 TDD를 통한 개발�
 
 ## 영어공부
 
-[![grammar-in-use-intermediate](/assets/images/books/grammar-in-use-intermediate.jpg)](http://image.yes24.com/momo/TopCate977/MidCate005/7183757.jpg){: target="\_blank" }
+[![grammar-in-use-intermediate](/assets/images/retrospective/books/grammar-in-use-intermediate.jpg)](http://image.yes24.com/momo/TopCate977/MidCate005/7183757.jpg){: target="\_blank" }
 
 최근 영어로된 문서들을 읽을 일이 많아져서 영어 독해 능력을 키우고자 국민 영어 문법책인 [Grammar in use intermediate](http://www.yes24.com/Product/Goods/3376544){: target="\_blank" }을 사서 공부하였다. 이 책을 선택한 또 다른 이유는 [YouTube에 강의영상](https://www.youtube.com/playlist?list=PLoN8iLx8CwQ5WFM9Md37cfcxZEgSGs6yC){: target="\_blank" }이 있어서 였다.
 
@@ -85,7 +85,7 @@ Vue로 개발하던 사내 관리자 서비스에 UI에도 TDD를 통한 개발�
 
 ## Spring Data REST
 
-[![spring-data-rest](/assets/images/spring-data-rest.png)](https://spring.io/projects/spring-data-rest#overview){: target="\_blank" }
+[![spring-data-rest](/assets/images/retrospective/spring-data-rest.png)](https://spring.io/projects/spring-data-rest#overview){: target="\_blank" }
 
 [Spring Data REST](https://spring.io/projects/spring-data-rest){: target="\_blank" }는 Spring Data 저장소를 기반으로 REST 웹 서비스를 손쉽게 구축할 수 있도록 해준다. Persist Model과 Repository만 구현해주면 자동으로 REST API를 생성해준다는 점은 생산적인 측면에서 아주 매력적이라고 생각한다. 그리고 제공해주는 웹 API는 [Level 3의 REST 요구조건](https://martinfowler.com/articles/richardsonMaturityModel.html){: target="\_blank" }을 충족하므로 REST API를 제대로 사용한다는 것이 어떤 것인지 직접 볼 수 있다. (제대로 사용하는 것이 얼마나 어려운지도 알 수 있다.)
 
@@ -101,7 +101,7 @@ Vue로 개발하던 사내 관리자 서비스에 UI에도 TDD를 통한 개발�
 
 ## TDD
 
-[![TDD](/assets/images/tdd.gif)](https://nesoy.github.io/assets/posts/20170131/2.gif){: target="\_blank" }
+[![TDD](/assets/images/retrospective/tdd.gif)](https://nesoy.github.io/assets/posts/20170131/2.gif){: target="\_blank" }
 
 [Test-driven development(TDD)](https://en.wikipedia.org/wiki/Test-driven_development){: target="\_blank" }란 짧은 개발 사이클을 반복하는 소프트웨어 개발 프로세스 중 하나이며 `자동화된 테스트 케이스 작성` -> `코드 작성` -> `리펙토링` 순서로 진행된다.
 
@@ -115,7 +115,7 @@ TDD를 하면서 가장 크게 느꼈던 점은 테스트를 어떻게 작성하
 
 ## JPA
 
-[![JPA](/assets/images/jpa.png)](http://www.javawebtutor.com/images/jpa/jpa-final.png){: target="\_blank" }
+[![JPA](/assets/images/retrospective/jpa.png)](http://www.javawebtutor.com/images/jpa/jpa-final.png){: target="\_blank" }
 
 [JPA](https://ko.wikipedia.org/wiki/%EC%9E%90%EB%B0%94_%ED%8D%BC%EC%8B%9C%EC%8A%A4%ED%84%B4%EC%8A%A4_API){: target="\_blank" }란 응용프로그램에서 관계형 데이터베이스의 관리를 표현하는 자바 API를 말한다. 개인적으로 느낀 JPA는 잘 사용하면 정말 좋은 기술이지만 제대로 알고 사용하기가 정말 쉽지 않고 잘못 사용할 경우 성능 이슈가 발생할 가능성이 아주 높은 기술이라고 느껴졌다.
 
@@ -153,7 +153,7 @@ Event Sourcing은 개념과 어떤방식으로 사용하는 지에 대해서만 
 
 ## Git
 
-[![GIT](/assets/images/git.png)](https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Git-logo.svg/230px-Git-logo.svg.png){: target="\_blank" }
+[![GIT](/assets/images/retrospective/git.png)](https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Git-logo.svg/230px-Git-logo.svg.png){: target="\_blank" }
 
 [Git](<https://ko.wikipedia.org/wiki/%EA%B9%83_(%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4)>){: target="\_blank" }은 컴퓨터 파일의 변경을 추적하고 여러 사용자들 간에 파일들의 작업을 조율하기 위한 분산 버전 관리 시스템을 말한다.
 
