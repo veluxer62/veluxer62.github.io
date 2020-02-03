@@ -60,6 +60,8 @@ english:
       url: "/vocabulary/2020/02/01/"
     - start: "2020-02-02"
       url: "/vocabulary/2020/02/02/"
+    - start: "2020-02-03"
+      url: "/vocabulary/2020/02/03/"
 
 exercise:
   title: "운동"
@@ -84,6 +86,7 @@ exercise:
     - start: "2020-01-29"
     - start: "2020-01-31"
     - start: "2020-02-02"
+    - start: "2020-02-03"
 
 weeklyRetrospective:
   title: "주간회고"
