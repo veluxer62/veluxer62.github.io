@@ -2,9 +2,10 @@
 layout: single
 title: "회고 작성 규칙"
 categories:
-  - RETROSPECTIVE
+  - RULE
 tags:
   - rule
+  - retrospective
   - 회고
 toc: true
 ---
