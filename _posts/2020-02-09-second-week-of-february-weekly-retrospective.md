@@ -56,4 +56,7 @@ toc: true
 <progress value="3" max="7"></progress>
 3/7 (<b>43%</b>)
 
-- [ ] 블로그 작성
+- [x] 블로그 작성
+
+1. [How to resolve GIT conflict using vimdiff
+   ](/tutorials/git-mergetool-vimdiff-tutorial/){: target="\_blank" }
