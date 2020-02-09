@@ -153,6 +153,8 @@ post:
       url: "/discussions/importance-of-communication-for-developer/"
     - start: "2020-01-29"
       url: "/explanation/tunneling-vs-port-forwarding/"
+    - start: "2020-02-09"
+      url: "/tutorials/git-mergetool-vimdiff-tutorial/"
 
 bookReview:
   title: "책리뷰"
