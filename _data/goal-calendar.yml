@@ -173,6 +173,8 @@ post:
       url: "/explanation/tunneling-vs-port-forwarding/"
     - start: "2020-02-09"
       url: "/tutorials/git-mergetool-vimdiff-tutorial/"
+    - start: "2020-02-16"
+      url: "/explanation/kotlin-scope-functions/"
 
 bookReview:
   title: "책리뷰"
