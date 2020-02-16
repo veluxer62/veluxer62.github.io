@@ -52,4 +52,6 @@ GraphDB의 스터디는 결국 흐지부지 끝이 났다. 함께하던 스터�
 <progress value="2" max="7"></progress>
 2/7 (<b>29%</b>)
 
-- [ ] 블로그 작성
+- [x] 블로그 작성
+
+1. [Kotlin Scope Function](/explanation/kotlin-scope-functions/){: target="\_blank" }
