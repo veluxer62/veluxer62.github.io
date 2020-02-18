@@ -90,6 +90,8 @@ english:
       url: "/vocabulary/2020/02/16/"
     - start: "2020-02-17"
       url: "/vocabulary/2020/02/17/"
+    - start: "2020-02-18"
+      url: "/vocabulary/2020/02/18/"
 
 exercise:
   title: "운동"
