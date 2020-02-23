@@ -201,3 +201,5 @@ bookReview:
   items:
     - start: "2020-01-11"
       url: "/book-review/richs-who-have-quick-temper/"
+    - start: "2020-02-23"
+      url: "/book-review/head-first-design-patterns/"
