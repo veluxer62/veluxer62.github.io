@@ -200,6 +200,8 @@ post:
       url: "/explanation/kotlin-scope-functions/"
     - start: "2020-02-20"
       url: "/explanation/kotlin-union-vs-flatten/"
+    - start: "2020-02-25"
+      url: "/tutorials/tutorial-of-continuous-integration-with-git-actions/"
 
 bookReview:
   title: "책리뷰"
