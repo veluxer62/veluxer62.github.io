@@ -114,6 +114,8 @@ english:
       url: "/vocabulary/2020/02/28/"
     - start: "2020-02-29"
       url: "/vocabulary/2020/02/29/"
+    - start: "2020-03-01"
+      url: "/vocabulary/2020/03/01/"
 
 exercise:
   title: "운동"
@@ -171,6 +173,8 @@ weeklyRetrospective:
       url: "/retrospective/third-week-of-february-weekly-retrospective/"
     - start: "2020-02-23"
       url: "/retrospective/fourth-week-of-february-weekly-retrospective/"
+    - start: "2020-03-01"
+      url: "/retrospective/first-week-of-march-weekly-retrospective/"
 
 monthlyRetrospective:
   title: "월간회고"
@@ -180,6 +184,8 @@ monthlyRetrospective:
   items:
     - start: "2020-02-02"
       url: "/retrospective/january-retrospective/"
+    - start: "2020-03-01"
+      url: "/retrospective/february-retrospective/"
 
 yearRetrospective:
   backgroundColor: "#d4edda"
@@ -223,3 +229,5 @@ bookReview:
       url: "/book-review/richs-who-have-quick-temper/"
     - start: "2020-02-23"
       url: "/book-review/head-first-design-patterns/"
+    - start: "2020-03-01"
+      url: "/book-review/graph-database-starting-with-neo4j/"
