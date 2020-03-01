@@ -4,6 +4,9 @@ title: "Neo4j로 시작하는 그래프 데이터베이스 2/e"
 categories:
   - BOOK-REVIEW
 tags:
+  - neo4j
+  - graph database
+  - cypher
   - 제롬 바톤
   - 릭 반 브루겐
   - 배동환
