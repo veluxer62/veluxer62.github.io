@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "GIT Actions을 이용한 CI/CD 적용기"
+title: "GIT Actions을 이용한 CI/CD 적용기 - CI편"
 categories:
   - TUTORIALS
 tags:
@@ -16,7 +16,9 @@ toc: true
 
 이 글은 현재 개인프로젝트로 개발하고 있는 [OCCUPYING](https://github.com/veluxer62/occupying){: target="\_blank" } Repository에 [GIT Actions](https://help.github.com/en/actions){: target="\_blank" }을 이용하여 CI/CD를 적용해 보면서 겪었던 것들을 적은 글이다.
 
-내용이 길어질것 같아 먼저 Pull Request 시 CI(Continuous Integration)에 대한 내용을 먼저 적고 후속 글로 master merge 시 CI와 CD(Continuous Deployment)에 대한 글을 적어보도록 하겠다.
+내용이 길어질것 같아 먼저 CI(Continuous Integration)에 대한 내용을 먼저 적고 후속 글로 CD(Continuous Deployment)에 대한 글을 적어보도록 하겠다.
+
+[GIT Actions을 이용한 CI/CD 적용기 - CD편](/tutorials/tutorial-of-continuous-deployment-with-git-actions/){: target="\_blank" }
 
 ## GIT Actions
 
@@ -27,10 +29,6 @@ GIT Actions은 2019년 11월에 정식으로 출시되면서 많은 개발자들
 ## CI
 
 CI(Continuous Integration)이란 개발자가 작성한 변경사항을 지속적으로 자동화퇸 테스트 및 빌드 도구가 실행되어 중앙 브런치에 병합하는 개발 방식을 말한다. 지속적 통합은 장기간에 걸친 개발 후 통합 과정에서의 불필요한 작업을 최소한으로 하고 버그의 빠른 발견을 위해 활용된다. 그래서 자동화된 테스트가 반드시 존재해야 한다.
-
-## CD
-
-CD는 Continuous Delivery와 Continuous Deployment로 나뉠 수 있다. Continuous Delivery는 운영환경에 릴리스하기 위한 코드의 변경이 자동으로 준비되는 방식을 말한다. 즉 병합된 코드가 빌드 및 테스트된 후 스테이징 환경에 푸시된다. 그 후 여러 테스트를 거친 후 배포 담당자는 업데이트에 대한 배포 승인을 수동으로 하게 된다. Continuous Deployment는 Continuous Delivery와는 달리 병합된 코드가 명시적 승인 없이 자동으로 운영환경에 배포되는 방식을 말한다.
 
 ## How to
 
@@ -192,7 +190,7 @@ jobs:
 ### 전체 소스
 
 ```yaml
-name: build
+name: CI
 
 on:
   pull_request:
@@ -235,7 +233,9 @@ jobs:
 
 ## Wrap up
 
-**Git Actions**를 이용하여 자동화된 CI를 하는 방법에 대해 알아보았다. 예상외의 문제에서 시행착오를 좀 겪었지만 좋은 경험이었다. 다음 글에서는 중앙 브런치 병합 시 동작할 CI와 CD에 대한 글을 적어보고자 한다.
+**Git Actions**를 이용하여 자동화된 CI를 하는 방법에 대해 알아보았다. 예상외의 문제에서 시행착오를 좀 겪었지만 좋은 경험이었다. 다음 글에서는 중앙 브런치 병합 시 동작할 CD에 대한 글을 적어보고자 한다.
+
+[GIT Actions을 이용한 CI/CD 적용기 - CD편](/tutorials/tutorial-of-continuous-deployment-with-git-actions/){: target="\_blank" }
 
 > [https://help.github.com/en/actions](https://help.github.com/en/actions){: target="\_blank" }
 >
