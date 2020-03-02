@@ -218,6 +218,8 @@ post:
       url: "/explanation/kotlin-union-vs-flatten/"
     - start: "2020-02-25"
       url: "/tutorials/tutorial-of-continuous-integration-with-git-actions/"
+    - start: "2020-03-02"
+      url: "/tutorials/tutorial-of-continuous-deployment-with-git-actions/"
 
 bookReview:
   title: "책리뷰"
