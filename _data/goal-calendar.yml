@@ -189,6 +189,8 @@ weeklyRetrospective:
       url: "/retrospective/fourth-week-of-february-weekly-retrospective/"
     - start: "2020-03-01"
       url: "/retrospective/first-week-of-march-weekly-retrospective/"
+    - start: "2020-03-08"
+      url: "/retrospective/second-week-of-march-weekly-retrospective/"
 
 monthlyRetrospective:
   title: "월간회고"
