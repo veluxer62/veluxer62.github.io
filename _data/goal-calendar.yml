@@ -243,6 +243,8 @@ post:
       url: "/tutorials/tutorial-of-continuous-integration-with-git-actions/"
     - start: "2020-03-02"
       url: "/tutorials/tutorial-of-continuous-deployment-with-git-actions/"
+    - start: "2020-03-12"
+      url: "/tutorials/introduce-git-gone/"
 
 bookReview:
   title: "책리뷰"
