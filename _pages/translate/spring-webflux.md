@@ -48,3 +48,19 @@ Reactive Stream들의 주요 목표는 구독자를 이끄는 것이다 / 다룰
 
 > **일반적인 질문: 만약 Publisher가 속도를 줄일 수 없다면?**
 > Reactive Stream들의 목적은 단지 매커니즘과 바운더리를 설립하는 것이다 / 만약 Publisher가 속도를 줄일 수 없다면, / 버퍼나, 드랍, 실패를 사용하는 것을 결정해야만 한다.
+
+## 1.1.2. Reactive API
+
+Reactive Streams는 중요한 역할을 수행한다 / 상호작용을 위한 /
+그것은 라이브러리들과 인프라스트럭처 컴포넌트 들에 흥미를 가진다 / 하지만 유용함이 적다 / 어플리케이션 API로는 / 왜냐하면 그것은 너무 낮은 수준이기 때문이다 /
+어플리케이션들은 높은 수준과 풍부함, 비동기 로직을 구성한 함수형 API를 원한다 / Java8 `Stream` API와 비슷한 / 하지만 단지 collections를 위한 것이 아닌 /
+이것은 역할이다 / reactive 라이브러리 행위 /
+
+Reactor는 Spring WebFlux의 선택된 reactive library이다 / 그것은 `Mono`와 `Flux` API 유형을 제공한다 / 0..1(`Mono`)과 0..N(`Flux`)의 데이터 시퀀스를 사용하기 위해 / 풍부한 오퍼레이터 세트를 통해 / ReactiveX 오퍼레이터 문법이 적용된 /
+Reactor is a Reactive Streams 라이브러리 이다 / 그리고, 그러므로, 모든 오퍼레이터들은 non-blocking 백 프레셔를 지원한다 /
+Reactor는 server-side Java에 강하게 관심이 집중되어 있다 / 그것은 Spring과 긴밀하게 협력하여 개발되었다 /
+
+WebFlux는 Reactor를 요구한다 / 주요한 의존성으로 / 하지만 그것은 다른 reactive 라이브러리와 상호운용가능 하다 / Reactive Streams를 통해서 /
+일반적인 규칙에서 / WebFlux API는 분명한 `Publisher`를 받아들인다 / 입력으로써 / 그것을 Reactor 유형에 적응시키다 / 내부적으로 / 그것을 사용하다 / 그리고 `Flux` 또는 `Mono`로 반환하다. / 출력으로써 / 그래서 어떤 `Publisher`도 통과할 수 있다 / 입력으로써 / 그리고 출력 동작을 적용할 수 있다 / 하지만 출력에 적응할 필요가 있다 / 사용하기 위해 / 다른 reactive 라이브러리와 함께 / 언제든 실행가능한 (예를 들어 주석이달린 컨트롤러들), WebFlux는 투명하게 적응하다 / RxJava 또는 다른 reactive 라이브러리의 사용에 / Reactive Libraries를 보아라 / 더 자세한 것을 위해 /
+
+> Reactive API에 추가로 / WebFlux는 Coroutines API들과 함께 사용될 수 있다 / 코틀린에서 / 좀더 필수적인 형태의 프로그래밍을 제공하는 / 이후의 Kotlin 코드 예시들은 Coroutines API로 제공될 것이다. /
