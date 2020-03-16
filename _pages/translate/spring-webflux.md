@@ -64,3 +64,17 @@ WebFlux는 Reactor를 요구한다 / 주요한 의존성으로 / 하지만 그�
 일반적인 규칙에서 / WebFlux API는 분명한 `Publisher`를 받아들인다 / 입력으로써 / 그것을 Reactor 유형에 적응시키다 / 내부적으로 / 그것을 사용하다 / 그리고 `Flux` 또는 `Mono`로 반환하다. / 출력으로써 / 그래서 어떤 `Publisher`도 통과할 수 있다 / 입력으로써 / 그리고 출력 동작을 적용할 수 있다 / 하지만 출력에 적응할 필요가 있다 / 사용하기 위해 / 다른 reactive 라이브러리와 함께 / 언제든 실행가능한 (예를 들어 주석이달린 컨트롤러들), WebFlux는 투명하게 적응하다 / RxJava 또는 다른 reactive 라이브러리의 사용에 / Reactive Libraries를 보아라 / 더 자세한 것을 위해 /
 
 > Reactive API에 추가로 / WebFlux는 Coroutines API들과 함께 사용될 수 있다 / 코틀린에서 / 좀더 필수적인 형태의 프로그래밍을 제공하는 / 이후의 Kotlin 코드 예시들은 Coroutines API로 제공될 것이다. /
+
+## 1.1.3 프로그래밍 모델들
+
+`spring-web` 모듈은 반응형 토대를 포함하고 있다 / Spring WebFlux의 기초가 되는 / HTTP 추상화, 서버와 코덱들을 지원하는 Reactive Streams 어뎁터들, 그리고 주요 `WebHandler` API / Servlet API와 비교가능한 / 하지만 non-blocking 계약과 함께
+
+이 토대로 / Spring WebFlux는 2가지 프로그래밍 모델들의 선택을 제공한다. /
+
+- 주석처리된 컨트롤러: / Spring MVC와 일치한다 / 그리고 같은 주석들에 기반한다 / `spring-web` 모둘로부터 /
+  Spring MVC와 WebFlux 컨트롤러들 둘다 반응형 (Reactor와 RxJava) 반환 유형을 지원한다. / 그리고, 그 결과 / 그것들을 쉽게 떨어뜨려서 말하는게 쉽지 않다. /
+  하나의 주목할만한 차이점은 / WebFlux는 또한 반응형 `@RequestBody` 인자들을 지원한다 /
+
+- 함수형 끝점: / 람다-기반, 가벼움, 그리고 함수형 프로그래밍 모델 /
+  이것을 생각할 수 있다 / 작은 라이브러리 또는 유틸리티들의 세트로 / 어플리케이션이 경로를 잡거나 요청을 다루는데 사용할 수 있다 /
+  주석처리된 컨트롤러와 큰 다른점은 / 그 어플리케이션은 요청을 다루는 것에 대한 책임이 있다 / 의도를 정의하는 것과 대비해서 / 주석과 콜백을 통한
