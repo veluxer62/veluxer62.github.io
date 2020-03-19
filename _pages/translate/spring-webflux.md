@@ -179,3 +179,99 @@ Reactor와 RxJava에서 / 당신은 논리를 선언한다 / 오퍼레이터를 
 Spring Framework는 지원을 제공하지 않는다 / 서버의 시작과 종료를 / 서버를 위한 쓰레딩 모델을 설정하는 것은, / 당신이 특정 서버 설정 API들을 사용하는것이 필요하다, / 또는 / 만약 Spring Boot를 사용한다면, / Spring Boot 설정 옵션을 확인해라 / 각각의 서버를 위해 /
 당신은 `WebClient`를 직접 설정할 수 있다 /
 다른 모든 라이브러리들을 위해 / 그들의 존중할만한 문서를 봐라 /
+
+## 1.2. Reactive Core
+
+`spring-web` 모듈은 다음의 기반 지원을 포함한다 / 반응형 웹 어플리케이션들을 위한 /
+
+- 서버 요청 프로세싱을 위해 / 두개의 지원 수준이 있다 /
+
+  - HttpHandler: 기본적인 계약 / HTTP 요청을 다루기 위한 / 비 차단 I/O와 반응형 스트림 백 프레셔, / 어뎁터들과 함께 / Reactor Netty, Undertow, Tomcat, Jetty, 그리고 아무 Servlet 3.1+ 컨테이너 /
+  - WebHandler API: 약간 높은 수준, / 일반적인 목적의 웹 API / 요청을 다루기 위한 / 구체적인 프로그래밍 모델들 위에 / 주석이 달린 컨트롤러들 그리고 함수형 끝점과 같은 / 구축되어 졌다. /
+
+- 클라이언트를 위해 / 기본적인 `ClientHttpConnector` 계약이 있다 / HTTP 요청들을 수행하기 위해 / 비 차단 I/O와 반응형 스트림 백 프레셔와 함께, / 어뎁터들과 함께 / Reactor Netty를 위해 / 그리고 반응형 Jetty HttpClient를 위해. /
+  높은 수준의 WebClient는 / 어플리케이션에서 사용된 / 이 기본적인 계약을 구축한다. /
+
+- 클라이언트와 서버를 위해 / 코덱을 만들다 / 사용하기 위한 / HTTP 요청ㅇ과 응답 컨텐트를 직렬화와 역직렬화를 위해 /
+
+## 1.2.1. `HttpHandler`
+
+HttpHandler는 단순한 계약이다 / 하나의 함수를 가진 / 요청과 응답을 다루기 위한 /
+그것은 의도적으로 작게, / 그리고 그것의 메인, 그리고 단지 목적은 작은 추상화가 되는 것이다 / 다른 HTTP 서버 API들 이면에 /
+
+아래 테이블은 지원되는 서버 API들을 설명한다.
+
+| Server name           | Server API used                                                                  | Reactive Streams support                                            |
+| :-------------------- | :------------------------------------------------------------------------------- | :------------------------------------------------------------------ |
+| Netty                 | Netty API                                                                        | Reactor Netty                                                       |
+| Undertow              | Undertow API                                                                     | spring-web: Undertow to Reactive Streams bridge                     |
+| Tomcat                | Servlet 3.1 non-blocking I/O; Tomcat API to read and write ByteBuffers vs byte[] | spring-web: Servlet 3.1 non-blocking I/O to Reactive Streams bridge |
+| Jetty                 | Servlet 3.1 non-blocking I/O; Jetty API to write ByteBuffers vs byte[]           | spring-web: Servlet 3.1 non-blocking I/O to Reactive Streams bridge |
+| Servlet 3.1 container | Servlet 3.1 non-blocking I/O                                                     | spring-web: Servlet 3.1 non-blocking I/O to Reactive Streams bridge |
+
+아래의 테이블은 서버 의존성들을 설명한다 (또한 지원버전을 보라): /
+
+| Server name   | Group id                | Artifct name               |
+| :------------ | :---------------------- | :------------------------- |
+| Reactor Netty | io.projectreactor.netty | reactor-netty              |
+| Undertow      | io.undertow             | undertow-core              |
+| Tomcat        | org.apache.tomcat.embed | tomcat-embed-core          |
+| Jetty         | org.eclipse.jetty       | jetty-server,jetty-servlet |
+
+아래의 코드 조각들은 `HttpHandler` 어뎁터들의 사용을 보여준다 / 각각의 서버 API들과 함께: /
+
+### Reactor Netty
+
+```
+val handler: HttpHandler = ...
+val adapter = ReactorHttpHandlerAdapter(handler)
+HttpServer.create().host(host).port(port).handle(adapter).bind().block()
+```
+
+### Undertow
+
+```
+val handler: HttpHandler = ...
+val adapter = UndertowHttpHandlerAdapter(handler)
+val server = Undertow.builder().addHttpListener(port, host).setHandler(adapter).build()
+server.start()
+```
+
+### Tomcat
+
+```
+val handler: HttpHandler = ...
+val servlet = TomcatHttpHandlerAdapter(handler)
+
+val server = Tomcat()
+val base = File(System.getProperty("java.io.tmpdir"))
+val rootContext = server.addContext("", base.absolutePath)
+Tomcat.addServlet(rootContext, "main", servlet)
+rootContext.addServletMappingDecoded("/", "main")
+server.host = host
+server.setPort(port)
+server.start()
+```
+
+### Jetty
+
+```
+val handler: HttpHandler = ...
+val servlet = JettyHttpHandlerAdapter(handler)
+
+val server = Server()
+val contextHandler = ServletContextHandler(server, "")
+contextHandler.addServlet(ServletHolder(servlet), "/")
+contextHandler.start();
+
+val connector = ServerConnector(server)
+connector.host = host
+connector.port = port
+server.addConnector(connector)
+server.start()
+```
+
+### Servlet 3.1+ Container
+
+WAR를 어느 Servlet 3.1+ 컨테이너로 배포하기 위해, / 당신은 `AbstractReactiveWebInitializer`를 확장하고 포함할 수 있다 / WAR안에 /
+그 클레스는 `ServletHttpHandlerAdapter`를 `HttpHandler`로 감싼다 / 그리고 그것을 `Servlet`으로 등록한다
