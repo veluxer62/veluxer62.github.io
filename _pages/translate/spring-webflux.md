@@ -1,21 +1,15 @@
 ---
 permalink: /translate/spring-webflux/
-title: Spring Webflux
+title: Spring Webflux 번역
 ---
 
-이문서는 지원을 덮는다 / reactive-stack 웹 어플리케이션을 위해 / Reactive Stream API 위에 만들어진 / non-blocking 서버를 실행하기 위한 / Netty, Undertow, 그리고 Servlet 3.1+ 컨테이너와 같은 /
-개별 챕터는 Spring WebFlux 프레임워크를 덥는다 / reactive `WebClient`, testing 지원, 그리고 reactive 라이브러리들 /
-Servlet-stack 웹 어플리케이션을 위해 / Web on Servlet Stack을 봐라 /
+이 문서는 Netty, Undertow 및 Servlet 3.1+ 컨테이너들과 같은 비차단 서버들의 실행을 위한 [Reactive Streams](https://www.reactive-streams.org/) API 기반 반응형 스텍 웹 어플리케이션에 대한 지원을 다룬다. 개별 장에서는 Spring WebFlux 프레임워크, 반응형 `WebClient`, [테스트](https://docs.spring.io/spring/docs/current/spring-framework-reference/web-reactive.html#webflux-test) 지원, 그리고 [반응형 라이브러리들](https://docs.spring.io/spring/docs/current/spring-framework-reference/web-reactive.html#webflux-reactive-libraries)을 다룬다. Servlet-stack 웹 어플리케이션을 위해, [Web on Servlet Stack](https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#spring-web)를 참고하라
 
 # 1. Spring WebFlux
 
-원조 웹 프레임워크는 / Spring Framework, Spring Web MVC를 포함한 / Servlet API와 Servlet 컨테이너들을 위한 목적으로 만들어졌다. /
-reactive-stack 웹 프레임워크, Spring WebFlux는 추가됬다 / 버전 5.0 이후에 /
-그것은 완전히 non-blocking이다 / Reactive Streams 백 프레셔를 지원하는 / 그리고 Netty, Undertow, and Servlet 3.1+ 컨네이너들과 같은 서버를 실행하는 /
+Spring Framework에 포함된 원래 웹 프레임워크인 Spring Web MVC는 Servlet API와 Servlet 컨테이너를 위한 목적으로 제작되었다. 반응형 스텍 웹 프레임워크인 Spring WebFlux는 버전 5.0 이후에 추가되었다. 완전한 비차단이고, Reactive Streams 백 프레셔 지원하며, 그리고 Netty, Undertow, 그리고 Servlet 3.1+ 컨테이너들과 같은 서버에서 실행된다.
 
-둘다의 웹 프레임워크들은 소스모듈들(spring-webmvc와 spring-webflux)의 이름을 반영한다 그리고 나란히 함께 존재한다 스프링 프레임워크에서 /
-각 모듈들은 선택적이다. /
-어플리케이션들은 하나 또는 다른 하나로 사용될 수 있다 / 일부의 경우에는 / 둘다 / 예를 들어 / Spring MVC 컨트롤러들 / reactive WebClient와 함께
+두 웹 프레임워크는 소스모듈([spring-webmvc](https://github.com/spring-projects/spring-framework/tree/master/spring-webmvc) 및 [spring-webflux](https://github.com/spring-projects/spring-framework/tree/master/spring-webflux))을 반영하고 Spring Framework에서 나란히 공존한다. 각 모듈은 선택사항이다. 어플리케이션은 하나 또는 다른 모듈로 사용될 수 있으며, 경우에 따라, 예를 들어, 반응형 `WebClient`가 있는 Spring MVC 컨트롤러와 같이 둘다 사용될 수 있다.
 
 ## 1.1. 개요
 
