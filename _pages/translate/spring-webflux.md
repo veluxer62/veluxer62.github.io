@@ -275,3 +275,42 @@ server.start()
 
 WAR를 어느 Servlet 3.1+ 컨테이너로 배포하기 위해, / 당신은 `AbstractReactiveWebInitializer`를 확장하고 포함할 수 있다 / WAR안에 /
 그 클레스는 `ServletHttpHandlerAdapter`를 `HttpHandler`로 감싼다 / 그리고 그것을 `Servlet`으로 등록한다
+
+## 1.2.2. `WebHandler` API
+
+`org.springframework.web.server` 패키지는 `HttpHandler` 계약을 기반으로 한다 / 일반적인 목적의 웹 API를 제공하기 위해 / 요청을 수항하는 것을 위한 / 여러 `WebExceptionHandler`, 여러 `WebFiler` 체인과, 그리고 단일 `WebHandler` 컴포넌트를 통해 /
+그 체인은 결합될 수 있다 / `WebHttpHandlerBuilder`와 함께 / Spring `ApplicationContext`를 단순히 가리키는 것에 의해 / 컴포넌트들이 자동으로 감지된 / 그리고/또는 / 컴포넌트들이 등록된 것에 의해 / 빌더와 함께 /
+
+`HttpHandler`가 단순한 목표를 가지는 동안 / 다른 HTTP 서버의 사용을 추상화한, / `WebHandler` API는 겨냥한다 / 더 넓은 특징들의 세트를 제공하기 위해 / 일반적으로 웹 어플리케이션에서 사용되는 / 다응과 같은 :
+
+- 사용자 세션 / 속성과 함께
+- 속성의 요청
+- 해결된 `Locale` 또는 `Principal` / 요청을 위한
+- 파싱되고 캐싱된 폼 데이터에 접근
+- 추상화 / 멀티파트 데이터를 위한
+- 기타..
+
+### 특별한 빈 유형
+
+아래 테이블은 컴포넌트들을 나열한다 / `WebHttpHandlerBuilder`가 Spring ApplicationContext가 자동으로 감지할 수 있는, / 또는 그것과 함께 직접적으로 등록될 수 있는 /
+
+| Bean Name                    | Bean type                    | Count | Description                                                                                                                                                                           |
+| :--------------------------- | :--------------------------- | :---- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `<any>`                      | `WebExceptionHandler`        | 0..N  | 다루는 것을 제공한다 / 예외들을 위한 / `WebFilter` 인스턴스들과 타겟 `WebHandler`의 체인으로 부터 ./ 더 자세한 정보를 위해, Exceptions를 봐라                                         |
+| `<any>`                      | `WebFilter`                  | 0..N  | 가로채는 형태의 로직을 필터체인과 타겟 `WebHandler`의 rest 전과 후에 적용한다. / 더 자세한 정보를 위해, Filters를 봐라                                                                |
+| `webHandler`                 | `WebHandler`                 | 1     | 요청을 위한 헨들러                                                                                                                                                                    |
+| `webSessionManager`          | `WebSessionManager`          | 0..1  | 매니저 / `WebSession` 인스턴스를 위한 / 노출된 / 함수를 통해 / `ServerWebExchange` 위에. / `DefaultWebSessionManger`가 기본이다.                                                      |
+| `serverCodecConfigurer`      | `ServerCodecConfigurer`      | 0..1  | `HttpMessageReader` 인스턴스에 접근하기 위해 / 폼 데이터와 멀티파트 데이터를 분석하기 위한 / 노출된 / `ServerWebExchange` 함수를 통해. / `ServerCodecConfigurer.create()`가 기본이다. |
+| `localeContextResolver`      | `LocaleContextResolver`      | 0..1  | 리졸버 / `LocaleContext`를 위한 / 노출된 / `ServerWebExchange` 함수를 통해. / `AcceptHeaderLocaleContextResolver`가 기본이다.                                                         |
+| `forwardedHeaderTransformer` | `ForwardedHeaderTransformer` | 0..1  | 전달된 유형의 헤더들을 수행하기 위해, / 그것들을 추출하고 제거하는 것 중 하나 또는 그것들을 제거하는 것만 . / 사용되지 않는 것이 기본이다.                                            |
+
+### Form Data
+
+`ServerWebExchange`는 다음 함수를 노출한다 / 폼 데이터를 접근하기 위해
+
+```
+suspend fun getFormData(): MultiValueMap<String, String>
+```
+
+`DefaultServerWebExchange`는 설정된 `HttpMessageReader`를 사용한다 / 폼 데이터를 분석하기 위해 / (`application/x-www-form-urlencoded`) / `MultiValueMap`으로. /
+기본적으로, / `FormHttpMessageReader`는 설정된다 / 사용을 위해 / `ServerCodecConfigurer` 빈에 의해 / (Web Handler API를 보라)
