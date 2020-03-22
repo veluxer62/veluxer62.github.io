@@ -345,3 +345,27 @@ RFC 7239는 `Forwared` HTTP 헤더의 정의를 내린다 / 프록시가 사용 
 
 > 5.1에서 `ForwordedHeaderFilter`는 사용되지 않는다 / 그리고 대체된다 / `ForwardedHeaderTransformer`에 의해 / 그래서 forwarded 헤더는 일찍 실행된다 / 교환이 발생하기 전에 /
 > 만약 필터가 설정되면, / 그것은 필터 목록에서 제외된다 / 그리고 `ForwardedHeaderTransformer`는 대신에 사용된다. /
+
+## 1.2.3. Filters
+
+`WebHandler` API에서, / 당신은 `WebFilter`를 사용할 수 있다 / 가로채는 스타일 논리를 적용하기 위해 / filter와 타겟 `WebHandler`의 실행 체인의 rest 전과 후에 /
+WebFlux Config를 사용할 때, / `WebFilter`를 등록하는 것은 Spring 빈과 같은 것을 정의하는 것 만큼 단순하다 / 그리고 (선택적으로) `@order`를 사용하는 것에 의해 우선순위를 표현하는 것도 / 빈을 정의하거나 `Ordered`를 구현하는것에 의해
+
+### CORS
+
+Spring WebFlux는 CORS 설정을 위한 결이고운 지원을 제공한다 / 컨트롤러의 주석을 통해 /
+하지만, / 당신이 Spring Security와 함께 사용한다면, / 우리는 내장된 `CorsFilter`에 의존하기를 조언한다, / 그것은 반드시 Spring Security의 필터 체인에 앞서 정렬되어 진 /
+
+더 자세한것을 위해 CORS 섹션과 webflux-cors.html을 봐라. /
+
+## 1.2.4. Exceptions
+
+`WebHandler` API에서 / 당신은 `WebExceptionHandler`를 사용할 수 있다 / 예외를 다루기 위해 / `WebFilter` 인스턴스 체인과 타겟 `WebHandler`로 부터. /
+WebFlux Config를 사용할 때, / `WebExceptionHandler`를 등록하는 것은 Spring 빈을 등록하는 것 만큼 쉽다 / (선택적으로) `@Order`를 사용해 우선순위를 표현하는 것도 / 빈을 정의하는 것 또는 `Ordered`를 구현하는것에 의해 /
+
+아래 테이블은 가능한 `WebExceptionHandler` 구현들을 설명한다:
+
+| Exception Handler                       | Description                                                                                                                                                                  |
+| :-------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `ResponseStatusExceptionHandler`        | `ResponseStatusException`유형의 예외를 다루는 것을 제공한다 / 예외의 HTTP 상태 코드 응답을 설정하는 것에 의해                                                                |
+| `WebFluxResponseStatusExceptionHandler` | `ResponseStatusExceptionHandler`의 확장이다 / `@ResponseStatus` 주석의 HTTP 상태 코드 또한 결정할 수 있는 / 어떤 예외도 / <br/><br/> 이 핸들러는 WebFlux Config에 정의된다 / |
