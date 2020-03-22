@@ -222,6 +222,8 @@ weeklyRetrospective:
       url: "/retrospective/second-week-of-march-weekly-retrospective/"
     - start: "2020-03-15"
       url: "/retrospective/third-week-of-march-weekly-retrospective/"
+    - start: "2020-03-22"
+      url: "/retrospective/fourth-week-of-march-weekly-retrospective/"
 
 monthlyRetrospective:
   title: "월간회고"
@@ -269,6 +271,8 @@ post:
       url: "/tutorials/tutorial-of-continuous-deployment-with-git-actions/"
     - start: "2020-03-12"
       url: "/tutorials/introduce-git-gone/"
+    - start: "2020-03-22"
+      url: "/tutorials/how-to-update-forked-repository-master/"
 
 bookReview:
   title: "책리뷰"
