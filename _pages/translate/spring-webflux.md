@@ -308,3 +308,40 @@ suspend fun getFormData(): MultiValueMap<String, String>
 
 `DefaultServerWebExchange`는 설정된 `HttpMessageReader`를 사용한다 / 폼 데이터를 분석하기 위해 / (`application/x-www-form-urlencoded`) / `MultiValueMap`으로. /
 기본적으로, / `FormHttpMessageReader`는 설정된다 / 사용을 위해 / `ServerCodecConfigurer` 빈에 의해 / (Web Handler API를 보라)
+
+### Multipart Data
+
+[Web MVC](https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-multipart)
+
+`ServerWebExchange` 이후의 함수로 노출된다. / 멀티파트 데이터에 접근하기 위한: /
+
+```
+suspend fun getMultipartData(): MultiValueMap<String, Part>
+```
+
+`DefaultServerWebExchange`는 설정된 `HttpMessageReader<MultiValueMap<String, Part>>`로 사용된다 / `multipart/form-data`를 `MultiValueMap`으로 분석하기 위해 /
+현재 / Synchronoss NIO Multipart가 유일한 서드파티 라이브러리이다 / 지원되는 / 그리고 유일한 라이브러리이다 / 우리가 비차단을 위한 것으로 알고 있는 / 멀티파트 요청의 분석하는 /
+그것은 가능하다 / `ServerCodeConfigurer` 빈을 통해 / (Web Handler API를 보라)
+
+스트리밍 문화에서 멀티파트 데이터를 분석하기 위해, / 당신은 `Flux<Part>`를 사용할 수 있다 / `HttpMessageReader<Part>`로 부터 반환된 / 대신에 /
+예를 들어, / 주석이 달린 컨트롤러인 경우에 / `@RequestPart`의 사용은 / `Map`과 같은것으로 구현된 / 개별적인 파트들에 접근한다 / 이름에 의해 / 그리고, 그러므로, / 분석한 멀티파트 데이터를 요청한다 / 완전히 /
+대조적으로 / 당신은 `@RequestBody`를 사용할 수 있다 / 그 내용을 `Flux<Part>`로 해석하기 위해 / `MultiValueMap`을 수집하지 않고 /
+
+### Forwarded Headers
+
+[Web MVC](https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-multipart)
+
+요청이 가는것 처럼 / 프록시 (로드 밸런서와 같이), 호스트, 포트, 그리고 스키마를 통해 / 아마 변경한다 / 그리고 그것을 도전하게 만든다 / 클라이언트 관점으로 부터 / 링크를 만들기 위해 / 올바른 호스트, 포트, 그리고 스키마를 가리키기 위한 /
+
+RFC 7239는 `Forwared` HTTP 헤더의 정의를 내린다 / 프록시가 사용 가능한 / 정보를 제공하기 위해 / 원래 요청에 대한 /
+다른 비 표준적인 헤더들 또한 있다 / `X-Forwarede-Host`, `X-Forwarded-Port`, `X-Forwarded-Proto`, `X-Forwarded-Ssl`, 그리고 `X-Forwarded-Prefix`를 포함해서 /
+
+`ForwardedHeaderTransformer`는 컴포턴트이다 / 요청의 호스트, 포트, 그리고 스키마를 수정하는 / forwarded 헤더를 기반으로, / 그리고 그들은 그것들의 헤더를 제거한다. /
+당신은 그것을 빈으로 선언할 수 있다 / `forwardedHeaderTransformer`의 이름과 함께, / 그리고 그것은 탐색되고 사용된다 /
+
+보안 고려사항이 있다 / forwarded 헤더를 위한, / 어플리케이션이 알지 못했던 이례로 / 만약 헤더가 더해진 경우, / 프록시에 의해 / 계획했던 대로, / 또는 악의적인 클라이언트에 의해 /
+이것은 왜 프록시가 신뢰구간에서 설정되어야 하는 이유이다 / 신뢰할 수 없는 forwarded 트래픽을 제거하기 위해 / 외부에서 들어온 /
+당신은 또한 `ForwardedHeaderTransformer`로 설정할 수 있다 / `removeOnly=true`와 함께 / 사용되지 않는 헤더들을 제거하는 것인
+
+> 5.1에서 `ForwordedHeaderFilter`는 사용되지 않는다 / 그리고 대체된다 / `ForwardedHeaderTransformer`에 의해 / 그래서 forwarded 헤더는 일찍 실행된다 / 교환이 발생하기 전에 /
+> 만약 필터가 설정되면, / 그것은 필터 목록에서 제외된다 / 그리고 `ForwardedHeaderTransformer`는 대신에 사용된다. /
