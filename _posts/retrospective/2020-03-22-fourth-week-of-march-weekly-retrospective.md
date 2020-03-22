@@ -56,4 +56,6 @@ toc: true
 <progress value="2" max="7"></progress>
 2/7 (<b>29%</b>)
 
-- [ ] 블로그 작성
+- [x] 블로그 작성
+
+1. [How to update forked repository master](/tutorials/how-to-update-forked-repository-master/){: target="\_blank" }
