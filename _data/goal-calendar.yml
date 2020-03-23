@@ -158,6 +158,8 @@ english:
       url: "/vocabulary/2020/03/21/"
     - start: "2020-03-22"
       url: "/vocabulary/2020/03/22/"
+    - start: "2020-03-23"
+      url: "/vocabulary/2020/03/23/"
 
 exercise:
   title: "운동"
