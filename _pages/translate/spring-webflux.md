@@ -369,3 +369,19 @@ WebFlux Config를 사용할 때, / `WebExceptionHandler`를 등록하는 것은 
 | :-------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `ResponseStatusExceptionHandler`        | `ResponseStatusException`유형의 예외를 다루는 것을 제공한다 / 예외의 HTTP 상태 코드 응답을 설정하는 것에 의해                                                                |
 | `WebFluxResponseStatusExceptionHandler` | `ResponseStatusExceptionHandler`의 확장이다 / `@ResponseStatus` 주석의 HTTP 상태 코드 또한 결정할 수 있는 / 어떤 예외도 / <br/><br/> 이 핸들러는 WebFlux Config에 정의된다 / |
+
+## 1.2.5. Codecs
+
+`spring-web`과 `spring-core` 모듈은 바이트 내용을 직렬화 및 역직렬화 하는 것을 제공한다 / 고수준 객체를 주고받는 / Reactive Streams 백 프레셔와 같은 비 차단 I/O를 통해서 /
+다음은 이 지원에 대해 설명한다 /
+
+- `Encoder`와 `Decoder`는 저수준 계약이다 / HTTP 메시지 내용을 인코딩 및 디코딩 하기 위해 /
+- `HttpMessageReader`와 `HttpMessageWriter`는 계약이다 / HTTP 메시지 내용을 인코딩 및 디코딩 하기 위해 /
+- `Encoder`는 `EncoderHttpMessageWriter`로 감싸질 수 있다 / 웹 어플리케이션에서 그것을 사용에 맞게 개조하기 위해 / `Decoder`가 `DecoderHttpMeassageReader`로 감싸질 수 있는 동안 /
+- `DataBuffer`는 다른 바이트 버퍼 표현을 추상화 한다 (예: Neety `ByteBuf`, `java.nio.ByteBuffer`, 기타 등등) / 그리고 전체 코덱이 수행하는 것이다. / "Spring Core" 섹션안의 Data Buffers와 Codecs를 보라 / 이 주제의 더 많은 것을 위해 /
+
+`spring-core`모듈은 `byte[]`, `ByteBuffer`, `DataBuffer`, `Resource`, 그리고 `String` 인코더와 디코더 구현을 제공한다. /
+`spring-web`모듈은 Jackson JSON, Jackson Smile, JAXB2, Protocol Buffers 및 다른 인코더와 디코더를 제공한다 / 웹만을 위한 HTTP 메시지 리더와 라이터 구현체와 함께 / 폼 데이터, 멀티파트 내용, 서버가 보낸 이벤트들 그리고 다른것들을 위해
+
+`ClientCodecConfigurer`와 `ServerCodecConfigurer`는 전통적으로 사용된다 / 코덱들을 설정 및 커스터마이징 하기 위해 / 어플리케이션의 사용을 위한 /
+HTTP 메시지 코덱을 설정하는 섹션을 보라 /
