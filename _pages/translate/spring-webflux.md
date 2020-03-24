@@ -385,3 +385,23 @@ WebFlux Config를 사용할 때, / `WebExceptionHandler`를 등록하는 것은 
 
 `ClientCodecConfigurer`와 `ServerCodecConfigurer`는 전통적으로 사용된다 / 코덱들을 설정 및 커스터마이징 하기 위해 / 어플리케이션의 사용을 위한 /
 HTTP 메시지 코덱을 설정하는 섹션을 보라 /
+
+### Jackson JSON
+
+JSON과 binary JSON (Smile)은 둘다 지원된다 / Jackson 라이브러리가 나타날 때 /
+
+`Jackson2Decoder`는 다음과 같이 동작한다:
+
+- Jackson의 비동기, 비 차단 파서는 사용된다 / 스트림 바이트 덩어리를 모으기 위해 / JSON 객체로 각각 표현된 `KokenBuffer` 안으로 /
+- 각 `TokenBuffer`는 Jackson의 `ObjectMapper`에게 전달된다 / 고수준 객체를 생성하기 위해 /
+- 단일값 퍼블리셔 (예: `Mono`)로 해석할 때 / 하나의 `TokenBuffer`가 있다. /
+- 여러값 퍼블리셔 (예: `Flux`)로 해석할 때 / 각 `TokenBuffer`는 `ObjectMapper`로 전달된다 / 가능한한 충분한 바이트를 수신하여 / 완전히 형성된 객체를 위해 / 입력된 내용은 JSON 배열이 될 수 있다 / 또는 라인으로 구분된 JSON으로 될 수 있다 / 만약 컨텐트 타입이 "application/stream+json" 이면 /
+
+`Jackson2Encoder`는 다음과 같이 동작한다:
+
+- 단일값 퍼블리셔 (예: `Mono`)를 위해, / `ObjectMapper`를 통해서 그것을 단순히 직렬화 한다. /
+- "application/json"과 함께하는 여러값 퍼블리셔를 위해 / `application/stream+json` 또는 `application/stream+x-jackson-smile`과 같은 / 각 값을 개별정으로 인코딩, 작성 또는 플러시 한다. / 인라인 구분 JSON 형식을 사용해서 /
+- SSE를 위해서 / `Jackson2Encoder`는 각 이벤트를 호출한다 / 그리고 출력은 플러시된다 / 지연 없는 전달을 확실히 하기 위해 /
+
+> 기본적으로 / `Jackson2Encoder`와 `Jackson2Decoder`는 `String` 유형의 엘리먼트를 지원하지 않는다 /
+> 대신에 기본 가정은 / string 또는 string 시퀀스는 직렬화된 JSON 내용을 표현한다, / `CharSequenceEncoder`에 의해 랜더링 되기 위해 / 만약 당신이 `Flux<String>`으로 부터 JSON 배열을 랜더링하기 위한 무엇을 원한다면, / `Flux#collectToList()`를 사용하고 `Mono<List<String>>`으로 인코딩해라
