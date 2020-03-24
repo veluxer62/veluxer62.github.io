@@ -14,8 +14,6 @@ toc: true
 
 이전부터 눈독을 들이고 있던 [**Clean Architecture**](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9788966262472&orderClick=LEa&Kc=){: target="\_blank" } 책을 구매했다. [**Clean Code**](https://www.kyobobook.co.kr/product/detailViewKor.laf?mallGb=KOR&ejkGb=KOR&barcode=9788966260959){: target="\_blank" }에 이어 나에게 많은 감명을 줄것이라 기대가 된다. 얼른 다 읽고 한번 더 읽어봐야겠다.
 
-코로나19로 인해서 2차면접 일정이 3월 중순이후로 미뤄졌다. 멀게만 느껴졌던 코로나19가 직접 영향을 미치니 문제의 심각성이 확 와닿는 느낌이다. 나에게 주어진 시간이 많으니 2차 면접도 차근차근 잘 준비해서 원하는 바를 이룰 수 있도록 노력해야 겠다.
-
 ## WATCH
 
 코로나19로 인해서 헬스장이 3월 10일까지 휴관하게 되었다. 그래서 당분간 운동을 못하게 되어서 내심(?) 기분이 좋았지만(~~아직 멀었다.~~) 6일동안 운동을 가지 않으니 몸이 엄청 무거워 진것 같다. 요즘 시국에 공원에 조깅을 하는건 무리일것 같고 집에서 할 수 있는 운동을 찾아봐야겠다. 이전에 유튜브를 보면서 했던 운동이 있었는데, 그것도 한번 고려해봐야 겠다.
