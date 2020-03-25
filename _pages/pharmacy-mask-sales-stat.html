@@ -83,11 +83,11 @@ calendar: false
 
       <div class="row" id="deail-search-box" style="display: none;">
         <div class="col align-self-end">
-          <input type="text" class="form-control" id="address-filter" placeholder="주소 검색어를 입력하세요">
+          <input type="text" class="form-control" id="address-filter" placeholder="주소/약국명을 입력하세요">
         </div>
         <div class="col align-self-end">
           <div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" id="stat-filter" checked>
+            <input type="checkbox" class="custom-control-input" id="stat-filter">
             <label class="custom-control-label" for="stat-filter">매진 제외</label>
           </div>
         </div>
@@ -158,16 +158,16 @@ calendar: false
 
     function render(items) {
       const filteredStateItem = filterState(items);
-      const filteredWordItem = filterSearchAddressWord(filteredStateItem, $("#address-filter").val().trim());
+      const filteredWordItem = filterSearchWord(filteredStateItem, $("#address-filter").val().trim());
       const bodyHtml = convertToHtml(filteredWordItem);
       $("#items").html(bodyHtml)
     }
 
-    function filterSearchAddressWord(items, word) {
+    function filterSearchWord(items, word) {
       if (word === "") return items;
 
       return items.filter(it => {
-        return (word === "") ? true : it.addr.indexOf(word) > -1;
+        return it.addr.indexOf(word) > -1 || it.name.indexOf(word) > -1;
       });
     }
 
