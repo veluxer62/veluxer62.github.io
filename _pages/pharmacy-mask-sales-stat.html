@@ -206,11 +206,13 @@ calendar: false
             break;
         }
 
+        const stockAtStr = getBeforeStockAtStr(it.stock_at);
+
         return `
           <div class="card card-margin">
             <div class="card-body">
               <h5 class="card-title">${it.name}</h5>
-              <h6 class="card-subtitle mb-2 text-muted">마스크 판매 현황: ${maskStat}</h6>
+              <h6 class="card-subtitle mb-2 text-muted">마스크 판매 현황: ${maskStat} (${stockAtStr})</h6>
               <p class="card-text">${it.addr}</p>
               <a href="javascript:openMap('${it.addr}')" class="btn btn-primary">지도보기</a>
             </div>
@@ -220,6 +222,25 @@ calendar: false
 
       return bodyHtml;
     }
+
+    function getBeforeStockAtStr(dt) {
+      var min = 60 * 1000;
+      var c = new Date()
+      var d = new Date(dt);
+      var minsAgo = Math.floor((c - d) / (min));
+
+      let formatDate = '';
+
+      if (minsAgo < 60) { // 1시간 내
+        formatDate = minsAgo + '분 전';
+      } else if (minsAgo < 60 * 24) { // 하루 내
+        formatDate = Math.floor(minsAgo / 60) + '시간 전';
+      } else { // 하루 이상
+        formatDate = Math.floor(minsAgo / 60 / 24) + '일 전';
+      };
+
+      return formatDate;
+    };
 
     function openMap(addr) {
       window.open(`https://m.map.naver.com/search2/search.nhn?query=${addr}#/map`, '_blank');
