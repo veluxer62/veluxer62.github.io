@@ -15,9 +15,8 @@ Spring Framework에 포함된 원래 웹 프레임워크인 Spring Web MVC는 Se
 
 왜 Spring WebFlux가 만들어졌나?
 
-한편의 대답은 필요이다 / non-blocking web stack을 위한 / 동시성을 다루기 위해 / 적은 수의 thread들과 스케일과 함께 / 적은 하드웨어 리소스와 함께 /
-Servlet 3.1은 API 를 제공한다 / non-blocking I/O를 위한
-하지만 / 그것을 사용하는 것은 서블릿의 rest를 떠나도록 이끈다 / 계약들은 동기성(`Filter`, `Servlet`) 또는 blocking(`getParameter`, `getPart`)이다 /
+답변의 일부는 소수의 스레드와의 동시성을 처리하고 더 적은 하드웨어 리소스로 확장할 수 있는 비차단 웹 스택의 필요성이다. Servlet 3.1은 비차단 I/O를 위한 API를 제공했다. 그러나 이것을 사용하면 계약이 동기식(`Filter`, `Servlet`) 또는 차단(`getParameter`, `getPart`)인 나머지 서블릿 API에서 멀어지게 된다. 이는 새로운 공통 API가 실행시점의 모든 비차단 작업에 기반역할을 하게된 동기였다.
+
 그것은 동기이다 / 새로운 공통 API를 위한 / 기초를 제공하기 위한 / 어떤 non-blocking에 걸쳐 / 실행시점에 /
 그것은 중요하다 / 서버들(Netty와 같은) 때문에 / 잘 설립된 / 비동기, non-blocking 공간에서 /
 
@@ -405,3 +404,25 @@ JSON과 binary JSON (Smile)은 둘다 지원된다 / Jackson 라이브러리가 
 
 > 기본적으로 / `Jackson2Encoder`와 `Jackson2Decoder`는 `String` 유형의 엘리먼트를 지원하지 않는다 /
 > 대신에 기본 가정은 / string 또는 string 시퀀스는 직렬화된 JSON 내용을 표현한다, / `CharSequenceEncoder`에 의해 랜더링 되기 위해 / 만약 당신이 `Flux<String>`으로 부터 JSON 배열을 랜더링하기 위한 무엇을 원한다면, / `Flux#collectToList()`를 사용하고 `Mono<List<String>>`으로 인코딩해라
+
+### Form Data
+
+`FormHttpMessageReader`와 `FormHttpMessageWriter`는 "application/x-www-form-urlencoded" 내용을 인코딩 및 디코딩하는 것을 지원한다. /
+
+서버쪽에서 / 어디서 내용이 자주 필요로 한다 / 여러 장소로 부터 접속되기 위해, / `ServerWebExchange`는 전용 `getFormData()` 함수를 제공한다. / `FormHttpMessageReader`를 통해 내용을 분석하는 / 그리고 반복적인 접속을 위한 결과를 캐시한다. /
+`WebHandler` API 섹션안의 Form Data를 봐라 /
+
+한번 `getFormData()`가 사용되면, / 원래의 가공되지 않은 내용은 request body로부터 더이상 읽혀지지 않는다. /
+이러한 이유로, / 어플리케이션은 `ServerWebExchange`를 지속적으로 겪을 것으로 예상된다 / 캐시된 폼 데이테로의 접근을 위해 / 가공되지 않는 requst body로 부터 읽는 것을 대비해서 /
+
+### Multipart
+
+`MultipartHttpMessageReader`와 `MultipartHttpMessageWriter`는 "multipart/form-data" 내용을 디코딩 및 인코딩 하는것을 지원한다.
+결국 `MultipartHttpMessageReader`는 다른 `HttpMessageReader`에게 위임한다 / `Flux<Part>`를 실제로 분석하기 위해 / 그리고 일부분들을 `MultivalueMap`으로 단순히 수집한다. /
+현재 시점에 Synchronoss NIO Multipart가 실제적인 분석을 위해 사용된다. /
+
+서버쪽에서 / 어디서 멀티파트 폼 내용을 필요로 한다. / 다양한 장소에서 접속되기 위해, / `ServerWebExchange`는 전용의 `getMultipartData()` 함수를 제공한다. / `MultipartHttpMessageReader`를 통해 내용을 분석하는 / 그리고 반복적인 접속을 위해 결과를 캐시한다. /
+`WebHandler` API 섹션의 Multipart Data를 봐라 /
+
+한번 `getMultipartData()`가 사용되면, / 원래의 가공되지 않은 내용은 request body로부터 더이상 읽혀지지 않는다. /
+이러한 이유로 / 어플리케이션은 `getMultipartData()`를 지속적으로 사용해야 한다 / 일부로의 반복되고, 맵과 같은 접근을 위해 / 또는 그렇지 않으면 `SynchronossPartHttpMessageReader`에 의존한다 / `Flux<Part>`로 일시적인 접근을 위해 /
