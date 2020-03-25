@@ -9,6 +9,7 @@ calendar: false
 <head>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
 
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
     integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
@@ -19,6 +20,8 @@ calendar: false
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
     crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>
+  <script src="/assets/js/custom/korea-district.js"></script>
 
   <style>
     .card-margin {
@@ -54,26 +57,7 @@ calendar: false
       <div class="row">
         <div class="col-12">
           <div class="input-group">
-            <select id="city-name" class="form-control">
-              <option value="서울특별시">서울특별시</option>
-              <option value="경기도">경기도</option>
-              <option value="부산광역시">부산광역시</option>
-              <option value="대구광역시">대구광역시</option>
-              <option value="인천광역시">인천광역시</option>
-              <option value="광주광역시">광주광역시</option>
-              <option value="대전광역시">대전광역시</option>
-              <option value="울산광역시">울산광역시</option>
-              <option value="세종특별자치시">세종특별자치시</option>
-              <option value="경상남도">경상남도</option>
-              <option value="경상북도">경상북도</option>
-              <option value="전라남도">전라남도</option>
-              <option value="전라북도">전라북도</option>
-              <option value="충청남도">충청남도</option>
-              <option value="충청북도">충청북도</option>
-              <option value="강원도">강원도</option>
-            </select>
-            <input type="text" id="place-name" class="form-control" placeholder="지역을 입력해주세요. (e.g 강남구, 중구)"
-              aria-label="Recipient's username" aria-describedby="button-addon2">
+            <select id="district-word" class="form-control" data-live-search="true"></select>
             <div class="input-group-append">
               <button class="btn btn-outline-secondary" type="button" id="search-button">검색</button>
             </div>
@@ -83,7 +67,7 @@ calendar: false
 
       <div class="row" id="deail-search-box" style="display: none;">
         <div class="col align-self-end">
-          <input type="text" class="form-control" id="address-filter" placeholder="주소/약국명을 입력하세요">
+          <input type="text" class="form-control" id="detail-word-filter" placeholder="주소/약국명을 입력하세요">
         </div>
         <div class="col align-self-end">
           <div class="custom-control custom-switch">
@@ -111,7 +95,7 @@ calendar: false
     });
 
     // 엔터 이벤트
-    $("#place-name").keydown((key) => {
+    $("#district-word").keydown((key) => {
       if (key.keyCode === 13)
         search();
     });
@@ -120,26 +104,22 @@ calendar: false
       render(cachList);
     });
 
-    $("#address-filter").keyup(() => {
+    $("#detail-word-filter").keyup(() => {
       render(cachList);
     });
+
+    // 검색 박스 초기화
+    $("#district-word").html(korea_district.map(it => `<option value="${it}">${it}</option>`));
+    $("#district-word").selectpicker();
 
     // 캐시
     let cachList = [];
 
     // 검색
     function search() {
-      const cityName = $("#city-name").val();
-      const $placeName = $("#place-name");
-      const placeName = $placeName.val().trim()
+      const district = $("#district-word").val();
 
-      if (placeName === "") {
-        alert('지역명을 입력해주세요!');
-        $placeName.focus();
-        return;
-      }
-
-      const serarchUrl = `https://8oi9s0nnth.apigw.ntruss.com/corona19-masks/v1/storesByAddr/json?address=${cityName} ${placeName}`
+      const serarchUrl = `https://8oi9s0nnth.apigw.ntruss.com/corona19-masks/v1/storesByAddr/json?address=${district}`;
       $.ajax({
         type: 'GET',
         url: serarchUrl,
@@ -158,7 +138,7 @@ calendar: false
 
     function render(items) {
       const filteredStateItem = filterState(items);
-      const filteredWordItem = filterSearchWord(filteredStateItem, $("#address-filter").val().trim());
+      const filteredWordItem = filterSearchWord(filteredStateItem, $("#detail-word-filter").val().trim());
       const bodyHtml = convertToHtml(filteredWordItem);
       $("#items").html(bodyHtml)
     }
