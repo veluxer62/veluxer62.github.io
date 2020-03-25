@@ -1,0 +1,231 @@
+---
+permalink: /pharmacy-mask-sales-stat/
+title: "약국 마스크 판매 현황"
+calendar: false
+---
+
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+
+  <style>
+    .card-margin {
+      margin-bottom: 0.5em;
+    }
+
+    .font-danger {
+      color: red;
+    }
+
+    .font-warn {
+      color: orange;
+    }
+
+    .font-safe {
+      color: green;
+    }
+
+    .search-area {
+      margin-bottom: 1em;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h2>약국 마스크 판매 현황</h2>
+    <div class="search-area">
+      <div class="row">
+        <div class="col-12">
+          <div class="input-group">
+            <select id="city-name" class="form-control">
+              <option value="서울특별시">서울특별시</option>
+              <option value="경기도">경기도</option>
+              <option value="부산광역시">부산광역시</option>
+              <option value="대구광역시">대구광역시</option>
+              <option value="인천광역시">인천광역시</option>
+              <option value="광주광역시">광주광역시</option>
+              <option value="대전광역시">대전광역시</option>
+              <option value="울산광역시">울산광역시</option>
+              <option value="세종특별자치시">세종특별자치시</option>
+              <option value="경상남도">경상남도</option>
+              <option value="경상북도">경상북도</option>
+              <option value="전라남도">전라남도</option>
+              <option value="전라북도">전라북도</option>
+              <option value="충청남도">충청남도</option>
+              <option value="충청북도">충청북도</option>
+              <option value="강원도">강원도</option>
+            </select>
+            <input type="text" id="place-name" class="form-control" placeholder="지역을 입력해주세요. (e.g 강남구, 중구)"
+              aria-label="Recipient's username" aria-describedby="button-addon2">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="button" id="search-button">검색</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row" id="deail-search-box" style="display: none;">
+        <div class="col align-self-end">
+          <input type="text" class="form-control" id="address-filter" placeholder="주소 검색어를 입력하세요">
+        </div>
+        <div class="col align-self-end">
+          <div class="custom-control custom-switch">
+            <input type="checkbox" class="custom-control-input" id="stat-filter" checked>
+            <label class="custom-control-label" for="stat-filter">매진 제외</label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div id="items" class="col-12">
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    // 상단 메뉴 가리기
+    $(".masthead").hide();
+
+    // 클릭 이벤트
+    $("#search-button").click(() => {
+      search();
+    });
+
+    // 엔터 이벤트
+    $("#place-name").keydown((key) => {
+      if (key.keyCode === 13)
+        search();
+    });
+
+    $("#stat-filter").change(() => {
+      render(cachList);
+    });
+
+    $("#address-filter").keyup(() => {
+      render(cachList);
+    });
+
+    // 캐시
+    let cachList = [];
+
+    // 검색
+    function search() {
+      const cityName = $("#city-name").val();
+      const $placeName = $("#place-name");
+      const placeName = $placeName.val().trim()
+
+      if (placeName === "") {
+        alert('지역명을 입력해주세요!');
+        $placeName.focus();
+        return;
+      }
+
+      const serarchUrl = `https://8oi9s0nnth.apigw.ntruss.com/corona19-masks/v1/storesByAddr/json?address=${cityName} ${placeName}`
+      $.ajax({
+        type: 'GET',
+        url: serarchUrl,
+        data: {},
+        success: successCallback,
+        error: errorCallback
+      })
+    }
+
+    function successCallback(response) {
+      const parmarcies = response.stores;
+      cachList = parmarcies;
+      $("#deail-search-box").show();
+      render(parmarcies);
+    }
+
+    function render(items) {
+      const filteredStateItem = filterState(items);
+      const filteredWordItem = filterSearchAddressWord(filteredStateItem, $("#address-filter").val().trim());
+      const bodyHtml = convertToHtml(filteredWordItem);
+      $("#items").html(bodyHtml)
+    }
+
+    function filterSearchAddressWord(items, word) {
+      if (word === "") return items;
+
+      return items.filter(it => {
+        return (word === "") ? true : it.addr.indexOf(word) > -1;
+      });
+    }
+
+    function filterState(items) {
+      return items.filter(it => {
+        const isStatFilter = $("#stat-filter").is(":checked");
+        const stat = it.remain_stat;
+        return isStatFilter ?
+          stat !== null && stat !== undefined && stat !== 'empty' && stat !== 'break'
+          : true
+      });
+    }
+
+    function convertToHtml(items) {
+      const bodyHtml = items.map(it => {
+
+        let maskStat = '매진'
+        switch (it.remain_stat) {
+          case null:
+            maskStat = '정보없음';
+            break;
+          case undefined:
+            maskStat = '정보없음';
+            break;
+          case 'break':
+            maskStat = '매진';
+            break;
+          case 'some':
+            maskStat = '<span class="font-warn">조금있음</span>';
+            break;
+          case 'plenty':
+            maskStat = '<span class="font-safe">많이있음</span>';
+            break;
+          case 'few':
+            maskStat = '<span class="font-danger">매진임박</span>';
+            break;
+        }
+
+        return `
+          <div class="card card-margin">
+            <div class="card-body">
+              <h5 class="card-title">${it.name}</h5>
+              <h6 class="card-subtitle mb-2 text-muted">마스크 판매 현황: ${maskStat}</h6>
+              <p class="card-text">${it.addr}</p>
+              <a href="javascript:openMap('${it.addr}')" class="btn btn-primary">지도보기</a>
+            </div>
+          </div>
+        `
+      }).join("");
+
+      return bodyHtml;
+    }
+
+    function openMap(addr) {
+      window.open(`https://map.naver.com/v5/search/${addr}`, '_blank');
+    }
+
+    function errorCallback(response) {
+      console.log(response);
+    }
+
+  </script>
+</body>
+
+</html>
