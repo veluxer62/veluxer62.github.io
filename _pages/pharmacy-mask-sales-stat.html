@@ -40,6 +40,10 @@ calendar: false
     .search-area {
       margin-bottom: 1em;
     }
+
+    .container {
+      margin-top: 1em;
+    }
   </style>
 </head>
 
@@ -218,7 +222,7 @@ calendar: false
     }
 
     function openMap(addr) {
-      window.open(`https://map.naver.com/v5/search/${addr}`, '_blank');
+      window.open(`https://m.map.naver.com/search2/search.nhn?query=${addr}#/map`, '_blank');
     }
 
     function errorCallback(response) {
