@@ -426,3 +426,20 @@ JSON과 binary JSON (Smile)은 둘다 지원된다 / Jackson 라이브러리가 
 
 한번 `getMultipartData()`가 사용되면, / 원래의 가공되지 않은 내용은 request body로부터 더이상 읽혀지지 않는다. /
 이러한 이유로 / 어플리케이션은 `getMultipartData()`를 지속적으로 사용해야 한다 / 일부로의 반복되고, 맵과 같은 접근을 위해 / 또는 그렇지 않으면 `SynchronossPartHttpMessageReader`에 의존한다 / `Flux<Part>`로 일시적인 접근을 위해 /
+
+### Limits
+
+`Decoder`와 `HttpMessageReader` 구현 / 입력 흐름의 일부 또는 전체를 완화하는 / 제한으로 구성될 수 있다 / 바이트의 최대 숫자에서 / 메모리 상에서 완충하기 위해. /
+일부 유형에서 버퍼링은 나타난다 / 왜냐하면 입력은 단일 객체로 모여지고 나타내어 지기 때문이다 / 예를 들어 / 컨트롤러 함수 / `RequestBody byte[]`, `x-www-form-urlencoded` 데이터 등등과 함께 /
+버퍼링은 또한 스트리밍과 함께 나타난다 / 입력 흐름을 나눌 때 / 예를 들어, / 별개의 문자, JSON 객체의 흐름 등등. /
+그것들의 스트리밍 유형들을 위해, / 제한은 바이트의 숫자에 적용한다 / 하나의 객체와 어울려서 / 흐름 내에서 /
+
+완충제의 크기를 설정하기 위해, / 당신은 확인할 수 있다 / 만약 주어진 `Decoder` 또는 `HttpMessageReader`가 `maxInMemorySize` 특성에 노출되면 / 그리고 Javadoc 기본 값의 상세를 가지게 될 것이다. /
+WebFlux에서, `ServerCodecConfigurer`는 단일 장소를 제공한다 / 모든 코덱들을 설정할 수 있는 장소로 부터, / 기본 코덱들을 위한 `maxInMemorySize` 특성을 통해서. /
+클라이언트 쪽에서, / 제한은 WebClient.Builder로 바뀐다. /
+
+Mulipart 분석을 위해 / `maxInMemorySize` 특성은 비 파일 부분의 크기를 제한한다. /
+파일 부분을 위해 / 그것은 한계점을 결정한다 / 부분이 디스크에 기록된 곳에 /
+디스크에 기록된 파일 부분을 위해 / 추가적인 `maxDiskUsagePerPart` 특성이 있다 / 부분 마다 디스크 공간의 양을 제한하기 위해 /
+또한 `maxParts` 특성이 존재한다 / 부분의 전반적인 숫자를 제한하기 위해 / 멀티파트 요청에서 /
+3가지 모두를 설정하기 위해 / WebFlux에서 / 당신은 사전에 설정된 `MultipartHttpMessageReader`의 인스턴스를 `ServerCodecConfigurer`에 공금할 필요가 있을 것이다. /
