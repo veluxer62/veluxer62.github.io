@@ -443,3 +443,15 @@ Mulipart 분석을 위해 / `maxInMemorySize` 특성은 비 파일 부분의 크
 디스크에 기록된 파일 부분을 위해 / 추가적인 `maxDiskUsagePerPart` 특성이 있다 / 부분 마다 디스크 공간의 양을 제한하기 위해 /
 또한 `maxParts` 특성이 존재한다 / 부분의 전반적인 숫자를 제한하기 위해 / 멀티파트 요청에서 /
 3가지 모두를 설정하기 위해 / WebFlux에서 / 당신은 사전에 설정된 `MultipartHttpMessageReader`의 인스턴스를 `ServerCodecConfigurer`에 공금할 필요가 있을 것이다. /
+
+### Streaming
+
+[Web MVC](https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-ann-async-http-streaming)
+
+HTTP 응답 (예를 들어, `text/event-stream`, `application/stream+json`)으로 스트리밍 할때, 연결 되지 않은 클라이언트를 보다 빨리 안정적으로 감지하기 위해서는 데이터를 주기적으로 전송하는 것이 중요하다. 그러한 전송은 코멘트 전용, 빈 SSE 이벤트 또는 실질적으로 하트비트 역할을 할 수 있는 기타 "no-op" 데이터일 수 있다.
+
+### `DataBuffer`
+
+`DataBuffer`는 WebFlux에서 바이트 버퍼를 위한 표현이다. 참고자료의 Spring Core 부분은 [Data Buffers 와 Codecs](https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#databuffers)에 관한 섹션에 더 많은 내용을 담고 있다. 요점은 Netty와 같은 일부 서버에서 바이트 버퍼들은 풀링되고 참조카운트 되며, 메모리 누수를 피하기 위해 소비하였을 때 반드시 풀려야 한다는 것을 이해하는 것이다.
+
+WebFlux 어플리케이션은 일반적으로 데이터 버퍼를 직접 소비 및 생산하지 않는 한, 고수준 객체를 변환하거나 사용자 지정 코덱을 생성하지 않는 한 이러한 문제에 대해 걱정할 필요가 없다. 이러한 경우에는 [Data Buffers 및 Codecs](https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#databuffers) 정보, 특히 [Using DataBuffer](https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#databuffers-using) 섹션을 검토하라.
