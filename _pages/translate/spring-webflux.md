@@ -15,32 +15,24 @@ Spring Framework에 포함된 원래 웹 프레임워크인 Spring Web MVC는 Se
 
 왜 Spring WebFlux가 만들어졌나?
 
-답변의 일부는 소수의 스레드와의 동시성을 처리하고 더 적은 하드웨어 리소스로 확장할 수 있는 비차단 웹 스택의 필요성이다. Servlet 3.1은 비차단 I/O를 위한 API를 제공했다. 그러나 이것을 사용하면 계약이 동기식(`Filter`, `Servlet`) 또는 차단(`getParameter`, `getPart`)인 나머지 서블릿 API에서 멀어지게 된다. 이는 새로운 공통 API가 실행시점의 모든 비차단 작업에 기반역할을 하게된 동기였다.
+하나의 답변은 소수의 스레드와의 동시성을 처리하고 더 적은 하드웨어 리소스로 확장할 수 있는 비차단 웹 스택의 필요성이다. Servlet 3.1은 비차단 I/O를 위한 API를 제공했다. 그러나 이것을 사용하면 계약이 동기식(`Filter`, `Servlet`) 또는 차단(`getParameter`, `getPart`)인 나머지 서블릿 API에서 멀어지게 된다. 이는 새로운 공통 API가 실행시점의 모든 비차단 작업에 기반역할을 하게된 동기였다. 그것은 비동기, 비차단 공간에 잘 구축된 서버(Netty와 같은 ) 때문에 중요하다.
 
-그것은 동기이다 / 새로운 공통 API를 위한 / 기초를 제공하기 위한 / 어떤 non-blocking에 걸쳐 / 실행시점에 /
-그것은 중요하다 / 서버들(Netty와 같은) 때문에 / 잘 설립된 / 비동기, non-blocking 공간에서 /
-
-다른 대답은 함수형 프로그래밍이다. / 많음 / 어노테이션의 추가와 같은 / Java 5에서 / 기회를 만들었다 (어노테이션이 적용된 REST 컨트롤러 또는 유닛 테스트와 같은), / 람다 표현식의 추가 / Java 8에서 / 기회를 만들었다 / 함수형 API들을 위한 / Java에서 /
-그것은 하나의 유행이다 / non-blocking 어플리케이션과 continuation-style API들을 위한 (`CompletableFuture`와 ReactiveX에 의해 대중화된 것과 같은) / 그것은 비동기 로직의 선언된 구성을 허락한다 /
-프로그래밍 모델 레벨에서, / Java 8은 Spring Webflux를 가능하게 하다 / 함수형 웹 끝점을 제공하도록 / 어노테이션이 적용된 컨트롤러들 옆에 /
+다른 대답은 함수형 프로그래밍이다. Java 5에 어노테이션을 추가하여 기회(어노테이션이 달린 REST 컨트롤러 또는 유닛 테스트와 같은)가 생긴 것과 마찬가지로, Java 8에 람다식을 추가함으로써 Java의 함수형 API에 대한 기회가 생겨났다. 이는 비동기식 로직을 선언적으로 구성할 수 있는 비차단 어플리케이션과 연속 스타일 API (`CompletableFuture`와 [ReactiveX](http://reactivex.io/)에서 널리 사용되는)의 하나의 유행이다. 프로그래밍 모델 수준에서, Java 8은 Spring WebFlux가 어노테이션이 선언된 컨트롤러와 함께 함수형 웹 앤드포인트를 제공할 수 있도록 했다.
 
 ## 1.1.1. "Reactive" 정의
 
-우리는 "non-blocking"과 "함수형"에 대해 언급했다. / 하지만 reactive는 무슨 의미인가?
+우리는 "비차단"과 "함수형"에 대해 언급했지만, 반응형의 의미는 무엇인가?
 
-"reactive" 용어는 프로그래밍 모델을 나타낸다 / 반응하는 것을 기반으로 한 / 변경하기 위해 / 네트워크 컴포넌트들 / IO 이벤트들에 응답하는 / UI 컨트롤러들 / 마우스 이벤트에 반응하는 / 그리고 다른것들
-그런의미에서 / non-blocking은 reactive 이다 / 왜냐하면 / block 되는 것 대신에 / 우리는 / 지금 / 알림을 응답하는 것의 방식에 있다 / 실행 완료 또는 데이터가 사용가능한 것과 같은
+"반응형"이라는 용어는 I/O 이벤트에 반응하는 네트워크 컴포넌트, 마우스 이벤트에 반응하는 UI 컨트롤러 등의 변경에 반응하기 위해 주위에 구축된 프로그래밍 모델을 만한다.
 
-또 다른 중요한 메커니즘이 있다 / 우리는 / 스프링팀에서 / "reactive"와 어울린다 / 그리고 그것은 non-blocking 백프레셔이다. /
-동기화에서 / 필수적인 코드 / blocking 호출은 백 프레셔의 자연적인 형식을 제공한다 / 요청자가 기다리도록 강제하는 /
-non-blocking 코드에서 / 그것은 중요하게 된다 / 이벤트의 비율을 다루는것이 / 그래서 빠른 생산자는 그것의 목적지에서 어쩔 줄 모르게 만들지 않는다 /
+그런 의미에서, 비차단은 반응형이다, 왜냐하면, 차단되는 대신, 우리는 이제 작업이 완료되거나 데이터가 이용가능해짐과 같은 알림에 반응하는 방식에 있기 때문이다.
 
-Reactive Streams 는 작은 스펙이다 (또한 적응되어있다 / Java 9에) / 그것은 정의한다 상호작용을 / 비동기 컨포넌트 사이에서 / 백 프레셔와 함께 /
-예를 들어 데이터 레파지토리 (Publisher로 행동하는) 데이터를 생산할 수 있다 / HTTP 서버가 (Subscriber로 행동하는) 응답을 작성할수 있다./
-Reactive Stream들의 주요 목표는 구독자를 이끄는 것이다 / 다룰수 있도록 / 어떻게 빠르게 / 또는 어떻게 느리게 Publisher가 데이터를 생산하는지
+스프링 팀에서 우리가 "반응형"과 연관되어 있는 또 다른 중요한 메커니즘이 있는데 그것은 비차단 백 프레셔이다. 동기, 명령형 코드, 차단 요청은 호출자가 기다리게 강제하는 자연적 형태의 백 프레셔를 제공한다. 비차단 코드에서는, 빠른 프로듀서가 목적지에서 어쩔줄 몰라 하지 않도록 이벤트의 속도를 조절하는 것이 중요해진다.
 
-> **일반적인 질문: 만약 Publisher가 속도를 줄일 수 없다면?**
-> Reactive Stream들의 목적은 단지 매커니즘과 바운더리를 설립하는 것이다 / 만약 Publisher가 속도를 줄일 수 없다면, / 버퍼나, 드랍, 실패를 사용하는 것을 결정해야만 한다.
+Reactive Streams는 백 프레셔와 함께 비동기 구성요소 간의 상호작용을 정의하는 [작은 사양](https://github.com/reactive-streams/reactive-streams-jvm/blob/master/README.md#specification)(Java 9에서도 [채택](https://docs.oracle.com/javase/9/docs/api/java/util/concurrent/Flow.html))이다. 예를 들어 데이터 레파지토리([Publisher](https://www.reactive-streams.org/reactive-streams-1.0.1-javadoc/org/reactivestreams/Publisher.html)로 작동)는 HTTP 서버([Subscriber](https://www.reactive-streams.org/reactive-streams-1.0.1-javadoc/org/reactivestreams/Subscriber.html)로 동작)가 응답에 쓸 수 있는 데이터를 생성할 수 있다. Reactive Streams의 주요 목적은 구독자가 게시자가 데이터를 얼마나 빨리 또는 얼마나 느리게 생산하는지 제어할 수 있도록 하는 것이다.
+
+> **일반적인 질문: 만약 게시자가 속도를 늦출 수 없다면?**<br/>
+> Reactive Streams의 목적은 단지 메커니즘과 결계를 설정하는 것이다. 만약 게시자가 속도를 늦출 수 없다면, 버퍼, 드랍, 또는 실패 여부를 결정해야 한다.
 
 ## 1.1.2. Reactive API
 
