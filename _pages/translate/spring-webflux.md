@@ -447,3 +447,48 @@ HTTP 응답 (예를 들어, `text/event-stream`, `application/stream+json`)으�
 `DataBuffer`는 WebFlux에서 바이트 버퍼를 위한 표현이다. 참고자료의 Spring Core 부분은 [Data Buffers 와 Codecs](https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#databuffers)에 관한 섹션에 더 많은 내용을 담고 있다. 요점은 Netty와 같은 일부 서버에서 바이트 버퍼들은 풀링되고 참조카운트 되며, 메모리 누수를 피하기 위해 소비하였을 때 반드시 풀려야 한다는 것을 이해하는 것이다.
 
 WebFlux 어플리케이션은 일반적으로 데이터 버퍼를 직접 소비 및 생산하지 않는 한, 고수준 객체를 변환하거나 사용자 지정 코덱을 생성하지 않는 한 이러한 문제에 대해 걱정할 필요가 없다. 이러한 경우에는 [Data Buffers 및 Codecs](https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#databuffers) 정보, 특히 [Using DataBuffer](https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#databuffers-using) 섹션을 검토하라.
+
+## 1.2.6. Logging
+
+[Web MVC](https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-logging)
+
+Spring WebFlux에서 DEBUG 수준의 로깅은 작고, 최소한이고, 인간 친화적으로 설계되어 있다. 특정 이슈를 디버깅할 때만 유용한 다른 정보와 비교해서 계속 유용한 고부가가치 비트에 초점을 맞춘다.
+
+TRACE 수준 로깅은 일반적으로 DEBUG와 동일한 원칙을 따라가지만 (그리고 예를 들어 불쏘시개가 되어서는 안된다.) 모든 이슈를 디버깅하기 위해 사용될 수 있다. 또한 일부 로그 메시지는 TRACE와 DEBUG에서 다른 수준의 상세를 보여준다.
+
+좋은 로깅은 로그의 사용 경험에서 비롯된다. 만약 명시된 목표에 부합하지 않는 것이 발견되면 우리에게 알려달라.
+
+### Log Id
+
+WebFlux에서 단일 요청은 여러개의 쓰레드로 실행할 수 있으며 쓰레드 ID는 특정 요청에 속하는 상관관계가 있는 로그 메시지를 위해서는 유용하지 않다. WebFlux 로그 메시지가 기본적으로 요청별 ID를 접두사로 가지고 있는 이유가 여기에 있다.
+
+서버측에서 로그 ID는 해당 ID를 기반으로 완전 포멧된 접두사가 `ServerWebExchange#getLogPrefix()`에서 사용가능한 동안 `ServerWebExchange` 속성(`LOG_ID_ATTRIBUTE`)에 저장된다. `WebClient`쪽에서는 로그 ID는 완전히 정제된 접두사가 `ClientRequest#logPrefix()`에서 사용가능하는 동안 `ClientRequest` 속성 (`LOG_ID_ATTRIZBUTE`)에 저장된다.
+
+### Sensitive Data
+
+[Web MVC](https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-logging-sensitive-data)
+
+`DEBUG`와 `TRACE`로깅은 민감정보를 로깅할 수 있다. 이 때문에 매개변수와 헤더는 기본적으로 가려지며, 전체 로그는 `DispatcherServlet`의 `enableLoggingRequestDetails` 속성을 통해 명시적으로 활성화 되어야 한다.
+
+다음 예제는 Kotlin 설정을 통해 이를 수행하는 방법을 보여준다:
+
+```kotlin
+class MyInitializer : AbstractAnnotationConfigDispatcherServletInitializer() {
+
+    override fun getRootConfigClasses(): Array<Class<*>>? {
+        return ...
+    }
+
+    override fun getServletConfigClasses(): Array<Class<*>>? {
+        return ...
+    }
+
+    override fun getServletMappings(): Array<String> {
+        return ...
+    }
+
+    override fun customizeRegistration(registration: ServletRegistration.Dynamic) {
+        registration.setInitParameter("enableLoggingRequestDetails", "true")
+    }
+}
+```
