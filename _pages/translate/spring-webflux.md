@@ -492,3 +492,44 @@ class MyInitializer : AbstractAnnotationConfigDispatcherServletInitializer() {
     }
 }
 ```
+
+### Custom codecs
+
+어플리케이션은 사용자 정의 코덱들을 추가적인 미디어 타입의 지원, 또는 기본 코덱이 지원하지 않는 특별한 행동을 위해 등록할 수 있다.
+
+개발자에 의해 표현되는 일부 설정 옵션들은 기본 코덱에서 시행된다. 사용자 정의 코덱은 [버퍼링 한계 적용](https://docs.spring.io/spring/docs/current/spring-framework-reference/web-reactive.html#webflux-codecs-limits) 또는 [민감한 정보 로깅](https://docs.spring.io/spring/docs/current/spring-framework-reference/web-reactive.html#webflux-logging-sensitive-data)과 같은 선호를 맞추기 위한 기회를 얻는 것을 원할 수 있다.
+
+다음 예제는 클라이언트 측의 요청에 대해 수행 방법을 보여준다:
+
+```kotlin
+val webClient = WebClient.builder()
+        .codecs({ configurer ->
+                val decoder = CustomDecoder()
+                configurer.customCodecs().registerWithDefaultConfig(decoder)
+         })
+        .build()
+```
+
+## 1.3. `DispatcherHandler`
+
+[Web MVC](https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-servlet)
+
+Spring MVC와 유사하게 Spring WebFlux는 중앙 `WebHandler`, `DispatcherHandler`가 실제 작업을 설정가능하고 대리 구성요소에 의해 수행되는 동안 요청 처리를 위해 공유된 알고리즘을 제공하는 프론트 컨트롤러 패턴 중심으로 설계되었다. 이 모델은 유연하고 다양한 업무흐름을 지원한다.
+
+`DispatcherHandler`는 스프링 설정에서 필요로 하는 위임된 구성요소를 발견한다. 또한 Spring 빈 그 자체로 설계되었으며 실행 컨텍스트에 접근하기 위해 `ApplicationContextAware`를 구현한다. `DispatcherHandler`가 `webHandler`라는 이름의 빈으로 선언되면, [`WebHandler` API](https://docs.spring.io/spring/docs/current/spring-framework-reference/web-reactive.html#webflux-web-handler-api)에 기술된 바와 같이 요청 처리 체인을 결합한 `WebHttpHandlerBuilder`에 의해 발견된다.
+
+WebFlux 어플리케이션에 일반적으로 구성된 스프링 설정:
+
+- `webHandler`라는 이름을 가진 `DispatcherHandler`
+- `WebFilter` 및 `WebExceptionHandler` 빈
+- [`DispatcherHandler` 특별 빈](https://docs.spring.io/spring/docs/current/spring-framework-reference/web-reactive.html#webflux-special-bean-types)
+- 기타
+
+설정은 처리 체인을 구축하기 위해 `WebHttpHandlerBuilder`로 제공되며, 다음과 같이 보여준다:
+
+```kotlin
+val context: ApplicationContext = ...
+val handler = WebHttpHandlerBuilder.applicationContext(context).build()
+```
+
+`HttpHandler`의 결과는 [server adapter](https://docs.spring.io/spring/docs/current/spring-framework-reference/web-reactive.html#webflux-httphandler)와 함께 사용할 준비가 된다.
