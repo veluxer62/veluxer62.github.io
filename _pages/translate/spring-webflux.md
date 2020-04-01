@@ -548,3 +548,21 @@ val handler = WebHttpHandlerBuilder.applicationContext(context).build()
 | `HandlerAdapter`                                                                                                                                                                                                                                                             |
 | 어떻게 핸들러가 실제로 호출되는지에 상관없이 요청에 연결된 핸들러를 호출하기 위해 `DispatcherHandler`를 지원한다. 예를 들어, 주석이 달린 컨트롤러를 호출하려면 주석을 해결해야 한다. `HandlerAdapter`의 주요 목적은 `DispatcherHandler`를 이러한 상세로부터 보호하는 것이다. |
 | `HandlerResultHandler`                                                                                                                                                                                                                                                       | 핸들러 호출의 결과 처리 및 응답을 완료한다. [Result Handling](https://docs.spring.io/spring/docs/current/spring-framework-reference/web-reactive.html#webflux-resulthandling)을 봐라                                                                                                                                                                                                                                                  |
+
+## 1.3.2. WebFlux Config
+
+[Web MVC](https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-servlet-config)
+
+어플리케이션은 요청 처리를 위한 기반 시설 용 빈 ([Web Handler API](https://docs.spring.io/spring/docs/current/spring-framework-reference/web-reactive.html#webflux-web-handler-api-special-beans) 및 `DispatcherHandler`에 열거된) 을 선언할 수 있다. 하지만 대부분의 경우, [WebFlux Config](https://docs.spring.io/spring/docs/current/spring-framework-reference/web-reactive.html#webflux-config)는 최고의 시작 점이다. 그것은 필수 빈을 선언하고 개인화를 위해 고수준 설정 콜백 API를 제공한다.
+
+> Spring Boot는 Spring WebFlux를 설정하기 위해 WebFlux 설정에 의존하고 또한 많은 추가적인 편의 옵션들을 제공한다.
+
+## 1.3.3. Processing
+
+[Web MVC](https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-servlet-sequence)
+
+`DispatcherHandler`는 요청을 다음과 같이 처리한다:
+
+- 각 `HandlerMapping`는 일치하는 핸들러를 찾으라고 요청되며, 처음 매칭된 것이 사용된다.
+- 핸들러를 찾지 못했다면, 적절한 `HandlerAdapter`가 실행되며, 이 어뎁터는 `HandlerRequlst`와 같은 실행으로 부터 반환 값을 노출한다.
+- `HnadlerResult`는 응답을 기록하거나 랜더링할 뷰의 사용을 처리를 완료하기 위해 적절한 `HandlerResultHandler`에게 주어진다.
