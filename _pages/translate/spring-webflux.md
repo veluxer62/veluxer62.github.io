@@ -566,3 +566,29 @@ val handler = WebHttpHandlerBuilder.applicationContext(context).build()
 - 각 `HandlerMapping`는 일치하는 핸들러를 찾으라고 요청되며, 처음 매칭된 것이 사용된다.
 - 핸들러를 찾지 못했다면, 적절한 `HandlerAdapter`가 실행되며, 이 어뎁터는 `HandlerRequlst`와 같은 실행으로 부터 반환 값을 노출한다.
 - `HnadlerResult`는 응답을 기록하거나 랜더링할 뷰의 사용을 처리를 완료하기 위해 적절한 `HandlerResultHandler`에게 주어진다.
+
+## 1.3.4. Result Handling
+
+핸들러의 호출로 부터의 반환 값은 `HandlerAdapter`를 통해 일부 추가적인 컨텍스트와 함께 `HandlerResult`로 포장되며, 그에 대한 지원을 요구하는 최초의 `HandlerResultHandler`에게 전달된다. 다음 테이블은 가능한 `HandlerResultHandler` 구현체들을 보여준다, 모든 것은 [WebFlux Config](https://docs.spring.io/spring/docs/current/spring-framework-reference/web-reactive.html#webflux-config)에 선언되어 있다.
+
+| Result Handler 유형           | 반환 값                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | 기본 순서           |
+| :---------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :------------------ |
+| `ResponseEntityResultHandler` | `ResponseEntity`, 일반적으로 `@Controller` 인스턴스에서 제공                                                                                                                                                                                                                                                                                                                                                                                                                                            | 0                   |
+| `ServerResponseResultHandler` | `ServerReponse`, 일반적으로 함수형 끝점에서 제공                                                                                                                                                                                                                                                                                                                                                                                                                                                        | 0                   |
+| `ResponseBodyResultHandler`   | `@responseBody` 함수 또는 `@ResponseController` 클래스에서 제공하는 반환 값을 다룬다.                                                                                                                                                                                                                                                                                                                                                                                                                   | 100                 |
+| `ViewResolutionResultHandler` | `CharSequence`, `View`, [Model](https://docs.spring.io/spring-framework/docs/5.2.5.RELEASE/javadoc-api/org/springframework/ui/Model.html), `Map`, [Rendering](https://docs.spring.io/spring-framework/docs/5.2.5.RELEASE/javadoc-api/org/springframework/web/reactive/result/view/Rendering.html), 또는 다른 `Object`는 모델 속성으로 취급된다. <br/><br/> [View Resolution](https://docs.spring.io/spring/docs/current/spring-framework-reference/web-reactive.html#webflux-viewresolution)을 참고하라 | `Integer.MAV_VALUE` |
+
+## 1.3.5. Exceptions
+
+[Web MVC](https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-exceptionhandlers)
+
+`HandlerAdapter`로 부터 반환된 `HandlerResult`는 일부 핸들러 별 매커니즘을 기반으로 오류를 다루는 기능을 노출할 수 있다. 이런 에러 기능은 호출되어 진다 :
+
+- 핸들러 (예를 들어, `@Controller`) 호출이 실패한다면.
+- `HandlerResultHandler`를 통한 핸들러 반환 값을 다루는 것이 실패한다면.
+
+핸들로에서 반환된 반응형 타입 핸들러가 데이터 항목을 생산하기 전에 오류 신호가 발생하는 한, 오류 함수는 응답(예를 들어, 오류 상태)를 변경할 수 있다.
+
+`@Controller` 클래스의 `@ExceptionHandler` 함수는 이렇게 지원된다. 대조적으로 Spring MVC에서 동일한 지원은 `HandlerExceptionResolver`에 구축되어 있다. 이것은 일반적으로 문제가 되지 않는다. 하지만, WebFlux에서는 핸들러가 선택되기 이전에 발생하는 예외를 다루기 위한 `@ControllerAdvice`는 사용할 수 없다는 것을 명심해야 한다.
+
+"Annotaged Controller" 섹션의 [Managing Exceptions](https://docs.spring.io/spring/docs/current/spring-framework-reference/web-reactive.html#webflux-ann-controller-exceptions) 또는 WebHandler API 섹션의 [Exceptions](https://docs.spring.io/spring/docs/current/spring-framework-reference/web-reactive.html#webflux-exception-handler)를 봐라
