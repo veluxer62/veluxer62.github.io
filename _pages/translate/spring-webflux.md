@@ -592,3 +592,27 @@ val handler = WebHttpHandlerBuilder.applicationContext(context).build()
 `@Controller` 클래스의 `@ExceptionHandler` 함수는 이렇게 지원된다. 대조적으로 Spring MVC에서 동일한 지원은 `HandlerExceptionResolver`에 구축되어 있다. 이것은 일반적으로 문제가 되지 않는다. 하지만, WebFlux에서는 핸들러가 선택되기 이전에 발생하는 예외를 다루기 위한 `@ControllerAdvice`는 사용할 수 없다는 것을 명심해야 한다.
 
 "Annotaged Controller" 섹션의 [Managing Exceptions](https://docs.spring.io/spring/docs/current/spring-framework-reference/web-reactive.html#webflux-ann-controller-exceptions) 또는 WebHandler API 섹션의 [Exceptions](https://docs.spring.io/spring/docs/current/spring-framework-reference/web-reactive.html#webflux-exception-handler)를 봐라
+
+## 1.3.6. View Resolution
+
+[Web MVC](https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-viewresolver)
+
+뷰 리솔루션은 특별한 뷰 기술 없이도 HTML 템플릿과 모델로 브라우저로 랜더링 할 수 있게 해준다. Spring WebFlux에서 뷰 리솔루션은 문자열(논리적 뷰의 이름을 나타내는)을 `View` 인스턴스로 매핑하기위해 `ViewResolver` 인스턴스를 사용하는 전용 [HandlerResultHandler](https://docs.spring.io/spring/docs/current/spring-framework-reference/web-reactive.html#webflux-resulthandling)를 통해 지원된다. `View`는 그런다음 응답을 랜더링 하는데 사용된다.
+
+### Handling
+
+[Web MVC](https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-handling)
+
+`ViewResolutionResultHandler`에 전달된 `HandlerResult`는 요청을 다루는 동안 추가된 속성을 담고 있는 핸들러와 모델의 반환 값을 담고있다. 반환 값은 다음 중 하나로 처리된다:
+
+- `String`, `CharSequence`: 구현된 `ViewResolver` 구현체 목록을 통해 `View`로 해석될 논리적 뷰 이름.
+- `void`: 요청 경로를 기반으로 앞과 뒤의 슬래시를 제거하고 기본 뷰 이름을 선택한 다음 `View`로 해결한다. 뷰 이름이 제공되지 않거나 (예를 들어 모델 속성이 반환되거나) 또는 값이 비동기적으로 반환(예를 들어 `Mono`가 빈값으로 완료될때) 될 때 동일한 현상이 발생한다.
+- [Rendering](https://docs.spring.io/spring-framework/docs/5.2.5.RELEASE/javadoc-api/org/springframework/web/reactive/result/view/Rendering.html): 뷰 리솔루션 시나리오를 위한 API. IDE의 코드완성 옵션을 살펴보자.
+- `Model`, `Map`: 요청에 대해 모델에 추가할 추가 모델 특성
+- 기타 사항: 다른 모든 반환 값([BeanUtils#isSimpleProperty](https://docs.spring.io/spring-framework/docs/5.2.5.RELEASE/javadoc-api/org/springframework/beans/BeanUtils.html#isSimpleProperty-java.lang.Class-)에 의해 결정된 단순 유형을 제외)은 모델에 추가할 모델 속성으로 처리된다. 속성 이름은 핸들러 함수 `@ModelAttribute` 주석이 없는 한 [규칙](https://docs.spring.io/spring-framework/docs/5.2.5.RELEASE/javadoc-api/org/springframework/core/Conventions.html)을 사용한 클래스 이름에서 파생된다.
+
+모델은 비동기성, 반응형 타입을 포함할 수 있다.(예를 들어 Reactor 또는 RxJava) 랜더링에 앞서, `AbstractView`는 이러한 모델 특성을 구체적인 값으로 결정하고 모델을 업데이트한다. 단일 값 반응형 타입은 단일 값 또는 값이 없이 (만약 비어있다면) 해결되고, 다중 값 반응형 타입은 (예를 들어 `Flux<T>`)는 `List<T>`로 수집되고 해결된다.
+
+뷰 리솔루션을 설정하는 것은 `ViewResolutionResultHandler` 빈을 Spring 설정에 추가하는 것 만큰 간단하다. [WebFlux Config](https://docs.spring.io/spring/docs/current/spring-framework-reference/web-reactive.html#webflux-config-view-resolvers)는 뷰 리솔루션을 위한 전용 설정 API를 제공한다.
+
+Spring WebFlux와 통합된 뷰 기술에 대한 자세한 내용은 [View Technologies](https://docs.spring.io/spring/docs/current/spring-framework-reference/web-reactive.html#webflux-view)를 참조하라.
