@@ -616,3 +616,19 @@ val handler = WebHttpHandlerBuilder.applicationContext(context).build()
 뷰 리솔루션을 설정하는 것은 `ViewResolutionResultHandler` 빈을 Spring 설정에 추가하는 것 만큰 간단하다. [WebFlux Config](https://docs.spring.io/spring/docs/current/spring-framework-reference/web-reactive.html#webflux-config-view-resolvers)는 뷰 리솔루션을 위한 전용 설정 API를 제공한다.
 
 Spring WebFlux와 통합된 뷰 기술에 대한 자세한 내용은 [View Technologies](https://docs.spring.io/spring/docs/current/spring-framework-reference/web-reactive.html#webflux-view)를 참조하라.
+
+### Redirecting
+
+[Web MVC](https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-redirecting-redirect-prefix)
+
+뷰 이름에서 특수 `redirect:` 접두사를 사용하면 리다이렉션을 수행할 수 있다. `UrlBasedViewResolver` (그리고 하위 클래스들) 이 리다이렉션이 필요되는 구문으로 인식한다. 뷰 이름의 나머지 부분은 리다이렉션 URL이다.
+
+인터넷 효과는 컨트롤러가 `RedirectView` 또는 `Rendering.redirectTo("abc").build()`를 반환해 온 경우와 같다, 하지만 지금은 컨트롤러가 스스로 논리적인 뷰 이름 관점에서 수행할 수 있다. `redirect:/some/resource`와 같은 뷰 이름은 현재 어플리케이션과 상대적인 반면 `redirect:https://example.com/arbitrary/path`와 같은 뷰 이름은 절대 URL 경로로 리다이렉트 한다.
+
+### Content Negotiation
+
+[Web MVC](https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-multiple-representations)
+
+`ViewResolutionResultHandler`는 컨텐츠 협상을 지원한다. 그것은 요청 미디어 타입과 각 선택된 `View`에서 지원하는 미디어 타입을 비교한다. 요청된 미디어 유형이 지원하는 첫번째 `View`가 사용된다.
+
+JSON 및 XML과 같은 미디어 타입을 지원하기 위해 Srping WebFlux는 [HttpMessageWriter](https://docs.spring.io/spring/docs/current/spring-framework-reference/web-reactive.html#webflux-codecs)를 통해 랜더링 되는 특별한 `View`인 `HttpMessageWriterView`를 제공한다. 일반적으로, [WebFlux Configuration](https://docs.spring.io/spring/docs/current/spring-framework-reference/web-reactive.html#webflux-config-view-resolvers)을 통해 기본 뷰로 이것들을 설정할 수 있다. 요청된 미디어 유형이 일치한다면 기본 뷰는 항상 선택되고 사용된다.
