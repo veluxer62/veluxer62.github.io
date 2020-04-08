@@ -632,3 +632,44 @@ Spring WebFlux와 통합된 뷰 기술에 대한 자세한 내용은 [View Techn
 `ViewResolutionResultHandler`는 컨텐츠 협상을 지원한다. 그것은 요청 미디어 타입과 각 선택된 `View`에서 지원하는 미디어 타입을 비교한다. 요청된 미디어 유형이 지원하는 첫번째 `View`가 사용된다.
 
 JSON 및 XML과 같은 미디어 타입을 지원하기 위해 Srping WebFlux는 [HttpMessageWriter](https://docs.spring.io/spring/docs/current/spring-framework-reference/web-reactive.html#webflux-codecs)를 통해 랜더링 되는 특별한 `View`인 `HttpMessageWriterView`를 제공한다. 일반적으로, [WebFlux Configuration](https://docs.spring.io/spring/docs/current/spring-framework-reference/web-reactive.html#webflux-config-view-resolvers)을 통해 기본 뷰로 이것들을 설정할 수 있다. 요청된 미디어 유형이 일치한다면 기본 뷰는 항상 선택되고 사용된다.
+
+## 1.4. Annotated Controllers
+
+[Web MVC](https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-controller)
+
+Spring WebFlux는 `@Controller` 및 `@RestController` 컴포넌트들은 어노테이션으로 사용하여 요청 매핑, 요청 입력, 예외 처리 등등을 표현하기 위한 어노테이션 기반 프로그래밍 모델을 제공한다. 어노테이션 기반 컨트롤러들은 유연한 함수 시그니처를 가지고 있고 기본 클래스를 확장하거나 특별한 인터페이스를 구현할 필요가 없다.
+
+다음 목록은 기본적인 예를 보여준다:
+
+```kotlin
+@RestController
+class HelloController {
+
+    @GetMapping("/hello")
+    fun handle() = "Hello WebFlux"
+
+}
+```
+
+앞의 예에서 함수는 응답 본문에 쓸 `String`을 반환한다.
+
+1.4.1. `@Controller`
+
+[Web MVC](https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-ann-controller)
+
+표준 스프링 빈 정의를 사용하여 컨트롤러 빈을 정의할 수 있다. `@Controller` 스테레오타입은 자동 탐지를 허용하고 클래스경로에서 `@Component` 클래스들을 감지하는 것과 그것들을 위한 빈 정의를 자동으로 등록하기 위한 스프링 일반 지원과 함께 정렬된다. 또한 주석이 달린 클래스를 위한 스테레오타입으로 작용하여 웹 펌포넌트와 같은 역할을 나타낸다.
+
+이러한 `@Controller`빈의 자동 탐지를 활성화 하려면 다음 예체와 같이 자바 설정에 컴포넌트 스캐닝을 추가할 수 있다:
+
+```kotlin
+@Configuration
+@ComponentScan("org.example.web") // (1)
+class WebConfig {
+
+    // ...
+}
+```
+
+(1) `org.example.web` 패키지를 스캔한다.
+
+`@RestController`는 `@Controller`와 `@responseBody` 메타 어노테이션이 달린 [구성된 어노테이션](https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#beans-meta-annotations)이고, 모든 함수가 유형 수준 `@ResponseBody` 어노테이션을 상속한 컨트롤러를 나타내며, 따라서 뷰 리솔루션 및 HTML 템플릿을 랜더링하는 것 대신 응답 본문을 직접 작성한다.
