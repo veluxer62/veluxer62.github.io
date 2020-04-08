@@ -184,6 +184,8 @@ english:
       url: "/vocabulary/2020/04/06/"
     - start: "2020-04-07"
       url: "/vocabulary/2020/04/07/"
+    - start: "2020-04-08"
+      url: "/vocabulary/2020/04/08/"
 
 exercise:
   title: "운동"
@@ -224,6 +226,7 @@ exercise:
     - start: "2020-04-01"
     - start: "2020-04-02"
     - start: "2020-04-06"
+    - start: "2020-04-08"
 
 weeklyRetrospective:
   title: "주간회고"
@@ -312,6 +315,8 @@ post:
       url: "/tutorials/how-to-update-forked-repository-master/"
     - start: "2020-03-29"
       url: "/tutorials/spring-data-r2dbc-tutorial/"
+    - start: "2020-04-08"
+      url: "/tutorials/spring-web-flux-functional-endpoint-api/"
 
 bookReview:
   title: "책리뷰"
