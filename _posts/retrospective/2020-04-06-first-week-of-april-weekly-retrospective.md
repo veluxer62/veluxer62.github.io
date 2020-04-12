@@ -49,6 +49,6 @@ toc: true
 
 운동
 <progress value="2" max="7"></progress>
-2/7 (<b>0%</b>)
+2/7 (<b>29%</b>)
 
 - [ ] 블로그 작성
