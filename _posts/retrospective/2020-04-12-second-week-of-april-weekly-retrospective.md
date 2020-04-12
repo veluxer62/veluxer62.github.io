@@ -53,3 +53,4 @@ toc: true
 - [x] 블로그 작성
 
 1. [Spring WebFlux - Functional Endpoint With Coroutine Tutorial](/tutorials/spring-web-flux-functional-endpoint-api/){: target="\_blank" }
+2. [Spring WebFlux - Annotated Controller with reactor Tutorial](/tutorials/spring-web-flux-annotated-controller-api/){: target="\_blank" }

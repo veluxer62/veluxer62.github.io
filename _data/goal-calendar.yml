@@ -327,6 +327,8 @@ post:
       url: "/tutorials/spring-data-r2dbc-tutorial/"
     - start: "2020-04-08"
       url: "/tutorials/spring-web-flux-functional-endpoint-api/"
+    - start: "2020-04-12"
+      url: "/tutorials/spring-web-flux-annotated-controller-api/"
 
 bookReview:
   title: "책리뷰"
