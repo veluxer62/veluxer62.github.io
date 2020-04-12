@@ -30,7 +30,7 @@ Spring 5.2 버전부터 공식적으로 Spring WebFlux에서 Kotlin의 [Coroutin
 
 ## Getting Start
 
-이제 **함수형 앤드포인트** 방식으로 간단한 Web API를 만들어 보자. 프로젝트 생성은 [이전 글의 Getting Start](){: target="\_blank" }에서 생성한 프로젝트에서 아래의 의존성을 추가하여 진행하면 된다.
+이제 **함수형 앤드포인트** 방식으로 간단한 Web API를 만들어 보자. 프로젝트 생성은 [이전 글의 Getting Start](http://localhost:4000/tutorials/spring-data-r2dbc-tutorial/#getting-start){: target="\_blank" }에서 생성한 프로젝트에서 아래의 의존성을 추가하여 진행하면 된다.
 
 ### Gradle
 
