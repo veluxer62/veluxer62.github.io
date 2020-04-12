@@ -342,3 +342,5 @@ bookReview:
       url: "/book-review/graph-database-starting-with-neo4j/"
     - start: "2020-03-08"
       url: "/book-review/nudge/"
+    - start: "2020-04-12"
+      url: "/book-review/clean-architecture/"
