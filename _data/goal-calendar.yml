@@ -382,3 +382,18 @@ bookReview:
       url: "/book-review/nudge/"
     - start: "2020-04-12"
       url: "/book-review/clean-architecture/"
+
+study:
+  backgroundColor: "#e2e3e5"
+  borderColor: "#d6d8db"
+  textColor: "#383d41"
+  items:
+    - title: "알고리즘-0101"
+      start: "2020-04-27"
+      url: "/study/algorithm-01-01/"
+    - title: "알고리즘-0102"
+      start: "2020-04-27"
+      url: "/study/algorithm-01-02/"
+    - title: "알고리즘-0103"
+      start: "2020-04-27"
+      url: "/study/algorithm-01-03/"
