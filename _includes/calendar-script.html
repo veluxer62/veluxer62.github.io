@@ -113,13 +113,27 @@
     {% endfor %}
   ];
 
+  const study = [
+    {% for item in site.data.goal-calendar.study.items %}
+      {
+        title: "{{item.title}}",
+        start: "{{item.start}}",
+        url: "{{item.url}}",
+        backgroundColor: "{{site.data.goal-calendar.study.backgroundColor}}",
+        borderColor: "{{site.data.goal-calendar.study.borderColor}}",
+        textColor: "{{site.data.goal-calendar.study.textColor}}"
+      },
+    {% endfor %}
+  ];
+
   const data = english
     .concat(exercise)
     .concat(weeklyRetrospective)
     .concat(monthlyRetrospective)
     .concat(yearRetrospective)
     .concat(post)
-    .concat(bookReview);
+    .concat(bookReview)
+    .concat(study);
 
   document.addEventListener("DOMContentLoaded", function() {
     const calendarEl = document.getElementById("calendar");
