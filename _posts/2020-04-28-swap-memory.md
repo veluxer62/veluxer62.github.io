@@ -110,12 +110,12 @@ Redhat에서 권고하는 RAM/Swap Memory 권장 사항은 아래와 같다.
 
 지금까지 Swap Memory에 대해 알아보고 간단하게 나마 Swap Memory가 어떤 역할을 하고 어떻게 설정되어 있는지 어떻게 설정할 수 있는지 배워 보았다. 깊이 알아보려면 한없이 파고들 수 있는 게 메모리인 것 같다. 좀더 전문적으로 깊은 내용을 확인하고 싶으면 아래 참고 링크들을 보면 좋을 것 같다.
 
-> http://wiki.pchero21.com/wiki/Swap_memory
+> [http://wiki.pchero21.com/wiki/Swap_memory](http://wiki.pchero21.com/wiki/Swap_memory){: target="\_blank" }
 >
-> https://en.wikipedia.org/wiki/Paging
+> [https://en.wikipedia.org/wiki/Paging](https://en.wikipedia.org/wiki/Paging){: target="\_blank" }
 >
-> https://www.geeksinphoenix.com/blog/post/2016/05/10/how-to-manage-windows-10-virtual-memory.aspx
+> [https://www.geeksinphoenix.com/blog/post/2016/05/10/how-to-manage-windows-10-virtual-memory.aspx](https://www.geeksinphoenix.com/blog/post/2016/05/10/how-to-manage-windows-10-virtual-memory.aspx){: target="\_blank" }
 >
-> https://www.howtogeek.com/196238/how-big-should-your-page-file-or-swap-partition-be/
+> [https://www.howtogeek.com/196238/how-big-should-your-page-file-or-swap-partition-be/](https://www.howtogeek.com/196238/how-big-should-your-page-file-or-swap-partition-be/){: target="\_blank" }
 >
-> https://devanix.tistory.com/311
+> [https://devanix.tistory.com/311](https://devanix.tistory.com/311){: target="\_blank" }
