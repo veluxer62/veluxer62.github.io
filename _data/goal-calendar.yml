@@ -402,6 +402,8 @@ bookReview:
       url: "/book-review/nudge/"
     - start: "2020-04-12"
       url: "/book-review/clean-architecture/"
+    - start: "2020-05-04"
+      url: "/book-review/digital-nomad/"
 
 study:
   backgroundColor: "#e2e3e5"
