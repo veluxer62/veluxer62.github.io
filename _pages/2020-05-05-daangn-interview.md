@@ -1,4 +1,5 @@
 ---
+permalink: /interview/
 layout: single
 title: "당근마켓 1차 면접 준비"
 categories:
