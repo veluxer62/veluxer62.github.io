@@ -244,6 +244,8 @@ english:
       url: "/vocabulary/2020/05/15/"
     - start: "2020-05-16"
       url: "/vocabulary/2020/05/16/"
+    - start: "2020-05-17"
+      url: "/vocabulary/2020/05/17/"
 
 exercise:
   title: "운동"
