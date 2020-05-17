@@ -342,6 +342,8 @@ weeklyRetrospective:
       url: "/retrospective/first-week-of-may-weekly-retrospective/"
     - start: "2020-05-10"
       url: "/retrospective/second-week-of-may-weekly-retrospective/"
+    - start: "2020-05-17"
+      url: "/retrospective/third-week-of-may-weekly-retrospective/"
 
 monthlyRetrospective:
   title: "월간회고"
@@ -409,6 +411,8 @@ post:
       url: "/reference/sync-async-block-non-block/"
     - start: "2020-05-03"
       url: "/reference/spring-bean-scope/"
+    - start: "2020-05-17"
+      url: "/reference/message-queue/"
 
 bookReview:
   title: "책리뷰"
