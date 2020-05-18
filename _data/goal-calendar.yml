@@ -246,6 +246,8 @@ english:
       url: "/vocabulary/2020/05/16/"
     - start: "2020-05-17"
       url: "/vocabulary/2020/05/17/"
+    - start: "2020-05-18"
+      url: "/vocabulary/2020/05/18/"
 
 exercise:
   title: "운동"
@@ -297,6 +299,7 @@ exercise:
     - start: "2020-04-27"
     - start: "2020-05-11"
     - start: "2020-05-13"
+    - start: "2020-05-18"
 
 weeklyRetrospective:
   title: "주간회고"
