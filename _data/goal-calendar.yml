@@ -420,6 +420,8 @@ post:
       url: "/reference/spring-bean-scope/"
     - start: "2020-05-17"
       url: "/reference/message-queue/"
+    - start: "2020-05-21"
+      url: "/explanation/amazon-mq-vs-sqs/"
 
 bookReview:
   title: "책리뷰"
