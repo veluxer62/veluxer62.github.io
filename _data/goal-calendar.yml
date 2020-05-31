@@ -361,6 +361,8 @@ weeklyRetrospective:
       url: "/retrospective/third-week-of-may-weekly-retrospective/"
     - start: "2020-05-24"
       url: "/retrospective/fourth-week-of-may-weekly-retrospective/"
+    - start: "2020-05-31"
+      url: "/retrospective/fifth-week-of-may-weekly-retrospective/"
 
 monthlyRetrospective:
   title: "월간회고"
