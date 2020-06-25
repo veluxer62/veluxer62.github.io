@@ -26,19 +26,55 @@ $ git branch -d <branchname>
 
 `git gone`은 GIT에서 제공하는 기본 명령어는 아니다. 그래서 명령여를 사용하기 위해서는 명령어 파일을 설치해야 한다.
 
-설치 가이드는 [**eed3si9n님의 블로그**](http://eed3si9n.com/git-gone-cleaning-stale-local-branches){: target="\_blank" }에 적혀있는 방식대로 진행하면 된다. (Windows OS에서 진행하였다.)
+설치 가이드는 [**eed3si9n님의 블로그**](http://eed3si9n.com/git-gone-cleaning-stale-local-branches){: target="\_blank" }에 적혀있는 방식대로 진행하면 된다.
 
-- 먼저 [https://github.com/eed3si9n/git-gone](https://github.com/eed3si9n/git-gone){: target="\_blank" }로 이동한다.
-  [![git-gone-repository](/assets/images/posts/introduce-git-gone/git-gone-repository.png)](https://github.com/eed3si9n/git-gone){: target="\_blank" }
+먼저 [https://github.com/eed3si9n/git-gone](https://github.com/eed3si9n/git-gone){: target="\_blank" }로 이동한다.
+[![git-gone-repository](/assets/images/posts/introduce-git-gone/git-gone-repository.png)](https://github.com/eed3si9n/git-gone){: target="\_blank" }
 
-- `Clone or download`버튼을 클릭한 후 `Download ZIP`버튼을 클릭하여 소스를 다운로드 받는다.
-  ![git-gone-repository](/assets/images/posts/introduce-git-gone/git-gone-download.png)
+`Clone or download`버튼을 클릭한 후 `Download ZIP`버튼을 클릭하여 소스를 다운로드 받는다.
+![git-gone-repository](/assets/images/posts/introduce-git-gone/git-gone-download.png)
 
-- 다운로드한 파일을 압축 해제 한 후 `git-gone`파일을 `<GIT-HOME>/bin` 디렉토리에 복사한다. (Windows의 경우 `C:\Program Files\Git\usr\bin`이다.)
-  ![git-gone-copy-directory](/assets/images/posts/introduce-git-gone/git-gone-copy-directory.png)
+### Windows
 
-- `git gone`명령어를 실행해본다. 아래와 같이 표시되면 정상적으로 설치를 완료한 것이다. (만약 명령어를 찾지 못했다는 경고가 표시된다면 커맨드창을 재실행해보자.)
-  ![git-gone-copy-directory](/assets/images/posts/introduce-git-gone/git-gone-command-check.png)
+Windows에서 GIT을 사용하기 위해서는 [git bash](https://git-scm.com/){: target="\_blank" }를 설치해야 한다. 설치 방법은 [Gabii님의 블로그](https://gabii.tistory.com/entry/Git-Git-Bash-219-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0){: target="\_blank" }를 참고하자.
+
+다운로드한 파일을 압축 해제 한 후 `git-gone`파일을 `<GIT-HOME>/bin` 디렉토리에 복사한다. (Windows의 경우 `C:\Program Files\Git\usr\bin`이다.)
+![git-gone-copy-directory](/assets/images/posts/introduce-git-gone/git-gone-copy-directory.png)
+
+### Mac
+
+Mac은 기본적으로 GIT이 설치되어 있는데 기본 설치 경로에는 git-gone 스크립트 파일을 넣을 경로를 찾기가 쉽지 않다. (~~혹시 아시는분은 댓글로 공유해 주시면 감사합니다.~~) GIT의 버전도 업데이트 할겸 brew로 새로 설치해 주자. brew 설치는 [공식 홈페이지](https://brew.sh/index_ko){: target="\_blank" }를 참고하자.
+
+먼저 현재 GIT 버전을 확인한다. 버전을 확인하는 이유는 설치 후에 GIT 명령어 실행 스크립트가 정상적으로 교체되었는지 확인하기 위함이다.
+
+```bash
+git --version
+```
+
+새로운 GIT을 설치한다.
+
+```bash
+brew install git
+```
+
+버전을 다시 확인해보고 만약 처음과 동일하다면 bash_profile에서 PATH 설정을 해주자.
+
+```bash
+echo "export PATH=/usr/local/bin:$PATH" >> ~/.bash_profile
+```
+
+다운로드한 파일을 압축 해제 한 후 `git-gone`파일을 script가 모여있는 디렉토리로 복사한다.
+
+```bash
+cp git-gone /usr/local/Cellar/git/{version}/libexec/git-core
+```
+
+<br/>
+
+`git gone`명령어를 실행해본다. 아래와 같이 표시되면 정상적으로 설치를 완료한 것이다. (만약 명령어를 찾지 못했다는 경고가 표시된다면 커맨드창을 재실행해보자.)
+![git-gone-copy-directory](/assets/images/posts/introduce-git-gone/git-gone-command-check.png)
+
+
 
 ## Syntax
 
