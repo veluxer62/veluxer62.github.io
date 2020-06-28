@@ -457,6 +457,8 @@ bookReview:
       url: "/book-review/clean-architecture/"
     - start: "2020-05-04"
       url: "/book-review/digital-nomad/"
+    - start: "2020-06-28"
+      url: "/book-review/test-driven-development-by-example/"
 
 study:
   backgroundColor: "#e2e3e5"
