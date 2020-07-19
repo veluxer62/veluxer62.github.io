@@ -5,208 +5,231 @@ calendar: false
 ---
 
 <html>
+  <head>
+    {% include calendar-script.html %}
+  </head>
 
-<head>
-  {% include calendar-script.html %}
-</head>
+  <body>
+    <h2>2020년 목표</h2>
 
-<body>
-  <h2>2020년 목표</h2>
+    <h3>연간 목표</h3>
 
-  <h3>연간 목표</h3>
+    <ul class="task-list">
+      <li class="task-list-item">
+        <input
+          type="checkbox"
+          class="task-list-item-checkbox"
+          disabled="disabled"
+        />Graph SQL/DB 마스터하기
+      </li>
+      <li class="task-list-item">
+        <input
+          type="checkbox"
+          class="task-list-item-checkbox"
+          disabled="disabled"
+        />예약봇 개선하기
+      </li>
+      <li class="task-list-item">
+        <input
+          type="checkbox"
+          class="task-list-item-checkbox"
+          disabled="disabled"
+        />책 10권 이상 읽기
+      </li>
+      <li class="task-list-item">
+        <input
+          type="checkbox"
+          class="task-list-item-checkbox"
+          disabled="disabled"
+        />블로그 40개 이상 작성하기
+      </li>
+      <li class="task-list-item">
+        <input
+          type="checkbox"
+          class="task-list-item-checkbox"
+          disabled="disabled"
+        />71kg 몸무게 만들기
+      </li>
+    </ul>
 
-  <ul class="task-list">
-    <li class="task-list-item">
-      <input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Graph SQL/DB 마스터하기
-    </li>
-    <li class="task-list-item">
-      <input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />예약봇 개선하기
-    </li>
-    <li class="task-list-item">
-      <input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />책 10권 이상 읽기
-    </li>
-    <li class="task-list-item">
-      <input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />블로그 40개 이상 작성하기
-    </li>
-    <li class="task-list-item">
-      <input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />71kg 몸무게 만들기
-    </li>
-  </ul>
+    <h3>월간 목표</h3>
 
-  <h3>월간 목표</h3>
+    <details>
+      <summary>책 1권 이상 읽기</summary>
+      <div><progress value="6" max="12"></progress> 7/12 (<b>58%</b>)</div>
+    </details>
 
-  <details>
-    <summary>책 1권 이상 읽기</summary>
-    <div><progress value="6" max="12"></progress> 7/12 (<b>58%</b>)</div>
-  </details>
+    <details>
+      <summary>월간 회고 작성하기</summary>
+      <div><progress value="4" max="12"></progress> 4/12 (<b>33%</b>)</div>
+    </details>
 
-  <details>
-    <summary>월간 회고 작성하기</summary>
-    <div><progress value="4" max="12"></progress> 4/12 (<b>33%</b>)</div>
-  </details>
+    <h3>주간 목표</h3>
 
-  <h3>주간 목표</h3>
+    <details>
+      <summary>블로그 1개 이상 작성하기</summary>
+      <div>
+        &nbsp;&nbsp;1월 <progress value="3" max="4"></progress> 3/4 (<b>75%</b>)
+      </div>
+      <div>
+        &nbsp;&nbsp;2월 <progress value="4" max="4"></progress> 4/4
+        (<b>100%</b>)
+      </div>
+      <div>
+        &nbsp;&nbsp;3월 <progress value="5" max="5"></progress> 5/5
+        (<b>100%</b>)
+      </div>
+      <div>
+        &nbsp;&nbsp;4월 <progress value="4" max="4"></progress> 4/4
+        (<b>100%</b>)
+      </div>
+      <div>
+        &nbsp;&nbsp;5월 <progress value="3" max="5"></progress> 3/5 (<b>60%</b>)
+      </div>
+      <div>
+        &nbsp;&nbsp;6월 <progress value="0" max="4"></progress> 0/4 (<b>0%</b>)
+      </div>
+      <div>
+        &nbsp;&nbsp;7월 <progress value="1" max="4"></progress> 1/4 (<b>25%</b>)
+      </div>
+      <div>
+        &nbsp;&nbsp;8월 <progress value="0" max="5"></progress> 0/5 (<b>0%</b>)
+      </div>
+      <div>
+        &nbsp;&nbsp;9월 <progress value="0" max="4"></progress> 0/4 (<b>0%</b>)
+      </div>
+      <div>10월 <progress value="0" max="4"></progress> 0/4 (<b>0%</b>)</div>
+      <div>11월 <progress value="0" max="5"></progress> 0/5 (<b>0%</b>)</div>
+      <div>12월 <progress value="0" max="4"></progress> 0/4 (<b>0%</b>)</div>
+    </details>
 
-  <details>
-    <summary>블로그 1개 이상 작성하기</summary>
-    <div>
-      &nbsp;&nbsp;1월 <progress value="3" max="4"></progress> 3/4 (<b>75%</b>)
-    </div>
-    <div>
-      &nbsp;&nbsp;2월 <progress value="4" max="4"></progress> 4/4
-      (<b>100%</b>)
-    </div>
-    <div>
-      &nbsp;&nbsp;3월 <progress value="5" max="5"></progress> 5/5 (<b>100%</b>)
-    </div>
-    <div>
-      &nbsp;&nbsp;4월 <progress value="4" max="4"></progress> 4/4 (<b>100%</b>)
-    </div>
-    <div>
-      &nbsp;&nbsp;5월 <progress value="3" max="5"></progress> 3/5 (<b>60%</b>)
-    </div>
-    <div>
-      &nbsp;&nbsp;6월 <progress value="0" max="4"></progress> 0/4 (<b>0%</b>)
-    </div>
-    <div>
-      &nbsp;&nbsp;7월 <progress value="1" max="4"></progress> 1/4 (<b>25%</b>)
-    </div>
-    <div>
-      &nbsp;&nbsp;8월 <progress value="0" max="5"></progress> 0/5 (<b>0%</b>)
-    </div>
-    <div>
-      &nbsp;&nbsp;9월 <progress value="0" max="4"></progress> 0/4 (<b>0%</b>)
-    </div>
-    <div>10월 <progress value="0" max="4"></progress> 0/4 (<b>0%</b>)</div>
-    <div>11월 <progress value="0" max="5"></progress> 0/5 (<b>0%</b>)</div>
-    <div>12월 <progress value="0" max="4"></progress> 0/4 (<b>0%</b>)</div>
-  </details>
+    <details>
+      <summary>주간 회고 작성하기</summary>
+      <div>
+        &nbsp;&nbsp;1월 <progress value="4" max="4"></progress> 4/4
+        (<b>100%</b>)
+      </div>
+      <div>
+        &nbsp;&nbsp;2월 <progress value="4" max="4"></progress> 4/4
+        (<b>100%</b>)
+      </div>
+      <div>
+        &nbsp;&nbsp;3월 <progress value="5" max="5"></progress> 5/5
+        (<b>100%</b>)
+      </div>
+      <div>
+        &nbsp;&nbsp;4월 <progress value="4" max="4"></progress> 4/4
+        (<b>100%</b>)
+      </div>
+      <div>
+        &nbsp;&nbsp;5월 <progress value="5" max="5"></progress> 5/5
+        (<b>100%</b>)
+      </div>
+      <div>
+        &nbsp;&nbsp;6월 <progress value="2" max="4"></progress> 2/4 (<b>50%</b>)
+      </div>
+      <div>
+        &nbsp;&nbsp;7월 <progress value="3" max="4"></progress> 3/4 (<b>75%</b>)
+      </div>
+      <div>
+        &nbsp;&nbsp;8월 <progress value="0" max="5"></progress> 0/5 (<b>0%</b>)
+      </div>
+      <div>
+        &nbsp;&nbsp;9월 <progress value="0" max="4"></progress> 0/4 (<b>0%</b>)
+      </div>
+      <div>10월 <progress value="0" max="4"></progress> 0/4 (<b>0%</b>)</div>
+      <div>11월 <progress value="0" max="5"></progress> 0/5 (<b>0%</b>)</div>
+      <div>12월 <progress value="0" max="4"></progress> 0/4 (<b>0%</b>)</div>
+    </details>
 
-  <details>
-    <summary>주간 회고 작성하기</summary>
-    <div>
-      &nbsp;&nbsp;1월 <progress value="4" max="4"></progress> 4/4
-      (<b>100%</b>)
-    </div>
-    <div>
-      &nbsp;&nbsp;2월 <progress value="4" max="4"></progress> 4/4
-      (<b>100%</b>)
-    </div>
-    <div>
-      &nbsp;&nbsp;3월 <progress value="5" max="5"></progress> 5/5 (<b>100%</b>)
-    </div>
-    <div>
-      &nbsp;&nbsp;4월 <progress value="4" max="4"></progress> 4/4 (<b>100%</b>)
-    </div>
-    <div>
-      &nbsp;&nbsp;5월 <progress value="5" max="5"></progress> 5/5 (<b>100%</b>)
-    </div>
-    <div>
-      &nbsp;&nbsp;6월 <progress value="2" max="4"></progress> 2/4 (<b>50%</b>)
-    </div>
-    <div>
-      &nbsp;&nbsp;7월 <progress value="2" max="4"></progress> 2/4 (<b>50%</b>)
-    </div>
-    <div>
-      &nbsp;&nbsp;8월 <progress value="0" max="5"></progress> 0/5 (<b>0%</b>)
-    </div>
-    <div>
-      &nbsp;&nbsp;9월 <progress value="0" max="4"></progress> 0/4 (<b>0%</b>)
-    </div>
-    <div>10월 <progress value="0" max="4"></progress> 0/4 (<b>0%</b>)</div>
-    <div>11월 <progress value="0" max="5"></progress> 0/5 (<b>0%</b>)</div>
-    <div>12월 <progress value="0" max="4"></progress> 0/4 (<b>0%</b>)</div>
-  </details>
+    <h3>일일 목표</h3>
 
-  <h3>일일 목표</h3>
+    <details>
+      <summary>영어공부 30분 이상 하기</summary>
+      <div>
+        &nbsp;&nbsp;1월 <progress value="27" max="31"></progress> 27/31
+        (<b>87%</b>)
+      </div>
+      <div>
+        &nbsp;&nbsp;2월 <progress value="29" max="29"></progress> 29/29
+        (<b>100%</b>)
+      </div>
+      <div>
+        &nbsp;&nbsp;3월 <progress value="31" max="31"></progress> 31/31
+        (<b>100%</b>)
+      </div>
+      <div>
+        &nbsp;&nbsp;4월 <progress value="23" max="30"></progress> 23/30
+        (<b>77%</b>)
+      </div>
+      <div>
+        &nbsp;&nbsp;5월 <progress value="19" max="31"></progress> 19/31
+        (<b>61%</b>)
+      </div>
+      <div>
+        &nbsp;&nbsp;6월 <progress value="0" max="30"></progress> 0/30
+        (<b>0%</b>)
+      </div>
+      <div>
+        &nbsp;&nbsp;7월 <progress value="0" max="31"></progress> 0/31
+        (<b>0%</b>)
+      </div>
+      <div>
+        &nbsp;&nbsp;8월 <progress value="0" max="31"></progress> 0/31
+        (<b>0%</b>)
+      </div>
+      <div>
+        &nbsp;&nbsp;9월 <progress value="0" max="30"></progress> 0/30
+        (<b>0%</b>)
+      </div>
+      <div>10월 <progress value="0" max="31"></progress> 0/31 (<b>0%</b>)</div>
+      <div>11월 <progress value="0" max="30"></progress> 0/30 (<b>0%</b>)</div>
+      <div>12월 <progress value="0" max="31"></progress> 0/31 (<b>0%</b>)</div>
+    </details>
 
-  <details>
-    <summary>영어공부 30분 이상 하기</summary>
-    <div>
-      &nbsp;&nbsp;1월 <progress value="27" max="31"></progress> 27/31
-      (<b>87%</b>)
-    </div>
-    <div>
-      &nbsp;&nbsp;2월 <progress value="29" max="29"></progress> 29/29
-      (<b>100%</b>)
-    </div>
-    <div>
-      &nbsp;&nbsp;3월 <progress value="31" max="31"></progress> 31/31
-      (<b>100%</b>)
-    </div>
-    <div>
-      &nbsp;&nbsp;4월 <progress value="23" max="30"></progress> 23/30
-      (<b>77%</b>)
-    </div>
-    <div>
-      &nbsp;&nbsp;5월 <progress value="19" max="31"></progress> 19/31
-      (<b>61%</b>)
-    </div>
-    <div>
-      &nbsp;&nbsp;6월 <progress value="0" max="30"></progress> 0/30
-      (<b>0%</b>)
-    </div>
-    <div>
-      &nbsp;&nbsp;7월 <progress value="0" max="31"></progress> 0/31
-      (<b>0%</b>)
-    </div>
-    <div>
-      &nbsp;&nbsp;8월 <progress value="0" max="31"></progress> 0/31
-      (<b>0%</b>)
-    </div>
-    <div>
-      &nbsp;&nbsp;9월 <progress value="0" max="30"></progress> 0/30
-      (<b>0%</b>)
-    </div>
-    <div>10월 <progress value="0" max="31"></progress> 0/31 (<b>0%</b>)</div>
-    <div>11월 <progress value="0" max="30"></progress> 0/30 (<b>0%</b>)</div>
-    <div>12월 <progress value="0" max="31"></progress> 0/31 (<b>0%</b>)</div>
-  </details>
+    <details>
+      <summary>운동 하기</summary>
+      <div>
+        &nbsp;&nbsp;1월 <progress value="16" max="31"></progress> 16/31
+        (<b>52%</b>)
+      </div>
+      <div>
+        &nbsp;&nbsp;2월 <progress value="11" max="29"></progress> 11/29
+        (<b>38%</b>)
+      </div>
+      <div>
+        &nbsp;&nbsp;3월 <progress value="3" max="31"></progress> 3/31
+        (<b>10%</b>)
+      </div>
+      <div>
+        &nbsp;&nbsp;4월 <progress value="12" max="30"></progress> 12/30
+        (<b>40%</b>)
+      </div>
+      <div>
+        &nbsp;&nbsp;5월 <progress value="3" max="31"></progress> 3/31
+        (<b>10%</b>)
+      </div>
+      <div>
+        &nbsp;&nbsp;6월 <progress value="0" max="30"></progress> 0/30
+        (<b>0%</b>)
+      </div>
+      <div>
+        &nbsp;&nbsp;7월 <progress value="0" max="31"></progress> 0/31
+        (<b>0%</b>)
+      </div>
+      <div>
+        &nbsp;&nbsp;8월 <progress value="0" max="31"></progress> 0/31
+        (<b>0%</b>)
+      </div>
+      <div>
+        &nbsp;&nbsp;9월 <progress value="0" max="30"></progress> 0/30
+        (<b>0%</b>)
+      </div>
+      <div>10월 <progress value="0" max="31"></progress> 0/31 (<b>0%</b>)</div>
+      <div>11월 <progress value="0" max="30"></progress> 0/30 (<b>0%</b>)</div>
+      <div>12월 <progress value="0" max="31"></progress> 0/31 (<b>0%</b>)</div>
+    </details>
 
-  <details>
-    <summary>운동 하기</summary>
-    <div>
-      &nbsp;&nbsp;1월 <progress value="16" max="31"></progress> 16/31
-      (<b>52%</b>)
-    </div>
-    <div>
-      &nbsp;&nbsp;2월 <progress value="11" max="29"></progress> 11/29
-      (<b>38%</b>)
-    </div>
-    <div>
-      &nbsp;&nbsp;3월 <progress value="3" max="31"></progress> 3/31
-      (<b>10%</b>)
-    </div>
-    <div>
-      &nbsp;&nbsp;4월 <progress value="12" max="30"></progress> 12/30
-      (<b>40%</b>)
-    </div>
-    <div>
-      &nbsp;&nbsp;5월 <progress value="3" max="31"></progress> 3/31
-      (<b>10%</b>)
-    </div>
-    <div>
-      &nbsp;&nbsp;6월 <progress value="0" max="30"></progress> 0/30
-      (<b>0%</b>)
-    </div>
-    <div>
-      &nbsp;&nbsp;7월 <progress value="0" max="31"></progress> 0/31
-      (<b>0%</b>)
-    </div>
-    <div>
-      &nbsp;&nbsp;8월 <progress value="0" max="31"></progress> 0/31
-      (<b>0%</b>)
-    </div>
-    <div>
-      &nbsp;&nbsp;9월 <progress value="0" max="30"></progress> 0/30
-      (<b>0%</b>)
-    </div>
-    <div>10월 <progress value="0" max="31"></progress> 0/31 (<b>0%</b>)</div>
-    <div>11월 <progress value="0" max="30"></progress> 0/30 (<b>0%</b>)</div>
-    <div>12월 <progress value="0" max="31"></progress> 0/31 (<b>0%</b>)</div>
-  </details>
-
-  <div id="calendar"></div>
-</body>
-
+    <div id="calendar"></div>
+  </body>
 </html>
