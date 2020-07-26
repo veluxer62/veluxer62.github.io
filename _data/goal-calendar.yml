@@ -373,6 +373,8 @@ weeklyRetrospective:
       url: "/retrospective/second-week-of-july-weekly-retrospective/"
     - start: "2020-07-19"
       url: "/retrospective/third-week-of-july-weekly-retrospective/"
+    - start: "2020-07-26"
+      url: "/retrospective/fourth-week-of-july-weekly-retrospective/"
 
 monthlyRetrospective:
   title: "월간회고"
