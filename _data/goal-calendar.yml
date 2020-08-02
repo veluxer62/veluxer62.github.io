@@ -448,6 +448,8 @@ post:
       url: "/explanation/amazon-mq-vs-sqs/"
     - start: "2020-07-05"
       url: "/tutorials/active-mq-tutorial-by-scenario/"
+    - start: "2020-08-02"
+      url: "/explanation/jpa-application-level-isolation/"
 
 bookReview:
   title: "책리뷰"
