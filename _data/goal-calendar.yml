@@ -452,6 +452,8 @@ post:
       url: "/tutorials/active-mq-tutorial-by-scenario/"
     - start: "2020-08-02"
       url: "/explanation/jpa-application-level-isolation/"
+    - start: "2020-08-07"
+      url: "/explanation/comparing-testing-library-for-kotlin/"
 
 bookReview:
   title: "책리뷰"
