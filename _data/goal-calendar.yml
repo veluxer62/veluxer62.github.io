@@ -479,6 +479,8 @@ bookReview:
       url: "/book-review/digital-nomad/"
     - start: "2020-06-28"
       url: "/book-review/test-driven-development-by-example/"
+    - start: "2020-08-17"
+      url: "/book-review/microservices-patterns/"
 
 study:
   backgroundColor: "#e2e3e5"
