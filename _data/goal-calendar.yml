@@ -458,6 +458,8 @@ post:
       url: "/explanation/jpa-application-level-isolation/"
     - start: "2020-08-07"
       url: "/explanation/comparing-testing-library-for-kotlin/"
+    - start: "2020-08-22"
+      url: "/explanation/explanation/defining-jpa-id-in-kotlin/"
 
 bookReview:
   title: "책리뷰"
