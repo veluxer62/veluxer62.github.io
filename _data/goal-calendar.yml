@@ -462,6 +462,8 @@ post:
       url: "/explanation/comparing-testing-library-for-kotlin/"
     - start: "2020-08-22"
       url: "/explanation/explanation/defining-jpa-id-in-kotlin/"
+    - start: "2020-08-25"
+      url: "/tutorials/take-advantage-of-kotlin-fixture/"
 
 bookReview:
   title: "책리뷰"
