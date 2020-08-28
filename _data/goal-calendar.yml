@@ -509,3 +509,6 @@ study:
     - title: "알고리즘-0105"
       start: "2020-05-11"
       url: "/study/algorithm-01-05/"
+    - title: "쿠버네티스 스터디 1일차"
+      start: "2020-08-31"
+      url: "/study/kubernetes-study-01/"
