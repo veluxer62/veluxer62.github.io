@@ -318,6 +318,7 @@ exercise:
     - start: "2020-09-04"
     - start: "2020-09-05"
     - start: "2020-09-06"
+    - start: "2020-09-07"
 
 weeklyRetrospective:
   title: "주간회고"
@@ -519,3 +520,6 @@ study:
     - title: "쿠버네티스 스터디 1일차"
       start: "2020-08-31"
       url: "/study/kubernetes-study-01/"
+    - title: "쿠버네티스 스터디 2일차"
+      start: "2020-09-04"
+      url: "/study/kubernetes-study-02/"
