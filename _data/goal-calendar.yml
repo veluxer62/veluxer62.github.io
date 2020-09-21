@@ -533,3 +533,6 @@ study:
     - title: "쿠버네티스 스터디 2일차"
       start: "2020-09-04"
       url: "/study/kubernetes-study-02/"
+    - title: "쿠버네티스 스터디 3일차"
+      start: "2020-09-10"
+      url: "/study/kubernetes-study-03/"
