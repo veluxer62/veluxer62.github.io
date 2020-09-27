@@ -485,6 +485,8 @@ post:
       url: "/explanation/explanation/defining-jpa-id-in-kotlin/"
     - start: "2020-08-25"
       url: "/tutorials/take-advantage-of-kotlin-fixture/"
+    - start: "2020-09-27"
+      url: "/explanation/review-of-sku-service-development/"
 
 bookReview:
   title: "책리뷰"
