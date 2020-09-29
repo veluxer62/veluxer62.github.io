@@ -101,3 +101,11 @@ serviceAccount:
   annotations:
     eks.amazonaws.com/role-arn: 'arn:aws:iam::123456789:role/a-server'
 ```
+
+## 추가이슈
+
+위 설정대로 하였는데 롤이 정상적으로 적용되지 않았다. 확인해보니 아래 링크와 같이 Webhook 설정을 해줘야 했다. 한번 설정하고 나면 다음부턴 위에서 처럼 롤만 추가하고 어노테이션만 추가하면 된다.
+
+[Amazon EKS Pod Identity Webhook](https://github.com/aws/amazon-eks-pod-identity-webhook){: target="\_blank" }
+
+[데브시스터즈 블로그](https://tech.devsisters.com/posts/pod-iam-role){: target="\_blank" }에도 잘 설명이 되어 있다.
