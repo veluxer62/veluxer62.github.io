@@ -327,6 +327,7 @@ exercise:
     - start: "2020-09-21"
     - start: "2020-09-23"
     - start: "2020-09-26"
+    - start: "2020-09-28"
 
 weeklyRetrospective:
   title: "주간회고"
