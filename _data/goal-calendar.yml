@@ -333,6 +333,8 @@ exercise:
     - start: "2020-10-09"
     - start: "2020-10-10"
     - start: "2020-10-11"
+    - start: "2020-10-17"
+    - start: "2020-10-19"
 
 weeklyRetrospective:
   title: "주간회고"
@@ -414,6 +416,8 @@ weeklyRetrospective:
       url: "/retrospective/fourth-week-of-september-weekly-retrospective/"
     - start: "2020-10-11"
       url: "/retrospective/second-week-of-october-weekly-retrospective/"
+    - start: "2020-10-19"
+      url: "/retrospective/third-week-of-october-weekly-retrospective/"
 
 monthlyRetrospective:
   title: "월간회고"
