@@ -501,6 +501,8 @@ post:
       url: "/tutorials/take-advantage-of-kotlin-fixture/"
     - start: "2020-09-27"
       url: "/explanation/review-of-sku-service-development/"
+    - start: "2020-10-20"
+      url: "/explanation/review-of-reconciliation-refactoring/"
 
 bookReview:
   title: "책리뷰"
