@@ -505,6 +505,8 @@ post:
       url: "/explanation/review-of-sku-service-development/"
     - start: "2020-10-20"
       url: "/explanation/review-of-reconciliation-refactoring/"
+    - start: "2020-11-01"
+      url: "/discussions/hows-your-teams-agile/"
 
 bookReview:
   title: "책리뷰"
