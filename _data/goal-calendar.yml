@@ -420,6 +420,8 @@ weeklyRetrospective:
       url: "/retrospective/third-week-of-october-weekly-retrospective/"
     - start: "2020-10-26"
       url: "/retrospective/fourth-week-of-october-weekly-retrospective/"
+    - start: "2020-11-03"
+      url: "/retrospective/first-week-of-november-weekly-retrospective/"
 
 monthlyRetrospective:
   title: "월간회고"
