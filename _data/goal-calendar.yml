@@ -515,6 +515,8 @@ post:
       url: "/explanation/review-of-reconciliation-refactoring/"
     - start: "2020-11-01"
       url: "/discussions/hows-your-teams-agile/"
+    - start: "2020-11-17"
+      url: "/explanation/about-entity-and-value-object/"
 
 bookReview:
   title: "책리뷰"
