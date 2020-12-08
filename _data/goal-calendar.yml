@@ -430,6 +430,8 @@ weeklyRetrospective:
       url: "/retrospective/third-week-of-november-weekly-retrospective/"
     - start: "2020-11-22"
       url: "/retrospective/fourth-week-of-november-weekly-retrospective/"
+    - start: "2020-12-08"
+      url: "/retrospective/fist-week-of-december-weekly-retrospective/"
 
 monthlyRetrospective:
   title: "월간회고"
