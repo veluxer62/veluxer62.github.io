@@ -523,6 +523,8 @@ post:
       url: "/discussions/hows-your-teams-agile/"
     - start: "2020-11-17"
       url: "/explanation/about-entity-and-value-object/"
+    - start: "2020-12-17"
+      url: "/explanation/inventory-history-and-first-class-collection/"
 
 bookReview:
   title: "책리뷰"
