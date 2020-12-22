@@ -525,6 +525,8 @@ post:
       url: "/explanation/about-entity-and-value-object/"
     - start: "2020-12-17"
       url: "/explanation/inventory-history-and-first-class-collection/"
+    - start: "2020-12-22"
+      url: "/retrospective/third-week-of-december-weekly-retrospective/"
 
 bookReview:
   title: "책리뷰"
