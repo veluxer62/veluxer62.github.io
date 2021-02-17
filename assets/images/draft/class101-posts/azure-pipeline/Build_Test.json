@@ -1,0 +1,233 @@
+{
+  "options": [
+    {
+      "enabled": true,
+      "definition": { "id": "5d58cc01-7c75-450c-be18-a388ddb129ec" },
+      "inputs": {
+        "branchFilters": "[\"+refs/heads/*\"]",
+        "additionalFields": "{}"
+      }
+    },
+    {
+      "enabled": false,
+      "definition": { "id": "a9db38f9-9fdc-478c-b0f9-464221e58316" },
+      "inputs": {
+        "workItemType": "Task",
+        "assignToRequestor": "true",
+        "additionalFields": "{}"
+      }
+    }
+  ],
+  "triggers": [
+    {
+      "branchFilters": ["+master"],
+      "forks": { "enabled": false, "allowSecrets": false },
+      "pathFilters": [],
+      "requireCommentsForNonTeamMembersOnly": false,
+      "isCommentRequiredForPullRequest": false,
+      "triggerType": 64
+    }
+  ],
+  "variables": { "system.debug": { "value": "false", "allowOverride": true } },
+  "properties": {},
+  "tags": [],
+  "_links": {
+    "self": {
+      "href": "https://dev.azure.com/101inc/721b3712-ac0c-44d0-9c85-ee60a058d9db/_apis/build/Definitions/19?revision=16"
+    },
+    "web": {
+      "href": "https://dev.azure.com/101inc/721b3712-ac0c-44d0-9c85-ee60a058d9db/_build/definition?definitionId=19"
+    },
+    "editor": {
+      "href": "https://dev.azure.com/101inc/721b3712-ac0c-44d0-9c85-ee60a058d9db/_build/designer?id=19&_a=edit-build-definition"
+    },
+    "badge": {
+      "href": "https://dev.azure.com/101inc/721b3712-ac0c-44d0-9c85-ee60a058d9db/_apis/build/status/19"
+    }
+  },
+  "buildNumberFormat": "$(date:yyyyMMdd)$(rev:.r)",
+  "jobAuthorizationScope": 1,
+  "jobTimeoutInMinutes": 60,
+  "jobCancelTimeoutInMinutes": 5,
+  "badgeEnabled": true,
+  "process": {
+    "phases": [
+      {
+        "steps": [
+          {
+            "environment": {},
+            "enabled": true,
+            "continueOnError": false,
+            "alwaysRun": false,
+            "displayName": "Cache",
+            "timeoutInMinutes": 0,
+            "condition": "succeeded()",
+            "task": {
+              "id": "d53ccab4-555e-4494-9d06-11db043fb4a9",
+              "versionSpec": "2.*",
+              "definitionType": "task"
+            },
+            "inputs": {
+              "key": "gradle | inventory | build-test",
+              "path": "$(Build.SourcesDirectory)/.gradle",
+              "cacheHitVar": "",
+              "restoreKeys": ""
+            }
+          },
+          {
+            "environment": {},
+            "enabled": true,
+            "continueOnError": false,
+            "alwaysRun": false,
+            "displayName": "gradlew clean build",
+            "timeoutInMinutes": 0,
+            "condition": "succeeded()",
+            "task": {
+              "id": "8d8eebd8-2b94-4c97-85af-839254cc6da4",
+              "versionSpec": "2.*",
+              "definitionType": "task"
+            },
+            "inputs": {
+              "wrapperScript": "$(Parameters.wrapperScript)",
+              "cwd": "",
+              "options": "--build-cache",
+              "tasks": "$(Parameters.tasks)",
+              "publishJUnitResults": "true",
+              "testResultsFiles": "**/TEST-*.xml",
+              "testRunTitle": "",
+              "codeCoverageTool": "None",
+              "classFilesDirectories": "build/classes/main/",
+              "classFilter": "",
+              "failIfCoverageEmpty": "false",
+              "javaHomeSelection": "JDKVersion",
+              "jdkVersion": "1.11",
+              "jdkUserInputPath": "",
+              "jdkArchitecture": "x64",
+              "gradleOpts": "-Xmx1024m",
+              "sqAnalysisEnabled": "false",
+              "sqGradlePluginVersionChoice": "specify",
+              "sqGradlePluginVersion": "2.6.1",
+              "checkstyleAnalysisEnabled": "false",
+              "findbugsAnalysisEnabled": "false",
+              "pmdAnalysisEnabled": "false"
+            }
+          }
+        ],
+        "name": "Agent job",
+        "refName": "Job_1",
+        "condition": "succeeded()",
+        "target": {
+          "executionOptions": { "type": 0 },
+          "allowScriptsAuthAccessOption": false,
+          "type": 1
+        },
+        "jobAuthorizationScope": 1
+      }
+    ],
+    "target": { "agentSpecification": { "identifier": "ubuntu-18.04" } },
+    "type": 1
+  },
+  "repository": {
+    "properties": {
+      "apiUrl": "https://api.github.com/repos/pedaling/class101-inventory-service",
+      "branchesUrl": "https://api.github.com/repos/pedaling/class101-inventory-service/branches",
+      "cloneUrl": "https://github.com/pedaling/class101-inventory-service.git",
+      "connectedServiceId": "f49e9694-a70c-4992-95e0-7bc932fa156d",
+      "defaultBranch": "master",
+      "fullName": "pedaling/class101-inventory-service",
+      "hasAdminPermissions": "False",
+      "isFork": "False",
+      "isPrivate": "True",
+      "lastUpdated": "12/05/2020 13:03:46",
+      "manageUrl": "https://github.com/pedaling/class101-inventory-service",
+      "nodeId": "MDEwOlJlcG9zaXRvcnkzMDUzODE4ODU=",
+      "ownerId": "14806827",
+      "orgName": "pedaling",
+      "refsUrl": "https://api.github.com/repos/pedaling/class101-inventory-service/git/refs",
+      "safeRepository": "pedaling/class101-inventory-service",
+      "shortName": "class101-inventory-service",
+      "ownerAvatarUrl": "https://avatars2.githubusercontent.com/u/14806827?v=4",
+      "archived": "False",
+      "externalId": "305381885",
+      "ownerIsAUser": "False",
+      "checkoutNestedSubmodules": "false",
+      "cleanOptions": "0",
+      "fetchDepth": "0",
+      "gitLfsSupport": "false",
+      "reportBuildStatus": "true",
+      "skipSyncSource": "false",
+      "labelSourcesFormat": "$(build.buildNumber)",
+      "labelSources": "0"
+    },
+    "id": "pedaling/class101-inventory-service",
+    "type": "GitHub",
+    "name": "pedaling/class101-inventory-service",
+    "url": "https://github.com/pedaling/class101-inventory-service.git",
+    "defaultBranch": "master",
+    "clean": "false",
+    "checkoutSubmodules": false
+  },
+  "processParameters": {
+    "inputs": [
+      {
+        "aliases": [],
+        "options": {},
+        "properties": {},
+        "name": "wrapperScript",
+        "label": "Gradle wrapper",
+        "defaultValue": "gradlew",
+        "required": true,
+        "type": "filePath",
+        "helpMarkDown": "Relative path from the repository root to the Gradle Wrapper script.",
+        "visibleRule": "",
+        "groupName": ""
+      },
+      {
+        "aliases": [],
+        "options": {},
+        "properties": {},
+        "name": "tasks",
+        "label": "Tasks",
+        "defaultValue": "clean build",
+        "required": true,
+        "type": "string",
+        "helpMarkDown": "",
+        "visibleRule": "",
+        "groupName": ""
+      }
+    ]
+  },
+  "quality": 1,
+  "authoredBy": {
+    "displayName": "케이",
+    "url": "https://spsprodea1.vssps.visualstudio.com/Ab66136d9-3452-4ffd-9ef7-dc3488be287a/_apis/Identities/494eff63-8e0a-6cbb-a2bc-7cec9c29a94f",
+    "_links": {
+      "avatar": {
+        "href": "https://dev.azure.com/101inc/_apis/GraphProfile/MemberAvatars/aad.NDk0ZWZmNjMtOGUwYS03Y2JiLWEyYmMtN2NlYzljMjlhOTRm"
+      }
+    },
+    "id": "494eff63-8e0a-6cbb-a2bc-7cec9c29a94f",
+    "uniqueName": "k@101.inc",
+    "imageUrl": "https://dev.azure.com/101inc/_apis/GraphProfile/MemberAvatars/aad.NDk0ZWZmNjMtOGUwYS03Y2JiLWEyYmMtN2NlYzljMjlhOTRm",
+    "descriptor": "aad.NDk0ZWZmNjMtOGUwYS03Y2JiLWEyYmMtN2NlYzljMjlhOTRm"
+  },
+  "drafts": [],
+  "queue": {
+    "_links": {
+      "self": { "href": "https://dev.azure.com/101inc/_apis/build/Queues/63" }
+    },
+    "id": 63,
+    "name": "Azure Pipelines",
+    "url": "https://dev.azure.com/101inc/_apis/build/Queues/63",
+    "pool": { "id": 9, "name": "Azure Pipelines", "isHosted": true }
+  },
+  "id": 19,
+  "name": "Build Test",
+  "url": "https://dev.azure.com/101inc/721b3712-ac0c-44d0-9c85-ee60a058d9db/_apis/build/Definitions/19?revision=16",
+  "uri": "vstfs:///Build/Definition/19",
+  "path": "\\inventory",
+  "type": 2,
+  "queueStatus": 0,
+  "revision": 16,
+  "createdDate": "2020-12-09T16:03:14.327Z"
+}
