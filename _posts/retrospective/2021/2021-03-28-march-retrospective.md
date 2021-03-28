@@ -130,4 +130,5 @@ Country > Municipality/City,Town,Village
 부하테스트 도구로 많은 도구가 있다. 내가 알고 있는 도구로 nGrinder, jMeter 정도가 있다. 최근에 k6에 대해서 알게 되었는데 이것도 테스트 결과에 대한 대시보드를 제공해 주어서 사용해봄직 한것 같다.
 
 공식 페이지: [https://k6.io/docs/](https://k6.io/docs/){: target="\_blank" }
+
 관련 블로그: [https://medium.com/swlh/beautiful-load-testing-with-k6-and-docker-compose-4454edb3a2e3](https://medium.com/swlh/beautiful-load-testing-with-k6-and-docker-compose-4454edb3a2e3){: target="\_blank" }
