@@ -359,7 +359,7 @@ QA가 종료되고 작업된 코드를 배포하면서 진행중인 스프린트
 
 각 스프린트에서 예상한 소요시간과 실제 수행완료한 소요시간에 대한 비교결과를 보여준다. 각 스프린트가 진행됨에 따라 이전 스프린트에서 발생했던 문제점에 대한 개선여부를 파악하기에 용의하다.
 
-![velocity-chart](assets/images/posts/how-to-use-jira/velocity-chart.png)
+![velocity-chart](/assets/images/posts/how-to-use-jira/velocity-chart.png)
 
 ## 시나리오 2 : 운영 이슈 관리
 
