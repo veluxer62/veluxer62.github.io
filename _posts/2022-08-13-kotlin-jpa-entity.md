@@ -2,7 +2,7 @@
 layout: single
 title: "Kotlin JPA Entity에 대한 고찰"
 categories:
-  - REFERENCE
+  - EXPLANATION
 tags:
   - JPA
   - kotlin
