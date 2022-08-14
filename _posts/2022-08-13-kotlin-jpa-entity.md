@@ -392,12 +392,12 @@ Hibernate:
         user0_.id=?
 ```
 
-그렇다면 잘 동작하는데 무엇이 문제인가? 문제는 영속화한 데이터를 조회할때가 아니라 Entity를 생성한 직후 해당 Entity를 다룰 때 발생한다. 예를 들어 저장을 위해 Entity를 생성하고난 후 writer를 이용하여 특정한 기능을 수행하기 위해 아래와 같이 writer를 조회해보자. 그럼 runtime error가 발생한다.
+그렇다면 잘 동작하는데 무엇이 문제인가? 문제는 영속화한 데이터를 조회할때가 아니라 Entity를 생성한 직후 해당 Entity를 다룰 때 발생한다. 예를 들어 저장을 위해 Entity를 생성하고난 후 writer를 이용하여 특정한 기능을 수행하기 위해 아래와 같이 writer를 조회해보자. 그럼 런타임 오류가 발생한다.
 
 ```kotlin
 val user = User("홍길동")
 val board = Board2("게시판", user.id)
-val writer = board.writer // compile error: lateinit property writer has not been initialized
+val writer = board.writer // error: lateinit property writer has not been initialized
 ```
 
 왜냐하면 영속화된 Board를 조회할때에는 JPA가 writer를 초기화 해주었지만 이제 막 생성한 Entity는 JPA가 writer를 초기화 해주지 않았기 때문에 위와 같은 오류가 발생하는 것이다. 그래서 이와 같이 `lateinit`을 활용하는 것은 시스템이 단순할 땐 어찌저찌 사용할 순 있겠지만 어떻게 해서든 위와 같은 오류를 마주치게 되고 이 오류를 우회하기 위해 억지스러운 코드 구현들이 생겨나게 되는 것이다.
@@ -1880,6 +1880,77 @@ Hibernate:
     values
         (?, ?, ?)
 ```
+
+### Cascade
+
+JPA 뿐만아니라 많은 ORM에서 영속성 전이(Cascade)를 활용할 수 있도록 기능을 제공해준다. Cascade를 활용하면 비지니스코드를 상당히 줄일 수 있다. 물론 잘 활용하기 위해서는 도메인에 대한 깊은 이해가 필요한 것도 사실이다.
+
+Entity를 정의하다보면 하나의 Entity의 생명주기에 다른 Entity도 영향을 받아야하는 경우가 종종 있다. 예제로 든 `사용자가 삭제되면 해당 사용자가 작성한 모든 게시판이 삭제되어야 한다` 와 같이 말이다. 만약 이 스토리를 만족시키지 위해 코드를 작성할 때 Cascade를 활용하지 않으면 어떤 코드가 작성될지 아래 서비스 코드를 보자.
+
+```kotlin
+@Service
+class UserService(
+    private val userRepository: UserRepository,
+    private val boardRepository: BoardRepository,
+) {
+    @Transactional
+    fun delete(id: UUID) {
+        val user = userRepository.getReferenceById(id)
+        boardRepository.deleteAll(user.boards)
+        userRepository.delete(user)
+    }
+}
+```
+
+위 코드와 같이 사용자를 삭제하기 위해서는 게시판이 삭제되어야하기 때문에 게시판을 먼저 삭제하는 코드가 필요하다. 하지만 Cascade를 활용하면 위 코드를 훨씬 단순하게 바꿀 수 있다.
+
+```kotlin
+@Service
+class UserService(
+    private val userRepository: UserRepository,
+) {
+    @Transactional
+    fun delete(id: UUID) {
+        userRepository.deleteById(id)
+    }
+}
+```
+
+Entity를 새롭게 추가하는 경우에도 Cascade를 활용하면 좋다. 게시판에 태그를 추가하는 스토리를 구현해보자. Cascade가 없다면 아래와 같이 구현할 수 있을 것이다.
+
+```kotlin
+@Transactional
+fun addTag(id: UUID, command: TagCreationCommand): Board {
+    val tag = tagRepository.findByKeyAndValue(command.key, command.value)
+        .orElseGet {
+            tagRepository.save(command.toEntity())
+        }
+
+    val board = boardRepository.getReferenceById(id)
+    board.addTag(tag)
+
+    return board
+}
+```
+
+태그를 먼저 영속화한 다음에 게시판에 태그를 추가해주는 방식으로 해주어야 한다. 하지만 Cascade를 활용하면 태그를 영속화해주는 코드가 필요없다.
+
+```kotlin
+@Transactional
+fun addTag(id: UUID, command: TagCreationCommand,): Board {
+    val tag = tagRepository.findByKeyAndValue(command.key, command.value)
+        .orElse(command.toEntity())
+    
+    val board = boardRepository.getReferenceById(id)
+    board.addTag(tag)
+
+    return board
+}
+```
+
+<br/>
+
+이렇듯 Cascade를 활용하면 많은 코드를 생략할 수 있다. 코드를 생략함으로써 명시적이지 않으니 좋지 않은것이 아닌가라는 생각이 들 수 있다. 하지만 나는 ORM을 사용하는 순간 명시적이지 않은 동작은 수없이 많기 때문에 그런 우려라면 ORM사용을 다시 검토해보아야 한다고 생각한다. 오히려 도메인에 대한 충분한 이해를 바탕으로 ORM이 제공해주는 기능을 충분히 활용한다면 번거롭고 복잡한 코드를 작성하지 않고 간단한 코드로도 원하는 기능을 충분히 수행할 수 있을 것이다.
 
 ## 마치며
 
