@@ -1,0 +1,287 @@
+---
+permalink: /occupying/
+layout: none
+---
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>KTX 예매 도우미</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.standalone.min.css" integrity="sha512-TQQ3J4WkE/rwojNFo6OJdyu6G8Xe9z8rMrlF9y7xpFbQfW5g8aSWcygCQ4vqRiJqFsDsE1T6MoAOMJkFXlrI9A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css" integrity="sha512-vZpXDvc3snY9J1W8GrnxqDr/+vP1nSTfk8apH1r0wQvOab6fkPhaeqAMlydW68MECAjRR05tu4SOJcwjZgPg5A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+      .main {
+        padding: 1lh;
+      }
+    </style>
+  </head>
+  
+  <body>
+    <div class="container main">
+      <div class="row">
+        <h3>열차조회</h3>
+        <form action="javascript:searchTrain()">
+          <div class="mb-3">
+            <label for="departureDate" class="form-label">출발일</label>
+            <input type="text" class="form-control datepicker" id="departureDate">
+          </div>
+          <div class="mb-3">
+            <label for="departureTime" class="form-label">출발시간</label>
+            <input type="text" class="form-control timepicker" id="departureTime">
+          </div>
+          <div class="mb-3">
+            <label for="departureStation" class="form-label">출발지</label>
+            <select id="departureStation" class="form-control select2">
+              <option>서울</option>
+              <option>부산</option>
+              <option>용산</option>
+              <option>검암</option>
+              <option>영등포</option>
+              <option>광명</option>
+              <option>수원</option>
+              <option>천안아산</option>
+              <option>오송</option>
+              <option>대전</option>
+              <option>서대전</option>
+              <option>김천구미</option>
+              <option>동대구</option>
+              <option>포항</option>
+              <option>밀양</option>
+              <option>구포</option>
+              <option>신경주</option>
+              <option>울산</option>
+              <option>진주</option>
+              <option>마산</option>
+              <option>창원</option>
+              <option>창원중앙</option>
+              <option>진영</option>
+              <option>경산</option>
+              <option>논산</option>
+              <option>공주</option>
+              <option>익산</option>
+              <option>정읍</option>
+              <option>광주송정</option>
+              <option>나주</option>
+              <option>목포</option>
+              <option>전주</option>
+              <option>남원</option>
+              <option>순천</option>
+              <option>여수</option>
+              <option>청량리</option>
+              <option>강릉</option>
+              <option>행신</option>
+              <option>계룡</option>
+              <option>여천</option>
+              <option>구례구</option>
+              <option>곡성</option>
+              <option>진부</option>
+              <option>평창</option>
+              <option>동해</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="destinationStation" class="form-label">도착지</label>
+            <select id="destinationStation" class="form-control select2">
+              <option>서울</option>
+              <option>부산</option>
+              <option>용산</option>
+              <option>검암</option>
+              <option>영등포</option>
+              <option>광명</option>
+              <option>수원</option>
+              <option>천안아산</option>
+              <option>오송</option>
+              <option>대전</option>
+              <option>서대전</option>
+              <option>김천구미</option>
+              <option>동대구</option>
+              <option>포항</option>
+              <option>밀양</option>
+              <option>구포</option>
+              <option>신경주</option>
+              <option>울산</option>
+              <option>진주</option>
+              <option>마산</option>
+              <option>창원</option>
+              <option>창원중앙</option>
+              <option>진영</option>
+              <option>경산</option>
+              <option>논산</option>
+              <option>공주</option>
+              <option>익산</option>
+              <option>정읍</option>
+              <option>광주송정</option>
+              <option>나주</option>
+              <option>목포</option>
+              <option>전주</option>
+              <option>남원</option>
+              <option>순천</option>
+              <option>여수</option>
+              <option>청량리</option>
+              <option>강릉</option>
+              <option>행신</option>
+              <option>계룡</option>
+              <option>여천</option>
+              <option>구례구</option>
+              <option>곡성</option>
+              <option>진부</option>
+              <option>평창</option>
+              <option>동해</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary">조회</button>      
+        </form>
+      </div>
+      <div class="row">
+        <div class="list-group" id="trains"></div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="reserveModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">예약시도하기</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <h3 class="fs-5">코레일 계정정보와 예약알림을 받을 이메일을 입력해주세요.</h2>
+            <form>
+              <input type="hidden" id="trainNo">
+              <div class="mb-3">
+                <label for="departureDate" class="form-label">ID</label>
+                <input type="text" class="form-control" id="userId">
+              </div>
+              <div class="mb-3">
+                <label for="departureTime" class="form-label">비밀번호</label>
+                <input type="password" class="form-control" id="userPassword">
+              </div>
+              <div class="mb-3">
+                <label for="departureTime" class="form-label">이메일</label>
+                <input type="email" class="form-control" id="userEmail">
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+            <button type="button" class="btn btn-primary" onclick="reserveTrain()">예약요청</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js" integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js" integrity="sha512-ux1VHIyaPxawuad8d1wr1i9l4mTwukRq5B3s8G3nEmdENnKF5wKfOV6MEUH0k/rNT4mFr/yL+ozoDiwhUQekTg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+    $('.datepicker').datepicker({
+        format: 'yyyy-mm-dd',
+        startDate: '0d',
+        defaultDate: new Date()
+    });
+    $(".datepicker").datepicker("setDate", "-0d");
+    $('.timepicker').timepicker({
+      timeFormat: 'HH:mm',
+      defaultTime: new Date()
+    })
+
+    const host = "http://220.76.100.13:9999"
+
+    function searchTrain() {
+      const departureDate = $("#departureDate").val()
+      const departureTime = $("#departureTime").val()
+      const departureStation = $("#departureStation").val()
+      const destinationStation = $("#destinationStation").val()
+      const data = {
+        departureDateTime: `${departureDate}T${departureTime}`,
+        departureStation: departureStation,
+        destinationStation: destinationStation,
+      }
+
+      const params = `departureDateTime=${departureDate}T${departureTime}:00&departureStation=${departureStation}&destinationStation=${destinationStation}`
+      $.get(`${host}/api/web/find-trains?` + params)
+        .done(function(data) {
+          const items = data.items.map(it => {
+            const badge = it.hasSeat
+                ? `<span class="badge bg-success rounded-pill">가능</span>`
+                : `<span class="badge bg-danger rounded-pill">매진</span>`
+
+            return `
+            <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#reserveModal" onclick="openModal('${it.no}')">
+              <div class="fw-bold">열차번호: ${it.no} ${badge}</div>
+              요금: ${it.fee} <br>
+              출발일: ${it.departureDate} <br>
+              출발시간: ${it.departureTime} <br>
+              도착시간: ${it.arrivalTime} <br>
+              출발지: ${it.departureStation} <br>
+              도착지: ${it.destinationStation}
+            </button>
+            `
+          }).join('')
+
+          $("#trains").html(items)
+        })
+    }
+
+    function openModal(no) {
+      $("#trainNo").val(no);
+    }
+
+    async function reserveTrain() {
+      const departureDate = $("#departureDate").val()
+      const departureTime = $("#departureTime").val()
+      const departureStation = $("#departureStation").val()
+      const destinationStation = $("#destinationStation").val()
+      const searchTrainRequest = {
+        departureDateTime: `${departureDate}T${departureTime}:00`,
+        departureStation: departureStation,
+        destinationStation: destinationStation,
+      }
+
+      const trainNo = $("#trainNo").val()
+      
+      const userId = $("#userId").val()
+      const userPassword = $("#userPassword").val()
+      const userEmail = $("#userEmail").val()
+
+      const user = {
+        id: userId,
+        password: userPassword,
+        email: userEmail,
+      }
+
+      const request = {
+        user: user,
+        trainNo: trainNo,
+        searchTrainRequest: searchTrainRequest,
+      }
+
+      try {
+        await fetch(`${host}/api/web/reserve-train`, {
+          method: "POST",
+          mode: "no-cors",
+          cache: "no-cache",
+          credentials: "same-origin",
+          headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+          },
+          redirect: "follow",
+          referrerPolicy: "no-referrer",
+          body: JSON.stringify(request),
+        });
+
+        alert('예약 요청하였습니다.')
+      } catch (e) {
+        console.log(e)
+        alert('예약 실패하였습니다.')
+      } finally {
+        location.reload()
+      }
+    }
+  </script>
+</html>
+
