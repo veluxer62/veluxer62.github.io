@@ -17,10 +17,10 @@ minimal_mistakes_skin: "default" # "air", "aqua", "contrast", "dark", "dirt", "n
 
 # Site Settings
 locale: "ko-KR"
-title: "Veluexer's Blog"
+title: "Veluxer's Blog"
 title_separator: "-"
 subtitle: # site tagline that appears below site title in masthead
-name: "Veluexer"
+name: "Veluxer"
 description:
 url: https://veluxer62.github.io
 baseurl: # the subpath of your site, e.g. "/blog"
