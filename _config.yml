@@ -253,6 +253,7 @@ defaults:
       comments: true
       share: true
       related: true
+      read_time: true
   # _pages
   - scope:
       path: ""
