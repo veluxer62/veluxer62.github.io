@@ -254,6 +254,7 @@ defaults:
       share: true
       related: true
       read_time: true
+      show_date: true
   # _pages
   - scope:
       path: ""
