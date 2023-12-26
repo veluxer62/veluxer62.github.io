@@ -9,6 +9,7 @@ tags:
   - 이상주
   - 위키북스
 toc: true
+toc_sticky: true
 ---
 
 [![Object Design Style Guide](/assets/images/books/object-design-style-guide.jpeg)](http://image.yes24.com/goods/91167539/800x0){: target="\_blank" }

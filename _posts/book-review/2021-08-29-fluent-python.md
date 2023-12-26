@@ -9,6 +9,7 @@ tags:
   - "강권학"
   - "한빛미디어"
 toc: true
+toc_sticky: true
 ---
 
 [![Fluent Python](/assets/images/books/fluent-python.jpeg)](http://image.kyobobook.co.kr/images/book/xlarge/988/x9788968484988.jpg){: target="\_blank" }

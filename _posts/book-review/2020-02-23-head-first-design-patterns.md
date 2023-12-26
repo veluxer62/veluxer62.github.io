@@ -13,6 +13,7 @@ tags:
   - 케이시 시에라
   - 버트 베이츠
 toc: true
+toc_sticky: true
 ---
 
 [![Head First Design Patterns](/assets/images/books/head-first-design-patterns.jpg)](http://i.011st.com/ex_t/R/400x400/1/85/0/src/pd/17/1/3/0/3/7/8/rsnoa/1751130378_B.jpg){: target="\_blank" }

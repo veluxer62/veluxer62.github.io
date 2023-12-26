@@ -11,6 +11,7 @@ tags:
   - "3판"
   - "인사이트"
 toc: true
+toc_sticky: true
 ---
 
 [![피플웨어](/assets/images/books/peopleware.jpeg)](http://image.yes24.com/momo/TopCate385/MidCate002/38416928.jpg){: target="\_blank" }

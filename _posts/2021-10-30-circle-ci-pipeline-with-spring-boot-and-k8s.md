@@ -15,6 +15,7 @@ tags:
   - EKS
 
 toc: true
+toc_sticky: true
 ---
 
 자동화된 배포는 어쩌면 현재 시점에서는 당연하게 받아 들이는 행위라 생각된다. 손으로 하는(자동화되지 않은) 배포는 실수를 유발할 위험성을 가지고 있으며 자동화된 배포에 비해 느리고 번거롭다. 이러한 장점으로 인해 많은 회사들이 자동화된 배포 파이프라인을 가지고 있으며 [Jenkins](https://www.jenkins.io/){: target="\_blank" }, [Github Action](https://docs.github.com/en/actions){: target="\_blank" }, [Circle CI](https://circleci.com/){: target="\_blank" }, [Azure Devops](https://azure.microsoft.com/en-us/services/devops/){: target="\_blank" } 등 많은 도구를 이용하여 배포 과정을 수행하고 있다.

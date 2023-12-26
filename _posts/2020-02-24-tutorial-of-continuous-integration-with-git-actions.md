@@ -10,6 +10,7 @@ tags:
   - GIT
   - secrets
 toc: true
+toc_sticky: true
 ---
 
 ## Introduction

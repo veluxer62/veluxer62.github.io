@@ -11,6 +11,7 @@ tags:
   - kotlin
 
 toc: true
+toc_sticky: true
 ---
 
 회사에서 Elasticsearch를 이용해 만들어진 기존 기능을 Spring Data Elasticsearch로 다시 구현하는 작업을 진행중이다. Elasticsearch도 RDB와 같이 Embedded 환경을 구성할 수 있지만 더이상 관리되지 않고 TestContainers를 사용하는 것을 권장하고 있으므로 Test 환경으로 TestContainer를 사용하기로 하였다. (참고: [https://github.com/allegro/embedded-elasticsearch](https://github.com/allegro/embedded-elasticsearch){: target="\_blank" })

@@ -9,6 +9,7 @@ tags:
   - 박영훈
   - 라온북
 toc: true
+toc_sticky: true
 ---
 
 [![digital nomad](/assets/images/books/digital-nomad.jpg)](http://image.kyobobook.co.kr/images/book/xlarge/076/x9791155323076.jpg){: target="\_blank" }

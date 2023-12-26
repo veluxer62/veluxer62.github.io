@@ -8,6 +8,7 @@ tags:
   - composition
   - composition over inheritance
 toc: true
+toc_sticky: true
 ---
 
 > 상속보다는 구성을 활용한다.

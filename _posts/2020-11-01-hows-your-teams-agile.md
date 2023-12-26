@@ -11,6 +11,7 @@ tags:
   - kanban
 
 toc: true
+toc_sticky: true
 ---
 
 > 여러분 팀의 애자일은 안녕하신가요?
