@@ -9,6 +9,7 @@ tags:
   - domain driven development
 
 toc: true
+toc_sticky: true
 ---
 
 이 글은 회사에서 재고 관리 서비스의 재고 이력관리 기능을 개발하면서 일급 컬렉션을 사용하게 되었는데, 일급 컬렉션을 어떻게 활용하였는지 소개하는 글이다.

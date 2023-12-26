@@ -9,6 +9,7 @@ tags:
   - "권오인"
   - "길벗"
 toc: true
+toc_sticky: true
 ---
 
 [![소프트웨어 장인](/assets/images/books/software-craftsmanship.jpeg)](http://image.yes24.com/momo/TopCate582/MidCate002/58112706.jpg){: target="\_blank" }

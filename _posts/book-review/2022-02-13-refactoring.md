@@ -10,6 +10,7 @@ tags:
   - "2판"
   - "한빛미디어"
 toc: true
+toc_sticky: true
 ---
 
 [![리팩터링](/assets/images/books/refactoring.jpeg)](http://image.yes24.com/goods/89649360/XL){: target="\_blank" }

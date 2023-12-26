@@ -13,6 +13,7 @@ tags:
   - 김선집
   - 에이콘출판
 toc: false
+toc_sticky: true
 ---
 
 [![Head First Design Patterns](/assets/images/books/graph-database-starting-with-neo4j.jpg)](http://acornpub.co.kr/tb/detail/book/bw/sp/15295402122PUkltyr.jpg){: target="\_blank" }

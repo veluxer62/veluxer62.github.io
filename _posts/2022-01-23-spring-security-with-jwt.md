@@ -11,6 +11,7 @@ tags:
   - Authentication
 
 toc: true
+toc_sticky: true
 ---
 
 사내에서 Spring Security를 이용한 JWT인증을 구현하면서 `UsernamePasswordAuthenticationFilter`와 같이 이미 구현되어있는 인증 구현체가 없어서 JWT를 이용한 인증 필터를 새롭게 구현하게 되었다.

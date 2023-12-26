@@ -8,6 +8,7 @@ tags:
   - paging
 
 toc: true
+toc_sticky: true
 ---
 
 ## About Swap Memory

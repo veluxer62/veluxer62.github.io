@@ -8,6 +8,7 @@ tags:
   - mergetool
   - vimdiff
 toc: true
+toc_sticky: true
 ---
 
 ## Introduction

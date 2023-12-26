@@ -7,6 +7,7 @@ tags:
   - code review
 
 toc: true
+toc_sticky: true
 ---
 
 이 글은 코드리뷰 활동을 하면서 어떻게 하면 더 나은 코드리뷰활동을 이어갈 수 있을까 라는 생각을 정리한 글이다. 백명석님의 [Code Review에 대하여](https://youtu.be/FJNV_qoRRks){: target="\_blank" }라는 영상을 많이 참고하였습니다.

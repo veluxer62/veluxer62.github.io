@@ -11,6 +11,7 @@ tags:
   - mokk
 
 toc: true
+toc_sticky: true
 ---
 
 최근 Kotlin을 이용하여 개발하면서 테스트 코드를 작성할때 [Kotest](https://kotest.io/){: target="\_blank" }를 주로 사용한다. 이전에 작성한 [Comparing Testing Library for Kotlin](https://veluxer62.github.io/explanation/comparing-testing-library-for-kotlin/){: target="\_blank" }을 보면 Kotest를 이용한 테스트 코드 작성의 장점에 대해서 적어 두었으니 읽어보면 좋을 것 같다.

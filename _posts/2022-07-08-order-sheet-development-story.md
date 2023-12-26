@@ -10,6 +10,7 @@ tags:
   - spring
   - kotlin
 toc: true
+toc_sticky: true
 ---
 
 이 글은 사내 블로그에 작성한 [우당탕탕 주문서 개발기](https://spoqa.github.io/2022/07/08/order-sheet-development-story.html){: target="\_blank" } 내용을 그대로 가져오면서 나의 블로그의 언어톤에 맞게 변경한 글이다.
