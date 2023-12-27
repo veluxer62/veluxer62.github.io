@@ -1,0 +1,25 @@
+---
+layout: archive
+---
+
+{{ content }}
+
+{% assign entries_layout = page.entries_layout | default: 'list' %}
+<div class="entries-{{ entries_layout }}">
+  {% for page in site.pages reversed %}
+    {% if page.retrospective %}
+
+    <div class="{{ include.type | default: 'list' }}__item">
+      <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+        <h2 class="archive__item-title no_toc" itemprop="headline">
+          <a href="{{ page.permalink }}" rel="permalink">{{ page.title }}</a>
+        </h2>
+        {% include page__meta.html type=include.type %}
+      </article>
+    </div>
+
+    {% endif %}
+  {% endfor %}
+</div>
+
+{% include paginator.html %}
