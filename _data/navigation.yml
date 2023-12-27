@@ -4,5 +4,7 @@ main:
     url: /
   - title: "Categories"
     url: /categories/
+  - title: "Retrospective"
+    url: /retrospective/
   - title: "About"
     url: /about/
