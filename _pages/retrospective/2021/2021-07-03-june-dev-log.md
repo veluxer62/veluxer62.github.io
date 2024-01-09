@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "2021년 6월 개발일지"\
+title: "2021년 6월 개발일지"
 toc: true
 toc_sticky: true
 retrospective: true
