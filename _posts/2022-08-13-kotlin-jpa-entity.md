@@ -1336,7 +1336,7 @@ class User(
 
 Java로 Entity를 작성할때에는 모두 nullable한 Property이기 때문에 이를 염두해두고 코드를 작성하거나 방어코드를 넣어두어서 오류를 쉽게 감지할 수 있도록 조치를 할 수 있다. (사실 실무를 하면서 이렇게 꼼꼼하게 방어코드를 작성하는 경우를 많이 보진 못했다) 하지만 Kotlin은 타입으로 non-nullable을 보장해 줄 수 있다. 그래서 데이터베이스의 Column은 nullable인데 Entity의 Property가 non-nullable로 선언되어 런타임시 예기치 못한 오류가 발생하는 경우를 종종 보았다.
 
-개인적으로는 이를 방지하기 위해서 `@Column`에 nullable 여부를 함께 적어주는 것을 선호한다. [Flayway](https://flywaydb.org/){: target="\_blank" } 등을 이용해서 DDL을 적어주었더라도 Entity를 정의할 때 생략할 수 있는 부분이 있더라도 최소한의 DDL정보를 적어주면 좋다고 생각하는데 그중 하나가 바로 `nullable`속성이다. `@Column`의 `nullable`속성은 기본이 `false`이므로 nullable한 Property라면 생략해주어도 된다 생각한다. 하지만 non-nullable한 Property라면 `@Column(nullable=false)`와 같이 선언해주는 습관을 가지면 위 사례와 같이 예기치 않은 오류를 만날 가능성을 많이 줄일 수 있다. `@JoinColumn`에도 마찬가지고 연관관계에서도 마찬가지다.
+개인적으로는 이를 방지하기 위해서 `@Column`에 nullable 여부를 함께 적어주는 것을 선호한다. [Flayway](https://flywaydb.org/){: target="\_blank" } 등을 이용해서 DDL을 적어주었더라도 Entity를 정의할 때 생략할 수 있는 부분이 있더라도 최소한의 DDL정보를 적어주면 좋다고 생각하는데 그중 하나가 바로 `nullable`속성이다. `@Column`의 `nullable`속성은 기본이 `true`이므로 nullable한 Property라면 생략해주어도 된다 생각한다. 하지만 non-nullable한 Property라면 `@Column(nullable=false)`와 같이 선언해주는 습관을 가지면 위 사례와 같이 예기치 않은 오류를 만날 가능성을 많이 줄일 수 있다. `@JoinColumn`에도 마찬가지고 연관관계에서도 마찬가지다.
 
 ```kotlin
 @Column(nullable = false)
