@@ -25,7 +25,7 @@ permalink: /retrospective/2023-october-dev-log/
 
 <br/>
 
-아래는 9월동안 정리한 이슈 내용들이다.
+아래는 10월동안 정리한 이슈 내용들이다.
 
 ## DGS 7.x.x 업그레이드 이슈
 
