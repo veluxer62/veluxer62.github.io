@@ -17,13 +17,13 @@ toc_sticky: true
 
 우리가 이렇게 유명한 라이브러리인 Querydsl을 Kotlin JDSL로 변경하게 된 계기는 무엇이며 변경하면서 우리가 겪었던 이슈나 전환 시 우리가 사용했던 여러 가지 팁들을 공유하면서 전환 이야기를 나눠보도록 하겠다.
 
-# 전환 배경
+## 전환 배경
 
-## kapt를 요하는 Querydsl
+### kapt를 요하는 Querydsl
 
 Kotlin에서 Querydsl을 사용하기 위해서는 kapt가 필요하다. kapt는 Kotlin의 Annotation Processor를 활용하기 위한 도구로, 주로 Kotlin에서 작성된 코드의 Annotation을 처리하는 데 사용된다. 그러나 공식 문서에 따르면 kapt의 새로운 기능 지원이 중단되고 유지보수만 진행될 예정이라고 한다. 앞으로는 Kotlin에 더 친화적이고 빌드 시간이 더 빠른 KSP를 권장할 것으로 예상된다. 이는 결국 kapt가 향후 Kotlin에서 지원되지 않을 가능성이 높다는 것을 의미한다.
 
-![kapt-warning](/images/posts/transfer-jdsl/kapt-warning.png)
+![kapt-warning](/assets/images/posts/transfer-jdsl/kapt-warning.png)
 
 Kotlin에서 Querydsl를 사용하려면 Gradle에서 의존성을 추가할 때 다음과 같이 kapt가 필요하다.
 
@@ -42,15 +42,15 @@ dependencies {
 
 kapt를 사용하지 않는다면 KSP를 대안으로 고려할 수 있다. 그러나 [[Kotlin] Migrate kapt to ksp](https://github.com/Querydsl/Querydsl/issues/3284){: target="\_blank" } 이슈에서 보면 Querydsl에서 KSP를 지원할지 여부는 아직 미지수인듯 하다.
 
-## Querydsl 유지보수
+### Querydsl 유지보수
 
 Querydsl의 [릴리스 노트](https://github.com/Querydsl/Querydsl/releases){: target="\_blank" }를 살펴보면 배포 주기가 상당히 길다는 사실을 확인할 수 있다. 2018년에는 2번, 2019년에는 1번, 2020년에는 2번, 2021년에는 두 번, 그리고 2024년에는 한 번의 릴리스가 있었다. 이렇듯 이슈는 꾸준히 제기되고 있지만, 실제로 적극적인 패치나 새로운 기능의 개발은 이루어지고 있지 않은 실정이다.
 
 오픈소스를 선택할 때 때 큰 이유 중 하나는 이슈에 대한 적극적인 패치와 업데이트로 인한 신뢰성과 안정성을 기대하기 때문이다. 그러나 이와 같은 상황은 Querydsl을 사용하는 경우 이슈에 대한 신속한 대응과 새로운 기능 개발을 기대하기 어렵다는 것을 보여준다. 따라서 우리는 Querydsl이 더 이상 오픈소스로서 안정성을 유지하는 데 어려움이 있다고 판단했다.
 
-# 왜 Kotlin JDSL인가?
+## 왜 Kotlin JDSL인가?
 
-## 쿼리 빌더 선택 비교
+### 쿼리 빌더 선택 비교
 
 Kotlin 생태계에서는 Querydsl 외에도 여러 선택지가 있다. 아래는 Kotlin에서 사용할 수 있는 다양한 쿼리 빌더들 중에서 우리가 검토해 본 것들이다.
 
@@ -61,11 +61,11 @@ Kotlin 생태계에서는 Querydsl 외에도 여러 선택지가 있다. 아래�
 - **Query Method**: Spring Data JPA의 Query Methods는 함수명을 분석하여 자동으로 SQL 쿼리를 생성해 주는 기능을 제공한다.
 - **Kotlin JDSL**: Kotlin으로 메타모델 없이 작성할 수 있는 쿼리 빌더이다. JPQL을 기반으로 쿼리가 생성된다.
 
-### Exposed, Ktorm
+#### Exposed, Ktorm
 
 [Exposed](https://github.com/JetBrains/Exposed){: target="\_blank" }와 [Ktorm](https://github.com/kotlin-orm/ktorm){: target="\_blank" }은 둘 다 ORM 라이브러리이다. 우리는 이미 JPA를 ORM으로 사용하고 있으며, JPA의 엔티티로 반환되는 쿼리 결과 및 이를 활용한 Dirty Checking, Lazy Loading, Cascade 등의 비즈니스 로직이 많이 존재한다. 따라서 Exposed와 Ktorm과 같은 ORM을 대체하는 옵션은 고려되지 않았다.
 
-### JOOQ
+#### JOOQ
 
 [JOOQ](https://github.com/jOOQ/jOOQ){: target="\_blank" }는 Java 생태계에서 새롭게 주목받는 유명한 쿼리 빌더이다. 타입 안정성을 제공하여 MyBatis와는 달리 뛰어난 유지보수성을 가지고 있으며, ORM인 Hibernate와 비교하여 SQL 친화적이어서 최적화된 쿼리와 세밀한 쿼리 작성이 가능하다.
 
@@ -73,9 +73,9 @@ Kotlin 생태계에서는 Querydsl 외에도 여러 선택지가 있다. 아래�
 
 이러한 이유로 JOOQ도 전환 대상에서 제외하기로 했다.
 
-![jooq-with-jpa](/images/posts/transfer-jdsl/jooq-with-jpa.png)
+![jooq-with-jpa](/assets/images/posts/transfer-jdsl/jooq-with-jpa.png)
 
-### Spring Data의 Query Method
+#### Spring Data의 Query Method
 
 Spring Data에서 제공해 주는 [Query Method](https://docs.spring.io/spring-data/jpa/reference/jpa/query-methods.html){: target="\_blank" }는 아래와 같이 쿼리빌더를 통해 쿼리를 세세하게 작성하지 않아도 원하는 쿼리를 실행시켜 준다는 장점이 있다.
 
@@ -96,7 +96,7 @@ interface AdminRepository : JpaRepository<Admin, UUID> {
 
 Query Method를 활용하면 추가된 라이브러리 없이 간편하게 쿼리를 작성할 수 있지만, 작성된 쿼리가 컴파일 시점에서 정상 작동하는지 확인하기 어렵다는 점이 있다. 이는 테스트 코드를 통해 보완할 수 있지만, 추가로 매개변수에 따라 동적으로 쿼리를 작성하는 기능을 활용하기 어려운 단점도 있기에 Spring Data의 Query Method사용은 Querydsl의 대체제로는 제외되었다.
 
-### JPA의 Criteria API
+#### JPA의 Criteria API
 
 JPA의 [Criteria API](https://docs.jboss.org/hibernate/orm/current/userguide/html_single/Hibernate_User_Guide.html#criteria){: target="\_blank" }를 사용하면 Querydsl과 같이 쿼리를 코드로 생성할 수 있다.
 
@@ -179,7 +179,7 @@ test("test specification") {
 
 이렇듯 JPA의 Criteria API는 타입 안정성을 유지하면서 쿼리를 작성하고, Specifications를 통해 동적 쿼리를 지원하기 때문에 Kotlin JDSL을 발견하기 전까지 가장 유력한 전환 후보였다.
 
-### Kotlin JDSL
+#### Kotlin JDSL
 
 라인의 개발팀에서 개발한 [Kotlin JDSL](https://github.com/line/kotlin-jdsl){: target="\_blank" }은 Querydsl이나 JOOQ와는 다르게 메타모델을 필요로 하지 않고 쿼리를 쉽게 작성할 수 있는 라이브러리이다. DSL을 이용하여 타입 안정성 있는 쿼리를 작성할 수 있으며, 동적 쿼리를 간편하게 생성할 수 있는 장점을 갖고 있다. 또한 JPQL을 기반으로 동작하기 때문에 JPA와의 호환성도 우수하다.
 
@@ -199,7 +199,7 @@ storeRepository.findAll {
 
 비록 추가적인 의존성을 필요로 하기는 하지만 DSL을 활용하여 Criteria API에 비해 간결하고 직관적인 쿼리를 작성할 수 있고 타입 안정성을 기본적으로 지원하기에 우리는 최종적으로 Kotlin JDSL으로 전환하기로 하였다.
 
-## 비교
+### 비교
 
 다시 한번 위에서 말한 쿼리빌더들을 표로 정리하면 아래와 같다.
 
@@ -212,7 +212,7 @@ storeRepository.findAll {
 |     JPA Criteria API     |      O       |      △      |     O     |      △      |
 |        Kotlin JDSL       |      △       |      O      |     O     |      O      |
 
-# 전환 방법
+## 전환 방법
 
 Querydsl에서 Kotlin JDSL로의 전환을 본격적으로 이야기해 보겠다.
 
@@ -223,11 +223,11 @@ Querydsl에서 Kotlin JDSL로의 전환을 본격적으로 이야기해 보겠�
 3. **작업 방식 전파**: 전환된 코드와 작업 방식에 대한 교육과 트레이닝을 진행하여 팀 전체에 새로운 작업 방식을 전파했다.
 4. **병렬 작업**: 여러 프로젝트를 수행하면서 동시에 전환 작업을 병렬적으로 진행하여 효율성을 극대화했다.
 
-## 전환 대상 목록화
+### 전환 대상 목록화
 
 우리 팀은 Querydsl을 Kotlin JDSL로 전환하는 프로젝트와 같이 규모가 있는 리펙터링 작업인 경우 아래와 같이 작업 목록을 생성하여 진행하였다.
 
-![transfer-epic](/images/posts/transfer-jdsl/transfer-epic.png)
+![transfer-epic](/assets/images/posts/transfer-jdsl/transfer-epic.png)
 
 이처럼 작업 목록을 생성하고 리팩토링을 진행하면 다음과 같은 장점을 얻을 수 있다.
 
@@ -238,13 +238,13 @@ Querydsl에서 Kotlin JDSL로의 전환을 본격적으로 이야기해 보겠�
 
 이러한 장점을 활용하기 위해 Kotlin JDSL 전환 작업을 위한 에픽을 생성하고, Querydsl을 사용한 코드를 모두 검토하여 작업 목록을 미리 생성하는 단계부터 시작했다.
 
-## 베이스 코드 작성
+### 베이스 코드 작성
 
 베이스 코드는 여러 명의 개발자가 가능한 한 일관된 방식으로 전환할 수 있도록 가이드라인을 제공하는 역할을 한다. 개발자들이 공식 문서를 참고하여 각자가 Querydsl에서 Kotlin JDSL로의 전환을 수행하는 것은 어렵지 않겠지만, 코드의 일관성이 부족하면 전체적인 생산성에 영향을 미칠 수 있다.
 
 따라서 우리는 먼저 아래와 같이 베이스 코드를 작성하여 팀원들이 일관된 방식으로 코드 작업을 수행할 수 있도록 하였다. 이를 통해 병렬로 코드 작업을 진행할 수 있도록 지원하였다.
 
-### 의존성 추가
+#### 의존성 추가
 
 전환 작업을 모두가 병렬적으로 수행하기 위해서는 우선 의존성 설정과 환경 설정 등을 위한 기반 코드를 작성해야 한다. 따라서 Kotlin JDSL을 사용하기 위한 의존성을 먼저 추가했다. 또한, 우리는 Spring을 사용하고 있기 때문에 [`spring-data-jpa-support`](https://kotlin-jdsl.gitbook.io/docs/v/ko-1/jpql-with-kotlin-jdsl/spring-supports){: target="\_blank" }도 함께 추가했다.
 
@@ -254,7 +254,7 @@ implementation("com.linecorp.kotlin-jdsl:jpql-render:$jdslVersion")
 implementation("com.linecorp.kotlin-jdsl:spring-data-jpa-support:$jdslVersion")
 ```
 
-### 테스트 코드 설정
+#### 테스트 코드 설정
 
 다음으로 Repository 테스트에서 Kotlin JDSL을 이용한 쿼리 테스트를 수행하기 위해서 아래와 같이 `KotlinJdslAutoConfiguration`도 추가해 준다.
 
@@ -266,7 +266,7 @@ implementation("com.linecorp.kotlin-jdsl:spring-data-jpa-support:$jdslVersion")
 abstract class RepositoryTestBase
 ```
 
-### 예시 전환 코드 작성
+#### 예시 전환 코드 작성
 
 우리는 프로젝트 초기부터 Kotlin JDSL을 적용하는 것이 아니라 Querydsl에서 Kotlin JDSL로의 전환을 진행했기 때문에 공식 문서에서 안내하는 방식대로 코드를 작성하는 것이 어려웠다. 이는 해당 방식으로는 Service 코드를 변경해야 했기 때문이다.
 
@@ -339,15 +339,15 @@ class AdminService(
 
 실제로 저희가 Querydsl에서 Kotlin JDSL로 전환하는 동안 CustomRepository 외에 Service 코드를 변경한 커밋은 하나도 없었다. 이에 따라 Repository에서 사용된 쿼리 빌더의 변경에만 집중할 수 있었고, 전환된 쿼리 빌더에서 실행된 쿼리가 기존과 동일하게 동작하는지 확인하는 데 집중할 수 있었다.
 
-## 작업 방식 전파
+### 작업 방식 전파
 
 베이스 코드를 작성한 후, 팀원들에게 전환 스타일에 대한 리뷰를 받고 작업 방식을 전파하면서 적용한 코드를 함께 리뷰하는 시간을 가졌다. 각자가 이해하고 있는 라이브러리에 대한 지식과 코딩 스타일이 다를 수 있기 때문에, 가능한 한 맞추되 어느 정도 이견에 대한 합의가 필요했다.
 
-## 병렬 작업
+### 병렬 작업
 
 작업 방식에 대한 기본적인 합의가 이루어지면 각자가 본격적으로 전환 작업을 수행할 수 있다. 이 작업은 제품 개발 프로젝트보다는 우선순위가 낮았기 때문에, 특별한 일정 없이 작업시간이 여유로운 개발자가 자율적으로 작업을 할당받아 진행하는 칸반 방식을 채택했다.
 
-# 이슈
+## 이슈
 
 아래는 우리가 Kotlin JDSL로 전환하면서 직면한 몇 가지 이슈를 소개해 보려고 한다.
 
@@ -355,7 +355,7 @@ class AdminService(
 
 Kotlin JDSL을 적용 검토 중인 분들이라면 아래 소개하는 이슈들을 참고하면 좋을 것 같다.
 
-### Spring Data Custom Repository Implementations 이슈
+#### Spring Data Custom Repository Implementations 이슈
 
 이슈 링크: [Custom Repository Implementations is not available in spring-data-jpa-support](https://github.com/line/kotlin-jdsl/issues/668){: target="\_blank" }
 
@@ -384,7 +384,7 @@ Caused by: org.springframework.data.mapping.PropertyReferenceException: No prope
 ...
 ```
 
-### 데이터베이스 잠금 설정 문의
+#### 데이터베이스 잠금 설정 문의
 
 이슈 링크: [Inquire how to use CRUD method metadata](https://github.com/line/kotlin-jdsl/issues/677){: target="\_blank" }
 
@@ -443,7 +443,7 @@ class CustomBillRepositoryImpl(
 }
 ```
 
-### ManyToOne fetch join 이슈
+#### ManyToOne fetch join 이슈
 
 이슈 링크: [Fetch join issue in pagination](https://github.com/line/kotlin-jdsl/issues/682){: target="\_blank" }
 
@@ -513,7 +513,7 @@ Caused by: org.hibernate.query.SemanticException: Query specified join fetching,
 
 해당 이슈의 원인은 Kotlin JDSL에서 사용되는 Legacy Query Parser의 페이지네이션과 Fetch Join 처리 메커니즘으로 인한 것으로 확인되었다. 이 이슈는 `3.4.0` 버전에서 해결되었다.
 
-### selectDistinctNew 이슈
+#### selectDistinctNew 이슈
 
 이슈 링크: [When use selectDistinctNew function in findPage, there are some paging error](https://github.com/line/kotlin-jdsl/issues/694){: target="\_blank" }
 
@@ -591,7 +591,7 @@ Caused by: org.hibernate.query.SyntaxException: At 1:26 and token 'kotlin', no v
 
 따라서 우리도 쿼리를 다르게 작성하여 `selectDistinctNew`를 사용하여 페이지네이션을 하지 않는 방향으로 이 문제를 해결했다.
 
-### limit 이슈
+#### limit 이슈
 
 이슈 링크: [An issue where an error occurs when using limit with a custom serializer in JDSL](https://github.com/line/kotlin-jdsl/issues/695){: target="\_blank" }
 
@@ -736,11 +736,11 @@ override fun findRecentOrderSheetsByStoreId(
 }
 ```
 
-# 활용팁
+## 활용팁
 
 여기서는 Kotlin JDSL에서 공식적으로 지원하지 않지만, 우리 팀에서 좀 더 효율적으로 Kotlin JDSL을 사용하기 위한 여러 가지 팁들을 소개하고자 한다.
 
-## Helper 클래스
+### Helper 클래스
 
 우선 우리는 여러 상황에서 발생하는 코드 중복을 줄이고 Repository의 의존성을 줄이고자 Helper 클래스를 두고 아래와 같이 Repository가 `KotlinJdslJpqlExecutor`가 아닌 Helper 클래스인 `JdslExecutorSupport`를 의존하도록 기존 코드를 리펙토링하였다.
 
@@ -752,7 +752,7 @@ class CustomOrderSheetRepositoryImpl(
 
 그럼 어떤 상황들로 인해 Helper 클래스가 필요하게 되었는지 알아보자.
 
-### 데이터베이스 잠금
+#### 데이터베이스 잠금
 
 `KotlinJdslJpqlExecutor`를 사용하면 우선 대부분의 쿼리를 작성하는 데에는 큰 문제가 없었다. 하지만 위에서 말씀드린 이슈 중에 데이터베이스의 잠금 기능을 사용해야 하는 경우 `EntityManager`를 사용할 수밖에 없다는 것을 보았을 것이다.
 
@@ -827,7 +827,7 @@ class CustomOrderSheetRepositoryImpl(
 
 `CustomOrderSheetRepositoryImpl`를 보면 확실히 의존하는 클래스도 줄어들었고 함수도 단순하게 변경된 것을 볼 수 있다. 조금 더 응용하면 `findAllWithSkipLock`, `findAllWithOptimisticLock` 등과 같은 함수들도 만들 수 있을 것이다.
 
-### Nullable Collection 처리
+#### Nullable Collection 처리
 
 기본적으로 `KotlinJdslJpqlExecutor`의 `findAll`, `findPage`, `findSlice`는 nullable 한 타입을 가진 Collection을 반환한다. 이에 따라 매번 nullable 한 요소들을 non-nullable하도록 필터링해 주거나 nullable 한 Collection을 반환해야 하는 불편함이 있었다.
 
@@ -849,7 +849,7 @@ override fun findByFilter(
 
 Kotlin JDSL의 과거 [이슈](https://github.com/line/kotlin-jdsl/issues/608){: target="\_blank" }를 보면 nullable 한 Collection을 반환하는 이유를 설명하고 있다.
 
-![kotlin-jdsl-null-type-issue](/images/posts/transfer-jdsl/kotlin-jdsl-null-type-issue.png)
+![kotlin-jdsl-null-type-issue](/assets/images/posts/transfer-jdsl/kotlin-jdsl-null-type-issue.png)
 
 우리는 nullable 한 항목을 반환하는 경우가 거의 없으므로 Helper 클래스에 nullable 한 항목을 필터링하여 non-nullable 한 Collection을 기본적으로 반환하는 함수를 새롭게 만들어 사용했다.
 
@@ -885,7 +885,7 @@ override fun findByFilter(
 }
 ```
 
-### 단일조회
+#### 단일조회
 
 Kotlin JDSL에서 제공하는 `KotlinJdslJpqlExecutor`에서는 단일 조회함수가 별도로 존재하지 않는다. 그래서 만약 단일 데이터를 조회하려면 아래와 같이 Kotlin에서 제공하는 `List#firstOrNull`, `List#first`, `List#find` 등의 함수를 사용해야 한다.
 
@@ -959,7 +959,7 @@ fun <T : Any> getOrNull(init: Jpql.() -> JpqlQueryable<SelectQuery<T>>): T? {
 }
 ```
 
-## Custom DSL 활용
+### Custom DSL 활용
 
 Kotlin JDSL은 공식적으로 지원하는 DSL 외에도 개발자가 자신만의 DSL을 만들어 사용할 수 있도록 Custom DSL을 제공한다. 우리도 아래와 같이 Custom DSL을 적용하여 사용하고 있는데, 적용한 함수들이 어떤 목적으로 사용되었는지 소개해 보고자 한다.
 
@@ -995,7 +995,7 @@ class CustomJpql : Jpql() {
 }
 ```
 
-### 데이터베이스 함수 표현
+#### 데이터베이스 함수 표현
 
 우리는 PostgreSQL을 사용하고 있는데, PostgreSQL의 함수들(`ARRAY_POSITION({0}, {1}) is not null`, `FUNCTION('jsonb_exists_any', {0}, {1}) = true`)을 DSL로 표현하여 사용하기 위해서 아래와 같이 `arrayContains`, `jsonbExistsAny` 함수를 만들어 활용하고 있다.
 
@@ -1104,7 +1104,7 @@ where
   );
 ```
 
-### Custom In
+#### Custom In
 
 `in` 절을 사용할 때, Querydsl은 매개변수가 빈 배열이어도 false로 처리하고 오류를 반환하지 않지만, Kotlin JDSL의 경우 오류를 반환하는 이슈가 있었다. 어느 구현이 맞다고 말하기 어렵다고 판단하여 별도로 이슈를 제기하지는 않았는데, 문제는 클라이언트에서 빈 배열을 보내는 형태로 로직이 구현되어 있다는 것이 이슈였다. 그래서 우리는 아래와 같이 3가지 방법을 고민하였다.
 
@@ -1177,7 +1177,7 @@ update
 ;
 ```
 
-### selectFrom
+#### selectFrom
 
 솔직히 해당 팁은 너무 단순해서 소개할지 말지 고민하다가, 그래도 기왕에 구현한 것을 소개해 보자고 생각해서 소개하고자 한다.
 
@@ -1225,7 +1225,7 @@ override fun findAllActive(
 }
 ```
 
-## ManyToMany 이슈
+### ManyToMany 이슈
 
 저희가 개발 중인 서비스의 수많은 Entity 중 N:M 관계를 맺은 Entity가 몇 개 있다. N:M 관계를 맺은 Entity들 중 일부는 아래와 같이 ManyToMany로 표현해서 사용하고 있다.
 
@@ -1318,7 +1318,7 @@ override fun findByTagId(
 
 위와 같은 방식이 가장 좋은 방식인지는 잘 모르겠다. Kotlin JDSL의 문서나 예시 코드에도 위와 같은 사례를 찾아볼 순 없어서 일단 문제 해결에 초점을 맞추어 조치하였는데, 해당 부분은 한번 Kotlin JDSL측에 문의해 보아야겠다.
 
-## Literals
+### Literals
 
 아래와 같이 특정 컬럼의 존재 여부에 따라서 정렬하고 싶은 경우 CASE 문과 함께 상숫값을 넣어줘야 하는 경우가 있었다.
 
@@ -1405,7 +1405,7 @@ override fun findByFilter(
 }
 ```
 
-# 마치며
+## 마치며
 
 지금까지 Querydsl에서 Kotlin JDSL으로 어떻게 전환하였고 전환하면서 겪었던 이슈들과 팁들을 소개해 보았다. Kotlin JDSL에 대한 레퍼런스가 많지 않아 우리가 겪었던 경험을 최대한 소개해 보려고 하다 보니 다소 내용이 길어진 감이 있는 점 양해바란다.
 
@@ -1415,10 +1415,10 @@ override fun findByFilter(
 
 #### 전환 전 - 1분 22초
 
-![as-is-transferr](/images/posts/transfer-jdsl/as-is-transferr.png)
+![as-is-transferr](/assets/images/posts/transfer-jdsl/as-is-transferr.png)
 
 #### 전환 후 - 34초
 
-![to-be-transfer](/images/posts/transfer-jdsl/to-be-transfer.png)
+![to-be-transfer](/assets/images/posts/transfer-jdsl/to-be-transfer.png)
 
 모쪼록 이 글을 통해 Querydsl을 다른 쿼리 빌더로 전환할 계획을 세우거나 새로운 프로젝트에 도입할 만한 쿼리 빌더를 고민하고 있는 분들께 작은 도움이 되었길 바라면서 글을 마무리 짓도록 하겠다.
