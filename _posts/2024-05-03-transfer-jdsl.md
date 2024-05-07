@@ -9,6 +9,7 @@ tags:
   - kotlin jdsl
 toc: true
 toc_sticky: true
+toc_h_max: 3
 ---
 
 이 글은 사내 블로그에 작성한 [Querydsl에서 Kotlin JDSL 으로](https://spoqa.github.io/2024/05/03/transfer-jdsl.html){: target="\_blank" } 내용을 그대로 가져오면서 나의 블로그의 언어톤에 맞게 변경한 글이다.

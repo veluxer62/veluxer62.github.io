@@ -73,8 +73,8 @@
     {% assign flatToc = include.flat_toc | default: false %}
     {% assign baseURL = include.base_url | default: include.baseurl | default: '' %}
     {% assign skipNoIDs = include.skip_no_ids | default: include.skipNoIDs | default: false %}
-    {% assign minHeader = include.h_min | default: 1 %}
-    {% assign maxHeader = include.h_max | default: 6 %}
+    {% assign minHeader = page.toc_h_min | include.h_min | default: 1 %}
+    {% assign maxHeader = page.toc_h_max | include.h_max | default: 6 %}
     {% assign nodes = include.html | strip | split: '<h' %}
 
     {% assign firstHeader = true %}
