@@ -4,6 +4,8 @@ main:
     url: /
   - title: "Categories"
     url: /categories/
+  - title: "Tags"
+    url: /tags/
   - title: "Retrospective"
     url: /retrospective/
   - title: "About"
