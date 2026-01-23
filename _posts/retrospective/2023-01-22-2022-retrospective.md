@@ -4,6 +4,10 @@ title: "2022년 회고"
 toc: true
 toc_sticky: true
 retrospective: true
+permalink: /retrospective/2022-retrospective/
+categories:
+  - RETROSPECTIVE
+excerpt: 언제나 그렇겠지만 2022년도 많은 일들이 있었다. 2021년과 같이 이직에 대한 이벤트는 없었지만 개인적으로도 직장생활에서도 많은것들을 이루고 경험한 한해였다. 그래서 그런지 2022년이 어떻게 지나간지 모르게 순식간에 지나갔다라는 느낌이 드는 한해였다. 나이가 들면 들수록 더욱 그럴려나 싶다.
 ---
 
 ![goodbye-2022-welcome-2023](/assets/images/retrospective/goodbye-2022-welcome-2023.jpeg)

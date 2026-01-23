@@ -4,6 +4,10 @@ title: "2021년 회고"
 toc: true
 toc_sticky: true
 retrospective: true
+permalink: /retrospective/2021-retrospective/
+categories:
+  - RETROSPECTIVE
+excerpt: 2020년 회고글을 보니 다사다난 했다는 말로 시작했었는데 2021년 회고글의 시작도 다사다난 했다는 말로 시작해야될 것 같다. 어머니 환갑 생신 등 가족행사도 많은 한해였고 코로나19가 장기화 되고 한때는 종식될 수도 있다는 기대감과 함께 그동안 미뤄왔던 지인들과의 만남을 많이 가졌었다. 그리고 다시한번 이직을 하게 되면서 연초에는 바쁜 나날을 보내기도 하였다.
 ---
 
 ![bye-bye-2021](/assets/images/retrospective/bye-bye-2021.png)

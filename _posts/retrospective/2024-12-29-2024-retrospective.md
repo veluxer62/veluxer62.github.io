@@ -4,6 +4,10 @@ title: "2024년 회고"
 toc: true
 toc_sticky: true
 retrospective: true
+permalink: /retrospective/2024-retrospective/
+categories:
+  - RETROSPECTIVE
+excerpt: 매년 회고를 작성할때마다 "다사다난"이라는 표현을 사용했었는데, 올해는 이전에 "다사다난"이라 표현했던 것이 무색할 정도로 개인적으로나 업무적으로 많은 일이 있었다. 적어야할게 많으므로 바로 시작해보자.
 ---
 
 매년 회고를 작성할때마다 "다사다난"이라는 표현을 사용했었는데, 올해는 이전에 "다사다난"이라 표현했던 것이 무색할 정도로 개인적으로나 업무적으로 많은 일이 있었다. 적어야할게 많으므로 바로 시작해보자.

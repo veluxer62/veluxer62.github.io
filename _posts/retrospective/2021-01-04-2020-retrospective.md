@@ -3,7 +3,10 @@ layout: single
 title: "2020년 회고"
 toc: true
 toc_sticky: true
-retrospective: true
+permalink: /retrospective/2020-retrospective/
+categories:
+  - RETROSPECTIVE
+excerpt: 다사다난했던 2020년이 지났다. 늦은감이 있지만 2020년을 되돌아보며 지난 일년동안 있었던 일들에 대해서 적어보고 앞으로의 다짐도 함께 적어보고자 한다.
 ---
 
 다사다난했던 2020년이 지났다. 늦은감이 있지만 2020년을 되돌아보며 지난 일년동안 있었던 일들에 대해서 적어보고 앞으로의 다짐도 함께 적어보고자 한다.

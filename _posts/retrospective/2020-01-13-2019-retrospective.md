@@ -3,7 +3,10 @@ layout: single
 title: "2019년 회고"
 toc: true
 toc_sticky: true
-retrospective: true
+permalink: /retrospective/2019-retrospective/
+categories:
+  - RETROSPECTIVE
+excerpt: 2019년에 내가 배웠거나 사용했었던 것들을 되돌아보고 앞으로 2020년에 해야할 것들에 대한 정리를 해보고자 한다.
 ---
 
 2019년에 내가 배웠거나 사용했었던 것들을 되돌아보고 앞으로 2020년에 해야할 것들에 대한 정리를 해보고자 한다.
