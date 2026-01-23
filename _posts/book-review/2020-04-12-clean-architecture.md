@@ -9,6 +9,7 @@ tags:
   - 인사이트
 toc: true
 toc_sticky: true
+excerpt: 개발자라면 누구나 알고 있는 그 책 Clean Architecture를 드디어 읽어 보았다. 이전에 Clean Code를 읽고 **Clean Architecture**도 꼭 읽어봐야지 했었는데, 이제서야 이 책을 읽게 되었다. 이 글을 통해 내가 이 책을 읽고 생각 나는 키워드 들과 소감을 적어보고자 한다.
 ---
 
 [![Clean Architecture](/assets/images/books/clean-architecture.jpg)](https://image.aladin.co.kr/product/20232/24/cover500/8966262473_1.jpg){: target="\_blank" }

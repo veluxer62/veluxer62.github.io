@@ -16,7 +16,10 @@ tags:
 
 toc: true
 toc_sticky: true
+excerpt: 자동화된 배포는 어쩌면 현재 시점에서는 당연하게 받아 들이는 행위라 생각된다. 손으로 하는(자동화되지 않은) 배포는 실수를 유발할 위험성을 가지고 있으며 자동화된 배포에 비해 느리고 번거롭다. 이러한 장점으로 인해 많은 회사들이 자동화된 배포 파이프라인을 가지고 있으며 Jenkins, Github Action, Circle CI, Azure Devops 등 많은 도구를 이용하여 배포 과정을 수행하고 있다. 이글은 그중에 Circle CI를 이용하여 Spring Boot로 만들어진 웹 어플리케이션을 쿠버네티스환경에 배포하기 위한 파이프라인을 만들어보는 과정을 적어보려고 한다. 파이프라인을 작성하는 것에 집중하여 적기위해서 Spring Boot, Gradle, AWS, Kubernetes, Helm, Github, Slack에 대한 기본적인 이해도는 가지고 있다는 것을 전제로 한다. 그래서 Spring Boot로 만들어진 웹 어플리케이션과 Helm Chart, AWS의 Kubernetes 서비스인 EKS가 준비되어 있다고 가정하고 글을 이어가려고 한다. 만약 사전 지식이 부족하다면 아래 링크들을 참고해보길 바란다.
 ---
+
+## Intro
 
 자동화된 배포는 어쩌면 현재 시점에서는 당연하게 받아 들이는 행위라 생각된다. 손으로 하는(자동화되지 않은) 배포는 실수를 유발할 위험성을 가지고 있으며 자동화된 배포에 비해 느리고 번거롭다. 이러한 장점으로 인해 많은 회사들이 자동화된 배포 파이프라인을 가지고 있으며 [Jenkins](https://www.jenkins.io/){: target="\_blank" }, [Github Action](https://docs.github.com/en/actions){: target="\_blank" }, [Circle CI](https://circleci.com/){: target="\_blank" }, [Azure Devops](https://azure.microsoft.com/en-us/services/devops/){: target="\_blank" } 등 많은 도구를 이용하여 배포 과정을 수행하고 있다.
 

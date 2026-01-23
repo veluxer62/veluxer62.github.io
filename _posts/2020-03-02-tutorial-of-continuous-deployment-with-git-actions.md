@@ -11,6 +11,7 @@ tags:
   - secrets
 toc: true
 toc_sticky: true
+excerpt: 지난 GIT Actions을 이용한 CI/CD 적용기 - CI편에 이어 이번 글은 CD에 대한 내용을 적어보겠다. CD가 Trigger 되는 시점은 master 브런치에 병합이 될때 실행되며, OCCUPYING프로젝트에서 CD는 Continuous Delivery가 아닌 Continuous Deployment로 하였다.
 ---
 
 ## Introduction

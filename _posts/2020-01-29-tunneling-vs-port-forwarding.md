@@ -8,6 +8,7 @@ tags:
   - port forwarding
 toc: true
 toc_sticky: true
+excerpt: tunneling과 port forwarding에 대해 알아보자.
 ---
 
 **Tunneling**과 **Port Forwarding**이라는 말은 비슷한 의미로 혼용해서 쓰는 경우가 많이 있다. 그리고 실제로 검색을 해봐도 동일한 의미인 것 처럼 작성된 글들을 종종 볼 수 있어 두 개념의 의미를 정리해보고 그 차이점을 비교해보고자 한다. ~~두 개념에 대한 설명은 Wikipedia에서 제공되는 정보를 그대로 번역해서 사용하였다.~~

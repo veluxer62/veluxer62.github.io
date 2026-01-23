@@ -10,6 +10,7 @@ tags:
   - "한빛미디어"
 toc: true
 toc_sticky: true
+excerpt: 현재 회사에서 Python을 주 언어로 사용하고 있다. 지금까지 나는 Java, Kotlin, Javascript 언어를 주로 사용해왔었고 Python은 코딩 튜터로 활동할때 조금 사용해 보았지만 제대로 안다고 말하기 어려웠다. 그래서 Python에 대해 좀더 깊이 있게 알아보기 위해 이 책을 읽게 되었다.
 ---
 
 [![Fluent Python](/assets/images/books/fluent-python.jpeg)](http://image.kyobobook.co.kr/images/book/xlarge/988/x9788968484988.jpg){: target="\_blank" }

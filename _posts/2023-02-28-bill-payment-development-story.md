@@ -10,7 +10,10 @@ tags:
   - Message Throttling
 toc: true
 toc_sticky: true
+excerpt: "키친보드는 주문 서비스의 성공적인 출시에 힘입어 고객에게 가치를 전달하기 위한 다음 스텝으로 청구/수납 서비스를 런칭하였다. 이 글에서는 청구/수납 서비스를 개발하면서 겪었던 여러 이야기들을 소개하고자 한다."
 ---
+
+## Intro
 
 이 글은 사내 블로그에 작성한 [청구/수납 서비스 개발기](https://spoqa.github.io/2023/02/24/bill-payment-development-story.html){: target="\_blank" } 내용을 그대로 가져오면서 나의 블로그의 언어톤에 맞게 변경한 글이다.
 

@@ -9,7 +9,10 @@ tags:
 
 toc: true
 toc_sticky: true
+excerpt: JPA에서 동작하는 Isolation 레벨에 대해서 알아보자.
 ---
+
+## Intro
 
 DBMS마다 각각 다른 기본 격리수준을 제공한다. Mysql, Maria 데이터베이스는 기본적으로 `REPEATABLE READ`이고, Oracle, MSSql은 `READ COMMITTED`이다. Aurora의 경우는 Writer 인스턴스는 `REPEATABLE READ` Reader 인스턴스는 `READ COMMITTED`이다.
 

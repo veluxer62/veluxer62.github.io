@@ -14,7 +14,10 @@ tags:
 
 toc: true
 toc_sticky: true
+excerpt: 사내 예약 시스템을 만들면서 서버간의 데이터 교환에 Message Queue를 사용하기로 결정하였다. Message Queue 기능을 제공하는 다양한 솔루션이 있는데 이중에서 어떤 것을 사용하면 좋을 지 알아보면서 Message Queue란 어떤것이며 종류가 어떤것 들이 있는지 알아보고 우리가 구현하고자 하는 시스템의 요구사항에 맞는 Message Queue를 선택해 보고자 한다.
 ---
+
+## Intro
 
 사내 예약 시스템을 만들면서 서버간의 데이터 교환에 Message Queue를 사용하기로 결정하였다. Message Queue 기능을 제공하는 다양한 솔루션이 있는데 이중에서 어떤 것을 사용하면 좋을 지 알아보면서 Message Queue란 어떤것이며 종류가 어떤것 들이 있는지 알아보고 우리가 구현하고자 하는 시스템의 요구사항에 맞는 Message Queue를 선택해 보고자 한다.
 

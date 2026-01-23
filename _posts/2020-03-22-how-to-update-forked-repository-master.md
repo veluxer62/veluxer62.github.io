@@ -7,6 +7,7 @@ tags:
   - git
 toc: true
 toc_sticky: true
+excerpt: 현재 운영중인 블로그는 Minimal Mistakes Jkeyll theme라는 깃 블로그 테마를 사용해서 운영중이다. **Minimal Mistakes Jkeyll theme**를 사용하는 방법은 ZIP파일을 다운로드 받아서 사용하는 방법과 fork를 이용하여 사용하는 방법이 있다. 나는 이전에 작업했던 commit 내용을 볼 수 있다는 점과 원본 브런치의 업데이트를 병합하기 용이하다는 점을 장점으로 생각 되어 fork를 사용하는 방법을 선택하였다. (~~물론 Pull Request시 브런치를 일일히 선택해줘야 한다는 단점도 있다~~) 이 글에서는 **Minimal Mistakes Jkeyll theme**를 fork한 내가 작성중인 블로그에 오리지널 브런치의 업데이트 내용을 병합하기 위한 방법을 설명하고자 한다.
 ---
 
 ## Introduction

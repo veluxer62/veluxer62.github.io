@@ -12,7 +12,10 @@ tags:
 
 toc: true
 toc_sticky: true
+excerpt: 최근 Kotlin을 이용하여 개발하면서 테스트 코드를 작성할때 Kotest를 주로 사용한다. 이전에 작성한 Comparing Testing Library for Kotlin을 보면 Kotest를 이용한 테스트 코드 작성의 장점에 대해서 적어 두었으니 읽어보면 좋을 것 같다. 이 글은 Kotest 공식 홈페이지를 참고해서 내가 사용했던 기능들 위주로 사용방법에 대해서 자세히 다루고 다양한 활용방법을 소개해 본다. 먼저 빠르게 설치해서 사용해 볼 수 있는 방법을 알아보고 좀더 자세한 설정과 사용방법에 대해서 알아본다.
 ---
+
+## Intro
 
 최근 Kotlin을 이용하여 개발하면서 테스트 코드를 작성할때 [Kotest](https://kotest.io/){: target="\_blank" }를 주로 사용한다. 이전에 작성한 [Comparing Testing Library for Kotlin](https://veluxer62.github.io/explanation/comparing-testing-library-for-kotlin/){: target="\_blank" }을 보면 Kotest를 이용한 테스트 코드 작성의 장점에 대해서 적어 두었으니 읽어보면 좋을 것 같다.
 

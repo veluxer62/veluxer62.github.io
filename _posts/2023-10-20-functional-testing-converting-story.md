@@ -10,7 +10,10 @@ tags:
   - mockserver
 toc: true
 toc_sticky: true
+excerpt: "모두가 노력해 준 덕분에 올해 목표로 했던 기능 테스트로의 전환을 마무리할 수 있게 되었다. 그래서 그동안 우리가 통합 테스트에서 기능테스트로 왜 전환하게 되었는지, 전환하면서 어떤 이슈들을 겪었는지 소개해보고자 한다."
 ---
+
+## Intro
 
 이 글은 사내 블로그에 작성한 [기능 테스트 전환 이야기](https://spoqa.github.io/2023/10/20/functional-testing-converting-story.html){: target="\_blank" } 내용을 그대로 가져오면서 나의 블로그의 언어톤에 맞게 변경한 글이다.
 

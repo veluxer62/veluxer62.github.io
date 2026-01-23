@@ -14,6 +14,7 @@ tags:
   - 에이콘출판
 toc: false
 toc_sticky: true
+excerpt: 그래프 데이터베이스를 공부하고 싶어서 사내에서 스터디를 하였다. 스터디할 때 같이 보기로 한 책이 Neo4j로 시작하는 그래프 데이터베이스이다. 스터디에서 이 책을 선택한 이유는 그래프 데이터베이스를 이용해서 어떻게 데이터를 다룰 수 있는지 사례를 볼 수 있을 것 같아서였다. 책의 구성은 그래프 데이터베이스의 이론과 사이퍼 쿼리, 데이터의 시각화와 모델링, 활용 사례들을 다룬다. 책에서는 어떤 상황에서 데이터를 모델링하고 사용하면 되는지 알려준다는 점에서 우리의 선택은 탁월했었다고 생각이 든다. 다만 그 사례의 소개가 짧고 간단해서 모두 이해하고 적용해보이기에는 부족함이 있었다.
 ---
 
 [![Head First Design Patterns](/assets/images/books/graph-database-starting-with-neo4j.jpg)](http://acornpub.co.kr/tb/detail/book/bw/sp/15295402122PUkltyr.jpg){: target="\_blank" }

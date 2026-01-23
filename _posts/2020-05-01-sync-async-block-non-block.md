@@ -12,6 +12,7 @@ tags:
   - non-blocking
 toc: true
 toc_sticky: true
+excerpt: 얼마전에 Blocking과 Non-Blocking에 대해 설명을 해야 할 일이 있었는데, 설명을 Synchronous와 Asynchronous에 대해서 설명한 일이 있었다. 현재 내가 개발을 하면서 많은 곳에서 사용하고 있지만 제대로 알고 사용하고 있지 않다는 것을 알게 되었고, 이에 대해 정리하고자 이 글을 작성한다.
 ---
 
 ## Intro

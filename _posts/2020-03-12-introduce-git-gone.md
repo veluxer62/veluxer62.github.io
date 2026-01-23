@@ -7,6 +7,7 @@ tags:
   - git
 toc: true
 toc_sticky: true
+excerpt: git gone 명령어에 대해 알아보자.
 ---
 
 ## Introduction

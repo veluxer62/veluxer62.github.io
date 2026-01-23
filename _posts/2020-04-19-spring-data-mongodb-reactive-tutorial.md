@@ -11,6 +11,7 @@ tags:
 
 toc: true
 toc_sticky: true
+excerpt: 이전 글에서 RDBMS를 Spring WebFlux에서 사용하기 위해 Spring Data R2DBC 튜토리얼을 작성했었다. 이번 글에서는 Spring WebFlux에서 NoSQL중 하나인 MongoDB를 사용하기 위한 튜토리얼을 작성해 보고자 한다.
 ---
 
 ## Introduction

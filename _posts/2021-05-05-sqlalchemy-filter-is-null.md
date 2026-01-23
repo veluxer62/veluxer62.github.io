@@ -9,7 +9,10 @@ tags:
 
 toc: true
 toc_sticky: true
+excerpt: 이 글은 Python 초보인 내가 SQLAlchemy를 (~~제대로 알지 못하고~~)사용하면서 겪었던 이슈에 대해 원인을 찾아보고 왜 SQLAlchemy가 그렇게 동작하게끔 구현되었는지, 앞으로 사용할 때 어떤 주의를 기울여야 하는지를 정리한 글이다.
 ---
+
+## Intro
 
 이 글은 Python 초보인 내가 [SQLAlchemy](https://www.sqlalchemy.org/){: target="\_blank" }를 (~~제대로 알지 못하고~~)사용하면서 겪었던 이슈에 대해 원인을 찾아보고 왜 SQLAlchemy가 그렇게 동작하게끔 구현되었는지, 앞으로 사용할 때 어떤 주의를 기울여야 하는지를 정리한 글이다.
 

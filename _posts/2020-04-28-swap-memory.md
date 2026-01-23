@@ -9,6 +9,7 @@ tags:
 
 toc: true
 toc_sticky: true
+excerpt: Swap Memory에 대해 알아보자.
 ---
 
 ## About Swap Memory

@@ -10,7 +10,10 @@ tags:
 
 toc: true
 toc_sticky: true
+excerpt: 객체지향언어로 개발을 하다보면 우리는 수많은 클래스를 생성하고 그 클래스를 사용한다. 도메인 주도 설계 책을 읽으면서 우리 만드는 클래스들이 어떤 책임을 가지냐에 따라서 역할을 나눌 수 있다는 것을 배우게 되었고 그중에서 이 글에서는 Entity와 Value Object에 대해서 다루어 보고자 한다.
 ---
+
+## Intro
 
 객체지향언어로 개발을 하다보면 우리는 수많은 클래스를 생성하고 그 클래스를 사용한다. [도메인 주도 설계](http://www.kyobobook.co.kr/product/detailViewKor.laf?mallGb=KOR&ejkGb=KOR&barcode=9788992939850){: target="\_blank" } 책을 읽으면서 우리 만드는 클래스들이 어떤 책임을 가지냐에 따라서 역할을 나눌 수 있다는 것을 배우게 되었고 그중에서 이 글에서는 Entity와 Value Object에 대해서 다루어 보고자 한다.
 

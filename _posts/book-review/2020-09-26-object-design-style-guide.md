@@ -10,6 +10,7 @@ tags:
   - 위키북스
 toc: true
 toc_sticky: true
+excerpt: 이 책은 지금은 계시진 않지만 회사의 동료분께서 추천해주셔서 알게된 책이다. 목차를 읽어보았는데, 기초라고 적혀 있는 일반론적인 부분은 다른 책들에게서도 읽을 수 있는 내용이라 딱히 기대가 되진 않았지만 나머지 가이드 부분들은 평소 내가 코드를 작성할 때 고민하던 부분들을 코드로 해결방법을 제시해주지 않을까 하는 기대감을 가지고 읽게 되었다.
 ---
 
 [![Object Design Style Guide](/assets/images/books/object-design-style-guide.jpeg)](http://image.yes24.com/goods/91167539/800x0){: target="\_blank" }

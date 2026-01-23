@@ -10,7 +10,10 @@ tags:
 toc: true
 toc_sticky: true
 toc_h_max: 3
+excerpt: "우리가 이렇게 유명한 라이브러리인 Querydsl을 Kotlin JDSL로 변경하게 된 계기는 무엇이며 변경하면서 우리가 겪었던 이슈나 전환 시 우리가 사용했던 여러 가지 팁들을 공유하면서 전환 이야기를 나눠보도록 하겠다."
 ---
+
+## Intro
 
 이 글은 사내 블로그에 작성한 [Querydsl에서 Kotlin JDSL 으로](https://spoqa.github.io/2024/05/03/transfer-jdsl.html){: target="\_blank" } 내용을 그대로 가져오면서 나의 블로그의 언어톤에 맞게 변경한 글이다.
 

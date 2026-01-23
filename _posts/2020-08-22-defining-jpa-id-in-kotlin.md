@@ -10,7 +10,10 @@ tags:
 
 toc: true
 toc_sticky: true
+excerpt: Kotlin으로 Spring Data JPA를 사용할 때 많은 고민을 하였다. Entity Class를 정의할 때 특히 그런데, `Data Class`를 사용할지 말지, `val`를 사용할지 `var`를 사용할지 말지 등등 항상 어떻게 하는게 좀더 의미있는지 고민이 된다. 이 글은 그중에서 ID를 정의할 때 어떻게 정의하면 좋을지에 대한 나의 생각을 정리한 글이다.
 ---
+
+## Intro
 
 Kotlin으로 Spring Data JPA를 사용할 때 많은 고민을 하였다. Entity Class를 정의할 때 특히 그런데, `Data Class`를 사용할지 말지, `val`를 사용할지 `var`를 사용할지 말지 등등 항상 어떻게 하는게 좀더 의미있는지 고민이 된다. 이 글은 그중에서 ID를 정의할 때 어떻게 정의하면 좋을지에 대한 나의 생각을 정리한 글이다.
 

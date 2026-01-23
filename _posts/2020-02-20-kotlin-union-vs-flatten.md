@@ -9,6 +9,7 @@ tags:
   - flatten
 toc: true
 toc_sticky: true
+excerpt: Kotlin에서 2개 이상의 배열을 합쳐 하나의 배열로 반환해야하는 기능을 구현하는 상황에서 `union`함수를 사용할지 `flatten`함수를 사용할지 고민을 한적이 있다. 당시에는 `flatten`을 사용하였지만 (~~`union`을 사용할 경우 반환 형식이 `Set`이기 때문에 다시 `toList`함수를 호출해야 해서 `flatten`을 사용하였다.~~) `union`과 `flatten`을 사용하였을 때 퍼포먼스라던지 메모리 사용량이 얼마나 차이가 나는지 궁금해서 정리해본다.
 ---
 
 ## Introduction
