@@ -11,6 +11,7 @@ tags:
 
 toc: true
 toc_sticky: true
+excerpt: 이번 글에서는 이전에 작성한 Spring WebFlux - Spring Data R2DBC tutorial에 이어 Spring WebFlux를 이용한 API를 만들어보는 글을 작성해 보겠다. Spring WebFlux에서는 Web API를 위한 2가지 방식의 프로그래밍 모델을 제공해준다. 하나는 Annotation 기반 컨트롤러방식이고 다른 하나는 함수형 앤드포인트방식이다. 먼저 이번글에는 **함수형 앤드포인트**방식으로 API를 어떻게 구현하는지를 먼저 보여주고자 한다. 이후 글에서 **Annotation 기반 컨트롤러**를 이용한 API 구현 방법에 대해서도 다루어 보겠다.
 ---
 
 ## Introduction

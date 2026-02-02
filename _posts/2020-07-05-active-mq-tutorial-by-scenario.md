@@ -16,7 +16,10 @@ tags:
 
 toc: true
 toc_sticky: true
+excerpt: 이번 글에서는 Active MQ를 시나리별로 사용하는 방법에 대해서 작성해 보고자 한다.
 ---
+
+## Intro
 
 이번 글에서는 Active MQ를 시나리별로 사용하는 방법에 대해서 작성해 보고자 한다.
 

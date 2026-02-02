@@ -14,6 +14,7 @@ tags:
   - 버트 베이츠
 toc: true
 toc_sticky: true
+excerpt: 디자인 패턴을 좀더 깊게 공부해볼 필요성을 느껴서 처음에 GoF의 디자인 패턴을 사서 보려고 하였는데, 회사 동료가 먼어 읽어보라고 준 책이 Head First Design Patterns이다.
 ---
 
 [![Head First Design Patterns](/assets/images/books/head-first-design-patterns.jpg)](http://i.011st.com/ex_t/R/400x400/1/85/0/src/pd/17/1/3/0/3/7/8/rsnoa/1751130378_B.jpg){: target="\_blank" }

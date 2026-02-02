@@ -13,6 +13,7 @@ tags:
   - also
 toc: true
 toc_sticky: true
+excerpt: Kotlin에서 제공하는 함수들 중에 `let`, `run`, `with`, `apply`, `also`라는 함수들에 대해서 알아보자.
 ---
 
 Kotlin에서 제공하는 함수들 중에 `let`, `run`, `with`, `apply`, `also`라는 함수들이 있다. 함수명은 다르지만 얼핏 보면 비슷한 동작들을 하고 있고 실제로 사용할때 다른함수로 사용해도 기능이 동일하게 동작하기도 하는 함수도 있다. 그럼 Kotlin에서는 왜 하나의 함수로 만들지 않고 이 함수들을 구분해 놓았을까?

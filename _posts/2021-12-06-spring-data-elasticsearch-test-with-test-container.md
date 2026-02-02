@@ -12,7 +12,10 @@ tags:
 
 toc: true
 toc_sticky: true
+excerpt: 회사에서 Elasticsearch를 이용해 만들어진 기존 기능을 Spring Data Elasticsearch로 다시 구현하는 작업을 진행중이다. Elasticsearch도 RDB와 같이 Embedded 환경을 구성할 수 있지만 더이상 관리되지 않고 TestContainers를 사용하는 것을 권장하고 있으므로 Test 환경으로 TestContainer를 사용하기로 하였다. 'Testcontainers를 이용한 한글 형태소 검색 테스트 환경 구축하기'라고 제목을 적긴하였지만 기존에 구현되어있는 Elasticsearch 환경을 TestContainers로 구현하면서 겪었던 이슈들을 적고 해결하던 과정도 함께 적어보자 한다.
 ---
+
+## Intro
 
 회사에서 Elasticsearch를 이용해 만들어진 기존 기능을 Spring Data Elasticsearch로 다시 구현하는 작업을 진행중이다. Elasticsearch도 RDB와 같이 Embedded 환경을 구성할 수 있지만 더이상 관리되지 않고 TestContainers를 사용하는 것을 권장하고 있으므로 Test 환경으로 TestContainer를 사용하기로 하였다. (참고: [https://github.com/allegro/embedded-elasticsearch](https://github.com/allegro/embedded-elasticsearch){: target="\_blank" })
 

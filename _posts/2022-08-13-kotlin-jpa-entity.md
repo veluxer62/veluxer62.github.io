@@ -9,7 +9,10 @@ tags:
   - Spring Data
 toc: true
 toc_sticky: true
+excerpt: 최근 Kotlin이 서버 언어로 각광을 받기 시작하면서 Kotlin + Spring으로 서버를 개발하는 케이스가 많아졌다. 그러면서 자연스레 Kotlin으로 JPA를 사용하는 사례 또한 많아졌다. 다만 Kotlin으로 JPA를 사용하다보면, 정확하게는 Entity를 정의하다보면 Kotlin의 언어적 특성과 잘 맞지 않는 부분을 많이 발견하게 된다. JPA는 Java Persistence API의 약자로 Java 진영의 ORM 표준을 말한다. 그래서 데이터베이스를 매핑해주는 Entity를 정의할 때 Java를 기준으로 Entity를 정의하기 쉽도록 만들어져 있기 때문이다. 이 글은 지난 기간동안 Kotlin으로 JPA Entity를 보다 Entity 스럽게 사용하기 위해 고민한 내용을 담은 것이다. 그동안 Kotlin을 사용하면서 Java로 Entity를 정의했을 때의 차이와 최대한 Entity의 컨셉을 해치지 않으면서 어떻게 Kotlin스럽게 작성하면 좋을지 고민한 것들을 적어보려고 한다.
 ---
+
+## Intro
 
 최근 Kotlin이 서버 언어로 각광을 받기 시작하면서 Kotlin + Spring으로 서버를 개발하는 케이스가 많아졌다. 그러면서 자연스레 Kotlin으로 JPA를 사용하는 사례 또한 많아졌다. 다만 Kotlin으로 JPA를 사용하다보면, 정확하게는 Entity를 정의하다보면 Kotlin의 언어적 특성과 잘 맞지 않는 부분을 많이 발견하게 된다. JPA는 Java Persistence API의 약자로 Java 진영의 ORM 표준을 말한다. 그래서 데이터베이스를 매핑해주는 Entity를 정의할 때 Java를 기준으로 Entity를 정의하기 쉽도록 만들어져 있기 때문이다.
 

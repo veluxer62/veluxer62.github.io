@@ -11,6 +11,7 @@ tags:
 
 toc: true
 toc_sticky: true
+excerpt: 이번 글에서는 이전에 작성한 Spring WebFlux - Functional Endpoint With Coroutine Tutorial에 이어 Spring WebFlux를 이용한 또다른 방식의 API를 만들어보는 글을 작성해 보겠다. 이전 글에서는 함수형 앤드포인트방식을 이용하여 API를 만들었는데 이 글에서는 Annotation 기반 컨트롤러방식으로 API를 구현하는 방법에 대해서 다루어 보겠다.
 ---
 
 ## Introduction

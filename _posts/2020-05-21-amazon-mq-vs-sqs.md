@@ -12,7 +12,10 @@ tags:
 
 toc: true
 toc_sticky: true
+excerpt: 이전에 작성한 글 Message Queue Comparison에서 새로운 프로젝트에 도입할 Message Queue들 중 Amazon MQ와 Amazon SQS를 후보군으로 채택하였었다. 이번 글은 Amazon MQ와 Amazon SQS 중에서 Amazon MQ를 선정한 배경 및 이유에 대해서 작성해 보고자 한다.
 ---
+
+## Intro
 
 이전에 [작성한 글](/reference/message-queue/){: target="\_blank" }에서 새로운 프로젝트에 도입할 Message Queue들 중 Amazon MQ와 Amazon SQS를 후보군으로 채택하였었다. 이번 글은 Amazon MQ와 Amazon SQS 중에서 Amazon MQ를 선정한 배경 및 이유에 대해서 작성해 보고자 한다.
 

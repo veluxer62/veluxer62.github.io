@@ -9,6 +9,7 @@ tags:
   - composition over inheritance
 toc: true
 toc_sticky: true
+excerpt: 상속과 구성의 특징 및 장단점에 대해 알아본다.
 ---
 
 > 상속보다는 구성을 활용한다.

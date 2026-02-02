@@ -10,6 +10,7 @@ tags:
   - 길벗
 toc: true
 toc_sticky: true
+excerpt: 현재 재직중인 회사에서 개발된 모놀리식 서비스를 마이크로 서비스로 전환을 목표로 서비스를 하나하나 분리하고 있다. 내가 속한 팀도 현재 개발되어 있는 모놀리식 서버를 마이크로 서비스로 전환해야 한다. 아쉽게도 나는 마이크로 서비스를 개발하거나 운영해본 경험이 없다. 그래서 마이크로 서비스로 전환할 때 어떤것들을 고민해야 할지 알고자 이 책을 읽게 되었다. 아래에 이 책을 통해 알게된 내용과 느낀점들을 적어본다.
 ---
 
 [![Microservices Patterns](/assets/images/books/microservices-patterns.jpeg)](http://image.yes24.com/goods/86542732/800x0){: target="\_blank" }

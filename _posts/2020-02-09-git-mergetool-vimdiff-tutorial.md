@@ -9,6 +9,7 @@ tags:
   - vimdiff
 toc: true
 toc_sticky: true
+excerpt: GIT 사용시 발생할 수 있는 코드 충돌 해결 방법을 알아본다.
 ---
 
 ## Introduction

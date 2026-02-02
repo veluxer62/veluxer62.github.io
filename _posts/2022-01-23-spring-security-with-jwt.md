@@ -12,6 +12,7 @@ tags:
 
 toc: true
 toc_sticky: true
+excerpt: "사내에서 Spring Security를 이용한 JWT인증을 구현하면서 `UsernamePasswordAuthenticationFilter`와 같이 이미 구현되어있는 인증 구현체가 없어서 JWT를 이용한 인증 필터를 새롭게 구현하게 되었다. Session 기반 인증만 구현하면서 기존 구현체를 이용해 단순하게 사용해오던 Spring Security를 JWT로 인증로직을 수행하도록 하기위해 Custom filter를 구현하면서 Spring Security의 Authentication 아키텍쳐에 대해 좀더 공부해 볼 수 있는 시간을 가질 수 있게 되었고 이를 구현하면서 배웠던 부분들을 적어보고자 한다. 먼저 앞으로 소개될 기술들에 대한 간단한 개념부터 정리하고 튜토리얼을 이어가보자."
 ---
 
 사내에서 Spring Security를 이용한 JWT인증을 구현하면서 `UsernamePasswordAuthenticationFilter`와 같이 이미 구현되어있는 인증 구현체가 없어서 JWT를 이용한 인증 필터를 새롭게 구현하게 되었다.

@@ -11,6 +11,7 @@ tags:
   - secrets
 toc: true
 toc_sticky: true
+excerpt: 이 글은 현재 개인프로젝트로 개발하고 있는 OCCUPYING Repository에 GIT Actions을 이용하여 CI/CD를 적용해 보면서 겪었던 것들을 적은 글이다.
 ---
 
 ## Introduction
