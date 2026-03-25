@@ -14,3 +14,5 @@ group :jekyll_plugins do
   gem "jekyll-include-cache"
   gem "jekyll-algolia"
 end
+
+gem 'ffi', '1.15.5'
