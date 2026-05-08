@@ -3,6 +3,8 @@ layout: single
 title: "AI와 함께 일한다는 것"
 categories:
   - EXPLANATION
+toc: true
+toc_sticky: true
 excerpt: "요즘 AI 코딩 도구를 쓰지 않는 개발자를 찾기 어렵다. 그런데 막상 써보면 성능이 일관적이지 않다. 그럼에도 개발자들이 AI 도구를 좋아하는 이유는 무엇일까."
 ---
 

@@ -3,6 +3,8 @@ layout: single
 title: "우리 제품의 발전이 느린 이유"
 categories:
   - EXPLANATION
+toc: true
+toc_sticky: true
 excerpt: "AI 시대, 개발자 생산성은 역대 최고지만 왜 제품은 여전히 느리게 발전하는 걸까. 50차선 고속도로가 4차선으로 병목되듯, 개발 외적 요소들이 전체 속도를 잡아먹는다."
 ---
 
